@@ -42,3 +42,8 @@
  * Users will be able to research the various products and bundles on offer in terms of price, size and description.
  * Potential buyers can create their own accounts to pay for the desired gifts and deliver them directly to the gift recipient if they so choose.
  * Arising from the creation of the site, gift recipients and gift senders will enjoy a greater, more personlised experience.
+
+### User Goals
+ * Research and examine potential gifts
+ * Purchase a gift basket or individual items
+ * Have delivery arranged to bring purchased items direct to gift recipients
