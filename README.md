@@ -73,5 +73,3 @@
  * Product information and images are accurate, clear and well presented.
  * Users can directly contact the site administrator to dicuss any concerns or comments that they may have.
  * Delivery tracker portal is accurate and details the delivery process clearly to the consumer to avoid misunderstanding.
- * 
- * 
