@@ -82,3 +82,9 @@ Initially, I wrote down all of the ideas that I had for this site. Once I had fi
  * Mobile
  * Desktop
  * Tablet
+
+### Colour Scheme
+
+[!Colour Scheme](https://github.com/shane-os/atlas-gifts/blob/main/wireframes/atlas_gifts_colour_palette.png)
+
+For the Atlas Gifts project, I decided to use colours that convey a range of emotions to both inspire confidence in the site user and entice them to purchase particular items. For example: The indigo Dye shade of blue is used in the payment section of the website to invoke trust and security in the user. The colour palette seen above and the accompanying report available in the wireframes folder was created using the Coolors.co website.
