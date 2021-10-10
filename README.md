@@ -54,3 +54,9 @@
  * As a user, I wish to arrange delivery of purchased gifts direct to their recipient.
  * As a user, I would like to track delivery of my purchases.
  * As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
+
+### Site Owner Goals
+ * As a site owner, I wish to provide a range of products, that users are able to view and purchase.
+ * As a site owner, I would like to provide a clear, simple process through which desired items can be purchased.
+ * As a site owner, I want to provide a medium though which users can contact me about issues, suggestions, complaints or comments they have about the products on site.
+ * As a site owner, I wish to promote my current product and future product offerings using a blog.
