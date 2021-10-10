@@ -73,3 +73,12 @@
  * Product information and images are accurate, clear and well presented.
  * Users can directly contact the site administrator to dicuss any concerns or comments that they may have.
  * Delivery tracker portal is accurate and details the delivery process clearly to the consumer to avoid misunderstanding.
+
+## Site Layout & Design:
+
+### Wireframes
+Initially, I wrote down all of the ideas that I had for this site. Once I had firmly decided on the project, I drew rough sketches of my vision for the site on pen and paper. Following the refining of my designs through more wireframe drafts, I created electronic versions of these wireframes using the Balsamiq Wireframes software. The final versions of the wireframes are stored in PDF format, for the following viewing mediums:
+
+ * Mobile
+ * Desktop
+ * Tablet
