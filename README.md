@@ -47,3 +47,10 @@
  * Research and examine potential gifts
  * Purchase a gift basket or individual items
  * Have delivery arranged to bring purchased items direct to gift recipients
+
+### User Stories
+ * As a user, I would like to research the various gifts available to purchase.
+ * As a user, I want to purchase my desired items.
+ * As a user, I wish to arrange delivery of purchased gifts direct to their recipient.
+ * As a user, I would like to track delivery of my purchases.
+ * As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
