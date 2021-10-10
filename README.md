@@ -60,3 +60,10 @@
  * As a site owner, I would like to provide a clear, simple process through which desired items can be purchased.
  * As a site owner, I want to provide a medium though which users can contact me about issues, suggestions, complaints or comments they have about the products on site.
  * As a site owner, I wish to promote my current product and future product offerings using a blog.
+
+### User Requirements
+ * Users are able to register an account and log in as required.
+ * Search and filter capabilities operate as expected.
+ * Products can be easily selected and added to the basket for payment.
+ * Purchase process is straightforward, secure and without error.
+ * All internal site links redirect users to the appropriate section.
