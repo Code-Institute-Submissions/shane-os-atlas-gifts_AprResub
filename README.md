@@ -67,3 +67,11 @@
  * Products can be easily selected and added to the basket for payment.
  * Purchase process is straightforward, secure and without error.
  * All internal site links redirect users to the appropriate section.
+
+### User Expectations
+ * Wide product selection on offer to purchase.
+ * Product information and images are accurate, clear and well presented.
+ * Users can directly contact the site administrator to dicuss any concerns or comments that they may have.
+ * Delivery tracker portal is accurate and details the delivery process clearly to the consumer to avoid misunderstanding.
+ * 
+ * 
