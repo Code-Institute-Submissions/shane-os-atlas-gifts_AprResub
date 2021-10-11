@@ -85,6 +85,16 @@ Initially, I wrote down all of the ideas that I had for this site. Once I had fi
 
 ### Colour Scheme
 
-[!Colour Scheme](https://github.com/shane-os/atlas-gifts/blob/main/wireframes/atlas_gifts_colour_palette.png)
+![Colour Scheme](https://github.com/shane-os/atlas-gifts/blob/main/wireframes/atlas_gifts_colour_palette.png)
 
-For the Atlas Gifts project, I decided to use colours that convey a range of emotions to both inspire confidence in the site user and entice them to purchase particular items. For example: The indigo Dye shade of blue is used in the payment section of the website to invoke trust and security in the user. The colour palette seen above and the accompanying report available in the wireframes folder was created using the Coolors.co website.
+For the Atlas Gifts project, I decided to use colours that convey a range of emotions to both inspire confidence in the site user and entice them to purchase particular items. For example: The indigo Dye shade of blue is used in the payment section of the website to invoke trust and security in the user. The colour palette seen above and the accompanying report available in the wireframes folder was created using the [Coolors.co](https://coolors.co/) website. The main colours utilised in this project were:
+
+ * #000000 - Black - Headings & main body text
+ * #083d77 - Indigo Dye - Payment processing area
+ * #C41C1F - Venetian Red - Item bundles & delivery section
+ * #11844A - Sea Green - Item bundles & shopping cart
+ * #FC4C02 - International Orange Aerospace - Item bundles
+ * #FFFFFF - White - Background & footer text
+
+
+
