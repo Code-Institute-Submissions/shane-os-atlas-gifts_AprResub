@@ -1,4 +1,11 @@
 footer {
-    align-content: center;
     background-color: #083d77;
+    color: #ffffff;
+    text-align: center;
+}
+
+.fab {
+    color: #ffffff;
+    font-size: 20pt;
+    margin: 5px;
 }
