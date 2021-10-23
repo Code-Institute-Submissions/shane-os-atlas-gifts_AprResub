@@ -96,5 +96,10 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * #FC4C02 - International Orange Aerospace - Item bundles
  * #FFFFFF - White - Background & footer text
 
+## Technologies
 
-
+### Programming Languages
+ * [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+ * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+ * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+ * [Python](https://www.python.org/about/)
