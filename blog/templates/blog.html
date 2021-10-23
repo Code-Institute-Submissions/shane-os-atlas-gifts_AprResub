@@ -3,12 +3,14 @@
 {% load static %}
 
 {% block content %}
-<div class="card mb-3">
+{% for post in posts %}
+  <div class="card mb-3">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Atlas Gifts</h5>
-      <p class="card-text">Atlas Gifts test.</p>
-      <p class="card-text"><small class="text-muted">Test Date</small></p>
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ post.body }}</p>
+      <p class="card-text"><small class="text-muted">{{ post.posted_date }}</small></p>
     </div>
   </div>
+{% endfor %}
 {% endblock %}
