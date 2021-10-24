@@ -18,7 +18,7 @@ class Category(models.Model):
         return self.show_name
 
 
-class Gift(models.Model):
+class gifts(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=25)
     name = models.CharField(max_length=200)

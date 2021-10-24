@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Gift, Category
+from .models import gifts, Category
 
-admin.site.register(Gift)
+admin.site.register(gifts)
 admin.site.register(Category)
