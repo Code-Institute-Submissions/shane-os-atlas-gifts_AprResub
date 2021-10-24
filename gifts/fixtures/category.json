@@ -1,0 +1,22 @@
+[
+    {
+        "pk":2,
+        "model":"gifts.category",
+        "fields": {
+            "name": "puzzle",
+            "show_name": "Puzzle"
+        }
+
+    },
+
+    {
+        "pk":2,
+        "model":"gifts.category",
+        "fields": {
+            "name": "food",
+            "show_name": "Food"
+        }
+
+    }
+
+    ]
