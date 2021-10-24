@@ -11,6 +11,7 @@ class Category(models.Model):
 
 class Gift(models.Model):
     category = models.ForeignKey('category', null=True, blank=True, on_delete=models.SET_NULL)
+    sku = models.CharField(max_length=25)
     name = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=4, decimal_places=2)
