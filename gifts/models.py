@@ -7,6 +7,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_show_name(self):
+        return self.show_name
 
 
 class Gift(models.Model):
