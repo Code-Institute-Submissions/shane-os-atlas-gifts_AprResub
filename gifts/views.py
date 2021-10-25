@@ -6,4 +6,4 @@ def gifts_list_all(request):
     context = {
         "gifts": gift,
     }
-    return render(request, 'gifts.html', context)
+    return render(request, 'gifts/gifts.html', context)
