@@ -19,6 +19,10 @@ class Category(models.Model):
 
 
 class gifts(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Gifts"
+
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=25)
     name = models.CharField(max_length=200)
