@@ -34,3 +34,6 @@ class gifts(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_sku(self):
+        return self.sku
