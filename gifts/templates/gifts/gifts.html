@@ -3,9 +3,12 @@
 {% load static %}
 
 {% block content %}
-
+{% for gift in gifts %}
     <H1>Gifts</H1>
     <h3>Find the perfect gift for your special occassion below!</h3>
-    {{ gift }}
+    <h5>{{ gift.name }}</h5>
+    <h5>{{ gift.price }}</h5>
 
+{% endfor %}
 {% endblock %}
+ 

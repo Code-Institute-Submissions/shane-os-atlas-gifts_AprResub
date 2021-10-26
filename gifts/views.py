@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from .models import gifts
+from .models import Gift
+
 
 def gifts_list_all(request):
-    gift = gifts.objects.all()
+    gift = Gift.objects.all()
     context = {
         "gifts": gift,
     }

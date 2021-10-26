@@ -10,7 +10,6 @@ class Category(models.Model):
     show_name = models.CharField(max_length=200)
 
 
-
     def __str__(self):
         return self.name
 
@@ -18,7 +17,7 @@ class Category(models.Model):
         return self.show_name
 
 
-class gifts(models.Model):
+class Gift(models.Model):
 
     class Meta:
         verbose_name_plural = "Gifts"
