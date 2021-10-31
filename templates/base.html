@@ -38,7 +38,14 @@
       <div id="cartarea" class="container-fluid">
         <div class="row">
             <div>
-                <i class="fas fa-shopping-cart">€0.00</i>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div>
+              {% if total %}
+                €{{ total }}
+              {% else %}
+                €0.00
+              {% endif %}
             </div>
         </div>
       </div>
