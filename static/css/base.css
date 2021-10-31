@@ -17,3 +17,9 @@ footer {
     margin: 5pt;
     justify-content: right;
 }
+
+#shopping-cart {
+    width: 80%;
+    outline-color: #11844A;
+    margin: 10px;
+}
