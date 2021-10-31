@@ -20,14 +20,14 @@
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+              <a class="nav-link" href="{% url 'account_logout' %}">Log Out <i class="fas fa-sign-out-alt"></i></a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">Sign In</a>
+              <a class="nav-link" href="{% url 'account_login' %}">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+              <a class="nav-link" href="{% url 'account_signup' %}">Register <i class="fas fa-user-plus"></i></a>
             </li>
           {% endif %}
         </ul>
