@@ -9,3 +9,11 @@ footer {
     font-size: 20pt;
     margin: 5px;
 }
+
+#cartarea {
+    background-color: #11844A;
+    color: black;
+    font-size: 25pt;
+    margin: 5pt;
+    justify-content: right;
+}
