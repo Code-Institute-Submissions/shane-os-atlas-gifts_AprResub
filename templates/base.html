@@ -36,6 +36,7 @@
     <header>
       {% include 'includes/navigation.html' %}
       <div id="cartarea" class="container-fluid">
+        <a class="nav-link" href="{% url 'display_cart' %}">
         <div class="row">
             <div>
                 <i class="fas fa-shopping-cart"></i>
@@ -48,6 +49,7 @@
               {% endif %}
             </div>
         </div>
+        </a>
       </div>
     </header>
 
