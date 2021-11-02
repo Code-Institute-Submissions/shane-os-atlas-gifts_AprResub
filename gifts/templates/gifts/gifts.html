@@ -51,14 +51,14 @@
                                 <p class="card-text">€ {{ gift.price }}</p>
                             </div>
                             <div>
-                            <form method="post">
+                            <form method="post" action="{ url 'cart_item_add' gift.sku }">
                                 <div class="col-sm-3">
                                     <div class="row">
                                         <div class="col">        
                                             <p>Quantity</p>
                                         </div class="col">
                                         <div>
-                                            <input type="number" name="quantity" value="1" min="1" max="10">
+                                            <input type="number" name="quantity" value="1" min="1" max="10" data-gift_sku="{{ gift.sku }}">
                                             <button type="button" class="btn btn-success">Add To Cart</button>
                                         </div>
                                     </div>
