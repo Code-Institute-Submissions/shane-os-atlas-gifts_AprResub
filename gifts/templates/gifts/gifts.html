@@ -5,7 +5,23 @@
 {% block content %}
 <H1>Gifts</H1>
 <h3>Find the perfect gift for your special occassion below!</h3>
+<!--
+<div class="row">
+    <div class="dropdown show">
+        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-istem" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
+            <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=desc">Price (High To Low)</a>
+            <a class="dropdown-item" href="#">Alphabetical (A To Z)</a>
+            <a class="dropdown-item" href="#">Alphabetical (Z To A)</a>
+        </div>
+    </div>
+</div>
+//-->
 {% for gift in gifts %}
+{% csrf_token %}
 <div class="row">
     <div class="col-sm-3">
         <div class="card">
@@ -18,10 +34,23 @@
             <div class="card-footer">
                 <div class = "row">
                     <div class="col">
-                        <small class="text-muted">{{ gift.weight }} Kg</small>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal">More Info</button>
                     </div>
-                    <div class="col">
-                        <small class="text-muted">{{ gift.category }}</small>
+                    <div class="modal" id="infomodal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p><strong>{{ gift.name}}</strong></p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <p><strong>X</strong></p>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="card-text">{{ gift.description }}</p>
+                                <p class="card-text">{{ gift.category }}</p>
+                                <p class="card-text">{{ gift.weight }}</p>
+                                <p class="card-text">€ {{ gift.price }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,11 +64,10 @@
                 <p>Quantity</p>
             </div class="col">
             <div>
-                <input type="number">
+                <input type="number" name="quantity" value="1" min="1" max="10">
                 <button type="button" class="btn btn-success">Add To Cart</button>
             </div>
         </div>
-        
     </div>
 </form>
 {% endfor %}
