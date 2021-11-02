@@ -4,7 +4,10 @@
 
 {% block content %}
 <h1>Your Shopping Cart</h1>
-{% if cart_items %}
+{% if select_gifts %}
+<div>
+  {{ select_gifts }}
+</div>
 <div>
   <card id="#shopping-cart">
     <table class="table table-hover">
