@@ -6,7 +6,6 @@
 <H1>Gifts</H1>
 <h3>Find the perfect gift for your special occassion below!</h3>
 {% for gift in gifts %}
-
 <div class="row">
     <div class="col-sm-3">
         <div class="card">
@@ -29,7 +28,20 @@
         </div>
     </div>
 </div>
-<br>
+<form method="post">
+    <div class="col-sm-3">
+        <div class="row">
+            <div class="col">        
+                <p>Quantity</p>
+            </div class="col">
+            <div>
+                <input type="number">
+                <button type="button" class="btn btn-success">Add To Cart</button>
+            </div>
+        </div>
+        
+    </div>
+</form>
 {% endfor %}
 {% endblock %}
  
