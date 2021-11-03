@@ -34,9 +34,9 @@
             <div class="card-footer">
                 <div class = "row">
                     <div class="col">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal">More Info</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info</button>
                     </div>
-                    <div class="modal" id="infomodal">
+                    <div class="modal" id="infomodal-{{ forloop.counter}}">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <p><strong>{{ gift.name}}</strong></p>
