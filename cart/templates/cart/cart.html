@@ -11,7 +11,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Item Number</th>
+                <th scope="col">Gift ID</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price €</th>
@@ -21,7 +21,7 @@
             {% for gift in select_gifts %}
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{ gift.gift.sku }}</th>
                 <td>{{ gift.gift.name }}</td>
                 <td>{{ gift.quantity }}</td>
                 <td>{{ gift.gift.price}}</td>
