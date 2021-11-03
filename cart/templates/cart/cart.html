@@ -4,44 +4,43 @@
 
 {% block content %}
 <h1>Your Shopping Cart</h1>
+
 {% if select_gifts %}
-<div>
-  {{ select_gifts }}
-</div>
-<div>
-  <card id="#shopping-cart">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Item Number</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Qunatity</th>
-          <th scope="col">Price €</th>
-          <th scope="col">Total €</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Puzzle</td>
-          <td>1</td>
-          <td>12.99</td>
-          <td>12.99</td>
-        </tr>
-      </tbody>
-    </table>
-  </card>
-</div>
-{% else %}
-<div>
-  <div class="card bg-light">
-    <div class="card-header">Hello!</div>
-    <div class="card-body">
-      <h5 class="card-title">Your Cart is Empty!</h5>
-      <p class="card-text">Click on your cart below to see our amazing Gift Range!</p>
-      <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-    </div>
-  </div>
-</div>
-{% endif %}
+      <div>
+        <card id="#shopping-cart">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Item Number</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Qunatity</th>
+                <th scope="col">Price €</th>
+                <th scope="col">Total €</th>
+              </tr>
+            </thead>
+            {% for gift in select_gifts %}
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{ gift.gift.name }}</td>
+                <td>{{ gift.quantity }}</td>
+                <td>{{ gift.gift.price}}</td>
+                <td></td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+        </card>
+      </div>
+    {% else %}
+      <div class="card bg-light">
+        <div class="card-header">Hello!</div>
+          <div class="card-body">
+            <h5 class="card-title">Your Cart is Empty!</h5>
+            <p class="card-text">Click on your cart below to see our amazing Gift Range!</p>
+            <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
 {% endblock %}
