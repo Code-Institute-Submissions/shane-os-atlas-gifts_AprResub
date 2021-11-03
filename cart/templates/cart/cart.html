@@ -25,11 +25,14 @@
                 <td>{{ gift.gift.name }}</td>
                 <td>{{ gift.quantity }}</td>
                 <td>{{ gift.gift.price}}</td>
-                <td></td>
+                <td>{{ total }}</td>
               </tr>
             </tbody>
             {% endfor %}
           </table>
+          <div>
+            <h5>Your Total: € {{ total }}</h5>
+          </div>
           <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
           <a href="#" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
         </card>
