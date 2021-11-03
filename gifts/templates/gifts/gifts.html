@@ -51,7 +51,7 @@
                                 <p class="card-text">€ {{ gift.price }}</p>
                             </div>
                             <div>
-                            <form method="post" action="{% url 'cart_item_add' gift.sku %}">
+                            <form method="post" action="{% url 'cart_item_add' gift.id %}">
                                 {% csrf_token %}
                                 <div class="col-sm-3">
                                     <div class="row">
@@ -59,7 +59,7 @@
                                             <p>Quantity</p>
                                         </div class="col">
                                         <div>
-                                            <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_sku="{{ gift.sku }}" id="id_quantity_{{ gift.sku }}">
+                                            <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
                                             <button type="submit" class="btn btn-success">Add To Cart</button>
                                         </div>
                                         <input type="hidden" name="url_redirect" value="{{ request.path }}">

@@ -10,12 +10,12 @@ def cart_items(request):
     total = 0
     cart = request.session.get('cart', {})
 
-    for gift_sku, quantity in cart.items():
-        gift = get_object_or_404(Gift, pk=gift_sku)
+    for gift_id, quantity in cart.items():
+        gift = get_object_or_404(Gift, pk=gift_id)
         total = gift.price * quantity
         gift_count += quantity
         select_gifts.append({
-            'gift_sku': gift_sku,
+            'gift_id': gift_id,
             'quantity': quantity,
             'gift': gift,
         })
