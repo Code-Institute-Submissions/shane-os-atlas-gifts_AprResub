@@ -46,8 +46,8 @@
                             </div>
                             <div class="modal-body">
                                 <p class="card-text">{{ gift.description }}</p>
-                                <p class="card-text">{{ gift.category }}</p>
-                                <p class="card-text">{{ gift.weight }}</p>
+                                <p class="card-text">{{ gift.category|default_if_none:'' }}</p>
+                                <p class="card-text">{{ gift.weight|default_if_none:'' }}</p>
                                 <p class="card-text">€ {{ gift.price }}</p>
                             </div>
                             <div>
