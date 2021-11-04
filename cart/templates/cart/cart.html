@@ -23,7 +23,16 @@
               <tr>
                 <th scope="row">{{ gift.gift.sku }}</th>
                 <td>{{ gift.gift.name }}</td>
-                <td>{{ gift.quantity }}</td>
+                <td>
+                  <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                      <button type="button" class="btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.id }}" id="decrease-id_quantity_{{ gift.id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                      <input class="form-control qty-input" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="25" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
+                      <button type="button" class="btn btn-success btn-number" data-type="add"><i class="fa fa-plus" aria-hidden="true" data-gift_id="{{ gift.id }}" id="increase-id_quantity_{{ gift.id }}"></i></button>
+                    </div>  
+                  </form>
+                </td>
                 <td>{{ gift.gift.price}}</td>
                 <td>{{ total }}</td>
               </tr>
