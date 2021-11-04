@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load calculations %}
+
 {% block content %}
 <h1>Your Shopping Cart</h1>
 
@@ -33,10 +35,10 @@
                     </div>  
                   </form>
                   <a class="btn btn-secondary float-left">Update Quantity</a>
-                  <a class="btn btn-danger float-right">Remove Gift</a>
+                  <a class="btn btn-danger float-right" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                 </td>
                 <td>{{ gift.gift.price}}</td>
-                <td>{{ total }}</td>
+                <td>{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
               </tr>
             </tbody>
             {% endfor %}
