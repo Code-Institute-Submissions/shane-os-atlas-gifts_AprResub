@@ -25,7 +25,13 @@
 <div class="row">
     <div class="col-sm-3">
         <div class="card">
-            <img class="card-img-top" src={{ gift.image }} alt={{ gift.name }}>
+            {% if gift.image %}
+            <a href="{{ gift.image_url }}" target="_blank">
+                <img class="card-img-top" src="{{ gift.image }}" alt="{{ gift.name }}">
+            </a>
+            {% else %}
+                <img class="card-img-top" src="{{ gift.image_url }}" alt="{{ gift.name }}"> 
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ gift.name }}</h5>
                 <p class="card-text">{{ gift.description }}</p>
