@@ -34,8 +34,8 @@
                       <button type="button" class="btn btn-success btn-number" data-type="add"><i class="fa fa-plus" aria-hidden="true" data-gift_id="{{ gift.gift_id }}" id="increase-id_quantity_{{ gift.gift_id }}"></i></button>
                     </div>  
                   </form>
-                  <a class="btn btn-secondary float-left">Update Quantity</a>
-                  <a class="btn btn-danger float-right" id="remove_{{ gift.gift_id }}">Remove Gift</a>
+                  <a class="btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
+                  <a class="btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                 </td>
                 <td>{{ gift.gift.price}}</td>
                 <td>{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
