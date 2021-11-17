@@ -23,3 +23,8 @@ footer {
     outline-color: #11844A;
     margin: 10px;
 }
+
+.btn {
+    border-radius: 10px;
+    padding: 10px;
+}
