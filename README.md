@@ -148,6 +148,14 @@ Created By | created_by | models.TextField |
 Body | body | models.TextField | max_length=200 |
 Posted Date | posted_date | models.DateTimeField | auto_now_add=True |
 
+<center><h2>Contact Us</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| -----  | ----- | ----- | ----- |
+| Name | name | models.TextField |  |
+| Email | email | models.EmailField |  |
+| Message | message | models.TextField |  |
+
 ## Features
 
 ### Developed
