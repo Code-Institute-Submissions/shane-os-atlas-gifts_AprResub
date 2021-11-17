@@ -136,3 +136,10 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * Frequently Asked Questions
  * Cryptocurrency Payments
  * Favicon
+
+## Accreditation & Gratitude
+ * Code Institute Tutor Support: I would like to express my gratitude for the tutors help in resolving issues I faced in building the website. In particular, their help was invaluable in resolving the problem of the cart app not displaying.
+
+ * I would like to express my gratitude fo my mentor Simen Daehlin's guidance in creating the project idea to meet the Milestone Project 4 guidelines and working through issues that I faced in the project.
+
+ * Finally I would like to thank my family for their opinions on the colour scheme and for helping in testing the website.
