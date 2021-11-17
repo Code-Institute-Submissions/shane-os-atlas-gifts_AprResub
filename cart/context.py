@@ -12,7 +12,7 @@ def cart_items(request):
 
     for gift_id, quantity in cart.items():
         gift = get_object_or_404(Gift, pk=gift_id)
-        total = gift.price * quantity
+        total += gift.price * quantity
         gift_count += quantity
         select_gifts.append({
             'gift_id': gift_id,
