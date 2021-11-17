@@ -125,6 +125,19 @@ Name  | Database Key | Field Type | Validation |
 | Name | name | models.CharField | max_length=200 |
 | Firendly Name | show_name | models.CharField | max_length=200 |
 
+<center><h2>Gifts</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+Category | category | models.ForeignKey | 'Category', null=True, blank=True, on_delete=models.SET_NULL|
+Stock Keeping Unit | SKU | models.CharField | max_length=25 |
+Name | name | models.CharField | max_length=200 |
+Description | description | models.TextField |  |
+Price | price | models.DecimalField | max_digits=4, decimal_places=2 |
+Weight | weight | models.DecimalField | max_digits=4, decimal_places=3, null=True, blank=True |
+Image URL | image_url | models.URLField | max_length=1024, null=True, blank=True |
+Image | image | models.ImageField |  |
+
 ## Features
 
 ### Developed
