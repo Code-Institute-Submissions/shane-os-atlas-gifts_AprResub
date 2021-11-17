@@ -113,3 +113,16 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * [Font Awesome](https://fontawesome.com/)
  * [Stripe](https://stripe.com/)
  * [Django](https://www.djangoproject.com/)
+
+### Developed
+ * Navigation Bar
+ * Account Registration
+ * Account Login
+ * Profile
+ * Add Product
+ * Remove Product
+ * Shopping Cart
+ * Stripe Payment Facility
+ * Delivery Tracker
+ * Contact Form
+ * Blog
