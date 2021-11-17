@@ -114,6 +114,17 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * [Stripe](https://stripe.com/)
  * [Django](https://www.djangoproject.com/)
 
+## Database Architecture
+
+To enable data to be saved and recorded numerous data models were created as part of the django applications created:
+
+<center><h2>Gifts Categories</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+| Name | name | models.CharField | max_length=200 |
+| Firendly Name | show_name | models.CharField | max_length=200 |
+
 ## Features
 
 ### Developed
