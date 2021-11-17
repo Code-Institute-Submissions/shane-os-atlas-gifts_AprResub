@@ -143,3 +143,12 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * I would like to express my gratitude fo my mentor Simen Daehlin's guidance in creating the project idea to meet the Milestone Project 4 guidelines and working through issues that I faced in the project.
 
  * Finally I would like to thank my family for their opinions on the colour scheme and for helping in testing the website.
+
+## References
+To create the Atlas Gifts project I researched a variety of styles and formats to determine the best combination for the site. Throughout the project I used the following resources:
+
+ * [Code Institute](https://codeinstitute.net/): In particular I benefitted from the Boutique-Ado Walkthrough section of the course.
+
+ * [Getbootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/): The starter template was utilised in creating the base.html file.
+
+ * [Blog Template](https://realpython.com/get-started-with-django-1/#share-your-knowledge-with-a-blog): The Real Python tutorial was helpful in creating the site's blog.
