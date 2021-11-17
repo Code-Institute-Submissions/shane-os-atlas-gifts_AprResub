@@ -146,6 +146,61 @@ An issue arose when I tried to access the cart summary page after adding items t
 
 A second issue arose after the naming error had been solved. Unlike the previous error, this problem was resolved relatively quickly qith the help of the Tutor Support. Due to cached data from before the naming issue was resolved, attempts to access the cart summary were redirect to an error page. Once the cached data was deleted the summary page operated as expected once again.
 
+## Deployment
+
+To run the project locally please follow these steps:
+
+1.  Go to the Atlas Gifts [repository](https://github.com/shane-os/atlas-gifts) on Github.
+2.  Click the "Code" button and select the https option.
+3.  Copy the link shown.
+4.  In the Gitpod IDE (Integrated Development Environment) use the change working directory command ($ cd filepath)
+5.  In the Git Terminal enter the git clone command ($ git clone filepath) where filepath is the link copied during step 3.
+
+6. The project requires the installation of a number of python modules. For an individual module type the following into the terminal:
+
+```
+pip3 install module name
+```
+
+To install all of the modules required to run this project locally:
+
+```
+pip3 install -r requiremnts.txt
+```
+
+7. You will need to create a number of environment variables. Please create a new python file called env:
+
+```
+Environmental Variable Names and Keys
+```
+
+For the secret keys, a random key generator such as [randomkeygen](https://randomkeygen.com).
+
+8. To migrate the models that are contained within the project code please enter the following in your development terminal:
+
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+The above commands have created a local database.
+
+9. To access the administrative panel that the Django framework creates, a superuser account will need to be created:
+
+```
+python3 manage.py createsuperuser
+```
+
+Once prompted you will need to enter a username, email address and a password. Create a strong password using a random password generator such as (Dashlane's password generator)[https://www.dashlane.com/features/password-generator]
+
+10. To access the administrative panel run the server by entering the following into the terminal:
+
+```
+python3 manage.py runserver
+```
+
+Open the site using the "open browser" icon in the Gitpod Workspace. In the browser add "/admin" to the site address to get to the administration panel login. You will need to type in your username and password.
+
 ## Accreditation & Gratitude
  * Code Institute Tutor Support: I would like to express my gratitude for the tutors help in resolving issues I faced in building the website. In particular, their help was invaluable in resolving the problem of the cart app not displaying.
 
