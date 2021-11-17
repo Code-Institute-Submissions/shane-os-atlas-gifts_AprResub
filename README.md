@@ -138,6 +138,16 @@ Weight | weight | models.DecimalField | max_digits=4, decimal_places=3, null=Tru
 Image URL | image_url | models.URLField | max_length=1024, null=True, blank=True |
 Image | image | models.ImageField |  |
 
+<center><h2>Blog</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+Title | title | models.Charfield | max_length=200 |
+Categories | categories | models.ManyToManyField | 'Category', related_name='posts' |
+Created By | created_by | models.TextField | 
+Body | body | models.TextField | max_length=200 |
+Posted Date | posted_date | models.DateTimeField | auto_now_add=True |
+
 ## Features
 
 ### Developed
