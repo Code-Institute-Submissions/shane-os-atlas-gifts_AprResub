@@ -137,6 +137,15 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * Cryptocurrency Payments
  * Favicon
 
+## Resolution of Bugs
+
+### View Cart Items:
+To make a purchase users must be able to view the gift selection on offer, select various items at various quantities and have them recorded in their personal cart. Users must then be able to view a summary of the items in their cart and edit or remove the items as required.
+
+An issue arose when I tried to access the cart summary page after adding items to the cart. When the page is accessed either through clicking on the cart icon or typing the url in the browser. To determine the source of the error I examined the python files and cart html file for the cart app. After checking the model and view files and using the print function to help determine the error, I sought to make sure that the variable names were constant throughout the files. A small naming error was located between the files for the Gift Model. 
+
+A second issue arose after the naming error had been solved. Unlike the previous error, this problem was resolved relatively quickly qith the help of the Tutor Support. Due to cached data from before the naming issue was resolved, attempts to access the cart summary were redirect to an error page. Once the cached data was deleted the summary page operated as expected once again.
+
 ## Accreditation & Gratitude
  * Code Institute Tutor Support: I would like to express my gratitude for the tutors help in resolving issues I faced in building the website. In particular, their help was invaluable in resolving the problem of the cart app not displaying.
 
