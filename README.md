@@ -114,6 +114,8 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * [Stripe](https://stripe.com/)
  * [Django](https://www.djangoproject.com/)
 
+## Features
+
 ### Developed
  * Navigation Bar
  * Account Registration
@@ -126,3 +128,11 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * Delivery Tracker
  * Contact Form
  * Blog
+
+### Future Implementation
+ * Newsletter
+ * Gift Wishlist
+ * Recurring Orders
+ * Frequently Asked Questions
+ * Cryptocurrency Payments
+ * Favicon
