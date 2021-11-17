@@ -111,3 +111,5 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * [Balsamic Wireframes](https://balsamiq.com/)
  * [Bootstrap](https://getbootstrap.com/)
  * [Font Awesome](https://fontawesome.com/)
+ * [Stripe](https://stripe.com/)
+ * [Django](https://www.djangoproject.com/)
