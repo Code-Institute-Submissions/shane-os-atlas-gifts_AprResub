@@ -1,5 +1,6 @@
 from django.db import models
 from gifts.models import Gift
+import uuid
 
 class Purchase(models.Model):
 
@@ -22,3 +23,12 @@ class LineItem (models.Model):
     gift = models.ForeignKey(Gift, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     total = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, editable=False)
+
+    def create_order_number(self):
+        return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+
+        if not self.order_number:
+            self.order_number = self.create_order_number()
+        super().save(*args, **kwargs)
