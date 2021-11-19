@@ -1,5 +1,8 @@
 from django.db import models
+from django.db.models import Sum
 from gifts.models import Gift
+from django.conf import settings
+
 import uuid
 
 class Purchase(models.Model):
@@ -18,17 +21,27 @@ class Purchase(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=7, decimal_places=2, null=False, default=0)
 
-class LineItem (models.Model):
-    purchase = models.ForeignKey(Purchase, null=False, blank=False, on_delete=models.CASCADE)
-    gift = models.ForeignKey(Gift, null=False, blank=False, on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=False, blank=False, default=0)
-    total = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, editable=False)
-
     def create_order_number(self):
         return uuid.uuid4().hex.upper()
+
+    def final_total(self):
+        self.total = self.item_purchase.aggregate(Sum('sub_total'))
 
     def save(self, *args, **kwargs):
 
         if not self.order_number:
             self.order_number = self.create_order_number()
         super().save(*args, **kwargs)
+
+
+class LineItem (models.Model):
+    purchase = models.ForeignKey(Purchase, null=False, blank=False, on_delete=models.CASCADE, related_name = 'item_purchase')
+    gift = models.ForeignKey(Gift, null=False, blank=False, on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    sub_total = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, editable=False)
+
+    def save(self, *args, **kwargs):
+
+        self.sub_total = self.gift.price * self.quantity
+        super().save(*args, **kwargs)
+
