@@ -33,9 +33,12 @@ class Purchase(models.Model):
             self.order_number = self.create_order_number()
         super().save(*args, **kwargs)
 
+    def __str__(self):
+        return self.order_number
+
 
 class LineItem (models.Model):
-    purchase = models.ForeignKey(Purchase, null=False, blank=False, on_delete=models.CASCADE, related_name = 'item_purchase')
+    purchase = models.ForeignKey(Purchase, null=False, blank=False, on_delete=models.CASCADE, related_name='item_purchase')
     gift = models.ForeignKey(Gift, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     sub_total = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, editable=False)
