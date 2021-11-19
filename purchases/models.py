@@ -10,7 +10,6 @@ class Purchase(models.Model):
     name = models.CharField(max_length=50, null=False, blank=False)
     phone = models.CharField(max_length=15, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
-    phone = models.CharField(max_length=15, null=False, blank=False)
     address_line1 = models.CharField(max_length=100, null=False, blank=False)
     address_line2 = models.CharField(max_length=100, null=False, blank=True)
     address_line3 = models.CharField(max_length=100, null=True, blank=True)
