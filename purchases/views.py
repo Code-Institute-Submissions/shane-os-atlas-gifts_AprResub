@@ -10,10 +10,10 @@ def order_payment(request):
     if not cart:
         messages.error(request, "Your cart is currently empty! Please see our gift collection to see our exciting range!")
         return redirect(reverse('gifts'))
-    return render(request, 'purchases.html')
+    # return render(request, 'purchases.html')
 
     purchase_form = PurchaseForm()
-    template = 'purchases/purchases.html'
+    template = 'purchases.html'
     context = {
         'purchase_form': purchase_form,
     }
