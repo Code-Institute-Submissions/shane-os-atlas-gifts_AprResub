@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Purchase, LineItem
 
-
 class PurchaseAdmin(admin.ModelAdmin):
     readonly_fields = ('order_number', 'date', 'total',)
 
@@ -10,5 +9,10 @@ class PurchaseAdmin(admin.ModelAdmin):
                  'country', 'order_number', 'date', 'total',)
 
     list_display = ('order_number', 'date', 'name', 'email', 'total',)
+
+
+class LineItemAdmin(admin.TabularInline):
+    model = LineItem
+
 
 admin.site.register(Purchase, PurchaseAdmin)
