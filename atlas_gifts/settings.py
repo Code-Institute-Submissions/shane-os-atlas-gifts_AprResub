@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'gifts',
     'contact',
     'cart',
-    'purchases'
+    'purchases',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -60,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'atlas_gifts.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -78,6 +81,10 @@ TEMPLATES = [
                 'atlas_gifts.processor.context',
                 'cart.context.cart_items'
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'
+            ]
         },
     },
 ]
