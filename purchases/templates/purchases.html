@@ -4,11 +4,26 @@
 
 {% block content %}
 <div id="delivery-card" class="d-flex card border-primary mb-3 text-center" style="max-width: 30%;">
-    <form>
+    <form action="{% url 'purchases' %}" method="post" id="delivery-form">
+        {% csrf_token %}
         <div class="card-header">Delivery Details</div>
         <div class="card-body">
             <h5 class="card-title  text-primary">Please enter your details below</h5>
             <p>Delivery Address</p>
+            {{ purchase_form.name | as_crispy_field }}
+            {{ purchase_form.phone | as_crispy_field }}
+            {{ purchase_form.email | as_crispy_field }}
+            {{ purchase_form.address_line1 | as_crispy_field }}
+            {{ purchase_form.address_line2 | as_crispy_field }}
+            {{ purchase_form.address_line3 | as_crispy_field }}
+            {{ purchase_form.town | as_crispy_field }}
+            {{ purchase_form.postcode | as_crispy_field }}
+            {{ purchase_form.country | as_crispy_field }}
+        </div>
+        <div>
+            <h5>Payment Details</h5>
+            <p>Card Details Placeholder</p>
+            <button type="submit" class="btn btn-primary">Pay</button>
         </div>
     </form>
 </div>
