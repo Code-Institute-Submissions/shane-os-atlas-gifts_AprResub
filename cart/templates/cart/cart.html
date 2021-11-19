@@ -26,7 +26,7 @@
                 <th scope="row">{{ gift.gift.sku }}</th>
                 <td>{{ gift.gift.name }}</td>
                 <td>
-                  <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift.id %}">
+                  <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
                     {% csrf_token %}
                     <div class="input-group">
                       <button type="button" class="btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
@@ -34,8 +34,8 @@
                       <button type="button" class="btn btn-success btn-number" data-type="add"><i class="fa fa-plus" aria-hidden="true" data-gift_id="{{ gift.gift_id }}" id="increase-id_quantity_{{ gift.gift_id }}"></i></button>
                     </div>  
                   </form>
-                  <a class="btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
-                  <a class="btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
+                  <a class=" update-quantity btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
+                  <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                 </td>
                 <td>{{ gift.gift.price}}</td>
                 <td>{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
@@ -47,7 +47,7 @@
             <h5>Your Total: € {{ total }}</h5>
           </div>
           <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-          <a href="#" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+          <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
         </card>
       </div>
     {% else %}
@@ -62,3 +62,10 @@
       </div>
     {% endif %}
 {% endblock %}
+
+<script type="text/javascript">
+  $('.update-quantity').click(function(e) {
+    var form = $(this).prev('.form-edit');
+    form.submit();
+  })
+</script>
