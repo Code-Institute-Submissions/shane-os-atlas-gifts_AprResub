@@ -11,8 +11,8 @@ class PurchaseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
 
-        super().__init__(*args, **kwargs):
-            titles = {'name': 'Name',
+        super().__init__(*args, **kwargs)
+        titles = {'name': 'Name',
                         'phone': 'Phone Number (Include Area Code)',
                         'email': 'Email Address',
                         'address_line1': 'Address Line 1',
