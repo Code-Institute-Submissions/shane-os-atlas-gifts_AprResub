@@ -1,13 +1,17 @@
+""" Purchases app views """
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
-from .forms import PurchaseForm
-from cart.context import cart_items
-import stripe
 from django.conf import settings
-# Create your views here.
+
+import stripe
+from cart.context import cart_items
+from .forms import PurchaseForm
 
 
 def order_payment(request):
+    """ Display payments form page """
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     cart = request.session.get('cart', {})
     if not cart:
@@ -18,6 +22,14 @@ def order_payment(request):
     cart_now = cart_items(request)
     total_now = cart_now['total']
     stripe_total_integer = round(total_now * 100)
+    stripe.api_key = stripe_secret_key
+
+    payment_intent = stripe.PaymentIntent.create(
+        amount=stripe_total_integer,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    print(payment_intent)
     purchase_form = PurchaseForm()
     template = 'purchases.html'
     context = {

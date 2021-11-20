@@ -1,12 +1,14 @@
+""" Purchases app models """
+import uuid
+
 from django.db import models
 from django.db.models import Sum
 from gifts.models import Gift
 from django.conf import settings
 
-import uuid
 
 class Purchase(models.Model):
-
+    """ Purchase Model - User Details Fields"""
     name = models.CharField(max_length=50, null=False, blank=False)
     phone = models.CharField(max_length=15, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
@@ -18,9 +20,11 @@ class Purchase(models.Model):
     country = models.CharField(max_length=20, null=False, blank=False)
     order_number = models.CharField(max_length=16, null=False, editable=False)
     date = models.DateTimeField(auto_now_add=True)
-    total = models.DecimalField(max_digits=7, decimal_places=2, null=False, default=0)
+    total = models.DecimalField(max_digits=7, decimal_places=2, null=False,
+                                default=0)
 
     def create_order_number(self):
+        """ Create unique order number """
         return uuid.uuid4().hex.upper()
 
     def final_total(self):
@@ -37,13 +41,16 @@ class Purchase(models.Model):
 
 
 class LineItem (models.Model):
-    purchase = models.ForeignKey(Purchase, null=False, blank=False, on_delete=models.CASCADE, related_name='item_purchase')
-    gift = models.ForeignKey(Gift, null=False, blank=False, on_delete=models.CASCADE)
+    purchase = models.ForeignKey(Purchase, null=False, blank=False,
+                                 on_delete=models.CASCADE,
+                                 related_name='item_purchase')
+    gift = models.ForeignKey(Gift, null=False, blank=False,
+                             on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    sub_total = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False, editable=False)
+    sub_total = models.DecimalField(max_digits=5, decimal_places=2, null=False,
+                                    blank=False, editable=False)
 
     def save(self, *args, **kwargs):
 
         self.sub_total = self.gift.price * self.quantity
         super().save(*args, **kwargs)
-

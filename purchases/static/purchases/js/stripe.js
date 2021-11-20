@@ -1,3 +1,4 @@
+// Stripe Payments
 var stripe_public_key = $('#public_key_id').text().slice(1,-1);
 var stripe_secret_key = $('#secret_key_id').text().slice(1,-1);
 var stripe = Stripe(stripe_public_key);
