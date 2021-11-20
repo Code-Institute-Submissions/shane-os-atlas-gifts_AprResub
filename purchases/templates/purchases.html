@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div id="delivery-card" class="d-flex card border-primary mb-3 text-center" style="max-width: 30%;">
+<div id="delivery-card" class="d-flex card border-primary mb-3 text-center " style="max-width: 40%;">
     <form action="{% url 'purchases' %}" method="post" id="delivery-form">
         {% csrf_token %}
         <div class="card-header">Delivery Details</div>

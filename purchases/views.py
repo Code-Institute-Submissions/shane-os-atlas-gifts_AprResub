@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from .forms import PurchaseForm
-
+from cart.context import cart_items
+import stripe
+from django.conf import settings
 # Create your views here.
 
 
@@ -13,6 +15,9 @@ def order_payment(request):
         return redirect(reverse('gifts'))
     # return render(request, 'purchases.html')
 
+    cart_now = cart_items(request)
+    total_now = cart_now['total']
+    stripe_total_integer = round(total_now * 100)
     purchase_form = PurchaseForm()
     template = 'purchases.html'
     context = {
