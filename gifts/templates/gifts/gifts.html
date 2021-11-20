@@ -20,6 +20,7 @@
     </div>
 </div>
 //-->
+<!-- Gift Items displayed in Card Form //-->
 {% for gift in gifts %}
 {% csrf_token %}
 <div class="row">
@@ -42,6 +43,7 @@
                     <div class="col">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info</button>
                     </div>
+                    <!-- Additional item information in model //-->
                     <div class="modal" id="infomodal-{{ forloop.counter}}">
                         <div class="modal-content">
                             <div class="modal-header">

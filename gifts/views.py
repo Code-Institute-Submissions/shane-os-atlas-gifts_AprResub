@@ -3,6 +3,7 @@ from .models import Gift
 
 
 def gifts_list_all(request):
+    """ Show gifts on page """
     gift = Gift.objects.all()
     context = {
         "gifts": gift,
