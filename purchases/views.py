@@ -29,13 +29,15 @@ def order_payment(request):
         currency=settings.STRIPE_CURRENCY,
     )
 
-    print(payment_intent)
+    if not stripe_public_key:
+        messages.warning(request, 'The Stripe public key is not present!')
+    
     purchase_form = PurchaseForm()
     template = 'purchases.html'
     context = {
         'purchase_form': purchase_form,
-        'stripe_public_key': 'pk_test_51Juj7LKooPpz86Xd7dl8QqcG1FLEIJ381EI3Gd4lscP8qCi2UpwlQawesSNokJam6I5cFHqBogIyhGiq1W60ttp5005y7hbcjb',
-        'stripe_secret_key': 'secret_key',
+        'stripe_public_key': stripe_public_key,
+        'stripe_secret_key': payment_intent.client_secret,
     }
 
     return render(request, template, context)

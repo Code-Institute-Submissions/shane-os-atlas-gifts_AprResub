@@ -29,3 +29,32 @@ stripe_card.addEventListener('change', function (event) {
         errorResponse.textContent = '';
     }
 });
+
+// Stripe Form Submission
+
+const stripe_form = document.getElementById('delivery-form');
+
+stripe_form.addEventListener('submit', function(e){
+    e.preventDefault();
+    card.update({ 'disabled': true});
+    $('#stripe-submit').attr('disabled', true);
+    stripe.confirmCardPayment(stripe_secret_key, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function(result){
+        var errorResponse = document.getElementById('card-error')
+        if (result.error) {
+            var html = `
+            <span>$(event.error.message)</span>
+        `;
+        $(errorResponse).html(html);
+        card.update({ 'disabled': false});
+        $('#stripe-submit').attr('disabled', false);
+        } else {
+            if (result.payment_intent === 'succeeded'){
+                stripe_form.submit()
+            }
+        }
+    });
+});
