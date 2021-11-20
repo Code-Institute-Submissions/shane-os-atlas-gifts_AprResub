@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from .forms import PurchaseForm
+
 # Create your views here.
 
 
@@ -16,6 +17,8 @@ def order_payment(request):
     template = 'purchases.html'
     context = {
         'purchase_form': purchase_form,
+        'stripe_public_key': 'pk_test_51Juj7LKooPpz86Xd7dl8QqcG1FLEIJ381EI3Gd4lscP8qCi2UpwlQawesSNokJam6I5cFHqBogIyhGiq1W60ttp5005y7hbcjb',
+        'stripe_secret_key': 'secret_key',
     }
 
     return render(request, template, context)
