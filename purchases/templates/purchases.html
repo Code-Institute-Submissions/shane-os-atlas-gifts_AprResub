@@ -27,8 +27,9 @@
         </div>
         <div>
             <fieldset class="rounded">
-                <legend class="fieldset-label small text-black w-auto">Payment Details</legend>
                 <span>Amount to pay: €{{ total }}</span>
+                <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true">Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                <legend class="fieldset-label small text-black w-auto">Payment Details</legend>
                 <button type="submit" class="btn btn-primary">Pay</button>
             </fieldset>
         </div>
