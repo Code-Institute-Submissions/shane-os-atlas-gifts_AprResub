@@ -1,15 +1,16 @@
+""" Cart App Views"""
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 # Create your views here.
 
 
 def display_cart(request):
-
+    """ Display cart page """
     return render(request, 'cart/cart.html')
 
 
 def cart_item_add(request, gift_id):
-
+    """ Add gift to cart """
     quantity = int(request.POST.get('quantity'))
     url_redirect = request.POST.get('url_redirect')
     print(url_redirect)
@@ -27,7 +28,7 @@ def cart_item_add(request, gift_id):
 
 
 def cart_item_subtract(request, gift_id):
-
+    """ Remove gift remove cart """
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 

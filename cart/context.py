@@ -4,7 +4,7 @@ from gifts.models import Gift
 
 
 def cart_items(request):
-
+    """ Gifts saved in cart """
     select_gifts = []
     gift_count = 0
     total = 0
@@ -19,7 +19,6 @@ def cart_items(request):
             'quantity': quantity,
             'gift': gift,
         })
-
 
     context = {
         'select_gifts': select_gifts,
