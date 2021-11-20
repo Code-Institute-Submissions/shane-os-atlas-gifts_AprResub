@@ -1,5 +1,7 @@
+""" Blog Posts Views"""
 from django.shortcuts import render
 from blog.models import Post
+
 
 def blog_id(request):
     posts = Post.objects.all().order_by('posted_date')

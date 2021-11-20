@@ -1,11 +1,13 @@
+""" Blog Post Models"""
 from django.db import models
 
 
-class Category(models.Model):   
+class Category(models.Model):
 
     class Meta:
+        """Plural of categories corrected in admin panel """
         verbose_name_plural = "Categories"
-        
+
     name = models.CharField(max_length=25)
 
 

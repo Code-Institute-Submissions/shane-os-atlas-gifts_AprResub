@@ -1,3 +1,4 @@
+""" Creates url pattern for blog posts"""
 from django.urls import path
 from . import views
 
