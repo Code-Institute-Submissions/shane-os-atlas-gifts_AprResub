@@ -83,6 +83,12 @@ Initially, I wrote down all of the ideas that I had for this site. Once I had fi
  * Desktop
  * Tablet
 
+### Icons
+The majority of icons used throughout the project were obtained from the font awesome collection.
+
+### Images
+The main images used were for the gifts and the blog posts. These came from a number of sites including unsplash and pexels
+
 ### Colour Scheme
 
 ![Colour Scheme](https://github.com/shane-os/atlas-gifts/blob/main/wireframes/atlas_gifts_colour_palette.png)
