@@ -162,12 +162,9 @@ Name  | Database Key | Field Type | Validation |
  * Navigation Bar
  * Account Registration
  * Account Login
- * Profile
  * Add Product
- * Remove Product
  * Shopping Cart
  * Stripe Payment Facility
- * Delivery Tracker
  * Contact Form
  * Blog
 
@@ -178,6 +175,8 @@ Name  | Database Key | Field Type | Validation |
  * Frequently Asked Questions
  * Cryptocurrency Payments
  * Favicon
+ * Delivery Tracker
+ * Profile
 
 ## Resolution of Bugs
 
@@ -242,6 +241,55 @@ python3 manage.py runserver
 ```
 
 Open the site using the "open browser" icon in the Gitpod Workspace. In the browser add "/admin" to the site address to get to the administration panel login. You will need to type in your username and password.
+
+
+### Heroku Deployment
+
+1. Log into your Heroku account
+
+2. In the Git Terminal create the Procfile and requirements.txt file by entering the following into the terminal:
+
+```
+pip3 freeze --local > requirements.txt
+```
+
+3. Create the Procfile by entering the following into the terminal:
+```
+echo web: python app.py > Procfile
+```
+
+4. On heroku, select "Create a New App", input an app name and choose a region.
+
+5. Select Github as the deployment method.
+
+6. Add the Heroku Postgres to you project. Make sure to select the Hobby (Free) option . (This is where the database url in the table below comes from)
+
+7. Select settings and click on "Reveal Config Vars".
+Input the following environment variables:
+
+|Key | Value |
+| ---- | ---- |
+| AWS_ACCESS_KEY_ID | Your AWS Access Key |
+| AWS_SECRET_ACCESS_KEY | Your Secret Access Key |
+| DATABASE_URL | Your Database URL |
+| SECRET_KEY | Your Secret Key |
+
+8. You will need to migrate the database models to the Postgress database on Heroku using the following:
+
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+9. To access the administrative panel, a superuser will need to be created:
+
+```
+python3 manage.py createsuperuser
+```
+
+Once prompted you will need to enter a username, email address and a password. Create a strong password using a random password generator such as (Dashlane's password generator)[https://www.dashlane.com/features/password-generator]
+
+10. To access the administrative panel in Heroku, click the deploy app button
 
 ## Accreditation & Gratitude
  * Code Institute Tutor Support: I would like to express my gratitude for the tutors help in resolving issues I faced in building the website. In particular, their help was invaluable in resolving the problem of the cart app not displaying.
