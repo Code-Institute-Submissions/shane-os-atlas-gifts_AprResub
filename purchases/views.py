@@ -22,7 +22,7 @@ def order_payment(request):
             'name': request.POST['name'],
             'phone': request.POST['phone'],
             'email': request.POST['Name'],
-            'address_line1': request.POST['address_line1],
+            'address_line1': request.POST['address_line1'],
             'address_line2': request.POST['address_line2'],
             'address_line3': request.POST['address_line3'],
             'town': request.POST['town'],
@@ -32,15 +32,15 @@ def order_payment(request):
         purchase_form = PurchaseForm(data)
         if purchase_form.is_valid():
             purchase = purchase_form.save()
-                for gift_id, quantity in cart.items():
-                    gift = get_object_or_404(Gift, pk=gift_id)
-                    total += gift.price * quantity
-                    gift_count += quantity
-                    select_gifts.append({
-                        'gift_id': gift_id,
-                        'quantity': quantity,
-                        'gift': gift,
-                    })
+            for gift_id, quantity in cart.items():
+                gift = get_object_or_404(Gift, pk=gift_id)
+                total += gift.price * quantity
+                gift_count += quantity
+                select_gifts.append({
+                    'gift_id': gift_id,
+                    'quantity': quantity,
+                    'gift': gift,
+                })
                 request.session['info'] = 'info' in request.POST
                 return redirect(reverse('purchases_success', args=[purchase.order_number]))
         else:
