@@ -24,7 +24,7 @@
 {% for gift in gifts %}
 {% csrf_token %}
 <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3" style="min-width: 25%;">
         <div class="card">
             {% if gift.image %}
             <a href="{{ gift.image_url }}" target="_blank">
@@ -49,7 +49,7 @@
                             <div class="modal-header">
                                 <p><strong>{{ gift.name}}</strong></p>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <p><strong>X</strong></p>
+                                    <strong>X</strong>
                                 </button>
                             </div>
                             <div class="modal-body">
@@ -82,6 +82,7 @@
         </div>
     </div>
 </div>
+<br>
 {% endfor %}
 {% endblock %}
  

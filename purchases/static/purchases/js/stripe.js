@@ -11,7 +11,7 @@ var style  = {
         color: '#cc0000',
         iconColor: '#cc0000'
     }
-}
+};
 
 var stripe_card = elements.create('card', {style: style});
 stripe_card.mount('#card-payment');
@@ -43,7 +43,7 @@ stripe_form.addEventListener('submit', function(e){
             card: card,
         }
     }).then(function(result){
-        var errorResponse = document.getElementById('card-error')
+        var errorResponse = document.getElementById('card-error');
         if (result.error) {
             var html = `
             <span>$(event.error.message)</span>
@@ -53,7 +53,7 @@ stripe_form.addEventListener('submit', function(e){
         $('#stripe-submit').attr('disabled', false);
         } else {
             if (result.payment_intent === 'succeeded'){
-                stripe_form.submit()
+                stripe_form.submit();
             }
         }
     });
