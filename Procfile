@@ -1,1 +1,1 @@
-web: gunicorn atlas-gifts.wsgi:application
+web: gunicorn atlas_gifts.wsgi:application
