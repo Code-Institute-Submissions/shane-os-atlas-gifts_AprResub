@@ -9,7 +9,7 @@
         <div class="card-body">
             <h5 class="card-title  text-primary">Please enter your details below</h5>
             <label for="orderNumber">Order Number</label>
-            <input type="text" class="form-control" id="orderNumber" aria-describedby="orderNumberHelp"required>
+            <input type="text" class="form-control" id="orderNumber" aria-describedby="orderNumberHelp" pattern="[A-Za-z0-9]" maxlength="16" required>
             <small id="orderNumberHelp" class="form-text text-muted">
                 The order number is on the order confirmation email.
             </small>
