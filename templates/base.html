@@ -40,23 +40,6 @@
       <!-- Navigation Bar & Django Messages -->
       {% include 'includes/navigation.html' %}
       {% include 'includes/messages.html' %}
-      <div id="cartarea" class="container-fluid">
-        <!-- Shopping Cart Display -->
-        <a class="nav-link" href="{% url 'display_cart' %}">
-        <div class="row">
-            <div>
-                <i class="fas fa-shopping-cart"></i>
-            </div>
-            <div>
-              {% if total %}
-                €{{ total }}
-              {% else %}
-                €0.00
-              {% endif %}
-            </div>
-        </div>
-        </a>
-      </div>
     </header>
 
     {% block page_header %}
