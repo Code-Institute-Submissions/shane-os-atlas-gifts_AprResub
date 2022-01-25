@@ -3,18 +3,24 @@
 {% load static %}
 
 {% block content %}
-<H1>Gifts</H1>
-<h3>Find the perfect gift for your special occassion below!</h3>
-<div class="row">
-    <div class="dropdown show">
-        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort By
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-istem" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
-            <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=desc">Price (High To Low)</a>
-            <a class="dropdown-item" href="#">Alphabetical (A To Z)</a>
-            <a class="dropdown-item" href="#">Alphabetical (Z To A)</a>
+<div class="container-fluid text-center">
+    <H1>Gifts</H1>
+    <div class="row">
+        <div class="col">
+            <h3>Find the perfect gift for your special occassion below!</h3>
+        </div>
+        <div class="col">
+            <div class="dropdown show">
+                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort By
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-istem" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
+                    <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=desc">Price (High To Low)</a>
+                    <a class="dropdown-item" href="#">Alphabetical (A To Z)</a>
+                    <a class="dropdown-item" href="#">Alphabetical (Z To A)</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
