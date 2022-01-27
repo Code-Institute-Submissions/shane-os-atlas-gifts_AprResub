@@ -17,8 +17,8 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-istem" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
                     <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=desc">Price (High To Low)</a>
-                    <a class="dropdown-item" href="#">Alphabetical (A To Z)</a>
-                    <a class="dropdown-item" href="#">Alphabetical (Z To A)</a>
+                    <a class="dropdown-item" href="{% url 'gifts' %}?sort=name&direction=desc">Alphabetical (A To Z)</a>
+                    <a class="dropdown-item" href="{% url 'gifts' %}?sort=name&direction=asc">Alphabetical (Z To A)</a>
                 </div>
             </div>
         </div>
