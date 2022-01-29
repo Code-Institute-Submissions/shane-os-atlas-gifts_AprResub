@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from .models import Gift
@@ -28,6 +28,10 @@ def gifts_list_all(request):
 
             if 'q' in request.GET:
                 searchquery = request.GET['q']
+                if not searchquery:
+                    return redirect(reverse('gifts'))
+                    messages.error(request, "Incorrect search query! Please try again")
+
                 searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
                 gift = gift.filter(searchqueries)
 
@@ -38,5 +42,5 @@ def gifts_list_all(request):
             "sort_choice": sort_choice,
             "searchresult": searchquery,
     }
-    
+
     return render(request, 'gifts/gifts.html', context)
