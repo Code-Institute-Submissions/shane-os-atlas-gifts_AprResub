@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Gift
+from .models import Gift, Category
 
 
 def gifts_list_all(request):
@@ -10,6 +10,7 @@ def gifts_list_all(request):
     searchquery = None
     sort = None
     direction = None
+    categorychoice = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -26,6 +27,11 @@ def gifts_list_all(request):
                     sortoption = f'-{sortoption}'
             gift = gift.order_by(sortoption)
 
+            if 'category' in request.GET:
+                categorychoice = request.GET['category']
+                gift = gift.filter(category__name__in=categorychoice)
+                categorychoice = Category.objects.filter(name__in=categorychoice)
+
             if 'q' in request.GET:
                 searchquery = request.GET['q']
                 if not searchquery:
@@ -41,6 +47,7 @@ def gifts_list_all(request):
             "gifts": gift,
             "sort_choice": sort_choice,
             "searchresult": searchquery,
+            "category_choice": categorychoice,
     }
 
     return render(request, 'gifts/gifts.html', context)
