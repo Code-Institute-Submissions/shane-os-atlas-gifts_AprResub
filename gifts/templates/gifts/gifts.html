@@ -77,9 +77,9 @@
                                 </div>
                                 <div class="modal-body">
                                     <p class="card-text">{{ gift.description }}</p>
-                                    <p class="card-text">{{ gift.category|default_if_none:'' }}</p>
-                                    <p class="card-text">{{ gift.weight|default_if_none:'' }}</p>
-                                    <p class="card-text">€ {{ gift.price }}</p>
+                                    <p class="card-text">Category: {{ gift.category|default_if_none:'' }}</p>
+                                    <p class="card-text">Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                    <p class="card-text">Price: € {{ gift.price }}</p>
                                 </div>
                                 <div>
                                 <form method="post" action="{% url 'cart_item_add' gift.id %}">
