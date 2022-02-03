@@ -23,6 +23,14 @@
           <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
         </li>
         {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+          <li>
+            <a class="nav-link" href="">Admin</a>
+          </li>
+        {% endif %}
+          <li>
+            <a class="nav-link" href="">Profile</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_logout' %}">Log Out <i class="fas fa-sign-out-alt"></i></a>
           </li>
@@ -34,15 +42,17 @@
             <a class="nav-link" href="{% url 'account_signup' %}">Register <i class="fas fa-user-plus"></i></a>
           </li>
         {% endif %}
-        <li>
+        <li class="list-inline-item">
           <a class="nav-link" href="{% url 'display_cart' %}">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-cart fa-lg"></i>
               <div>
-                {% if total %}
-                  €{{ total }}
-                {% else %}
-                  €0.00
-                {% endif %}
+                <p class="my-0">
+                  {% if total %}
+                    €{{ total }}
+                  {% else %}
+                    €0.00
+                  {% endif %}
+                </p>
               </div>
           </a>
         </li>
