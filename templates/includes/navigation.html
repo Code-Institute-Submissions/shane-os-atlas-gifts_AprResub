@@ -1,14 +1,17 @@
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">Atlas Gifts</a>
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+      Atlas Gifts
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'gifts' %}">Gifts</a>
+          <a class="nav-link" aria-current="page" href="{% url 'gifts' %}">Gifts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'delivery' %}">Delivery Tracker</a>
@@ -40,7 +43,7 @@
                 {% else %}
                   €0.00
                 {% endif %}
-            </div>
+              </div>
           </a>
         </li>
       </ul>
