@@ -4,53 +4,54 @@
 
 {% block content %}
 <!-- Home page //-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h3>Welcome to Atlas Gifts!</h3>
-                <p>At Atlas Gifts we endeavor to offer the best, coolest and unique gifts anywhere on the internet. Have a look through our carefully curated collecttion and find the perfect gift! </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col center text-center">
-                <button type="button" class="btn btn-secondary btn-lg" style="color:rgb(255, 255, 255);"><a href="{% url 'delivery' %}">Check Order Progress</a></button>
-                <button type="button" class="btn btn-success btn-lg"><a href="{% url 'gifts' %}">Gift Collections</a></button>
-                <button type="button" class="btn btn-info btn-lg">Login/ Sign Up</button>
-            </div>
-        </div>   
+  <div class="container h-100">
+    <div class="row">
+      <div class="col-12 text-center">
+          <h3>Welcome to Atlas Gifts!</h3>
+          <p>At Atlas Gifts we endeavor to offer the best, coolest and unique gifts anywhere on the internet. Have a look through our carefully curated collecttion and find the perfect gift! </p>
+          <p>Happy Shopping</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col center text-center">
+          <button type="button" class="btn btn-secondary btn-lg" style="color:rgb(255, 255, 255);"><a href="{% url 'delivery' %}">Check Order Progress</a></button>
+          <button type="button" class="btn btn-success btn-lg"><a href="{% url 'gifts' %}">Gift Collections</a></button>
+          <button type="button" class="btn btn-info btn-lg">Login/ Sign Up</button>
+      </div>
     </div>
     <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Gift Item 1">
-          <div class="card-body">
-            <h5 class="card-title">Gift Item 1</h5>
-            <p class="card-text">Fantastic Gift for Family</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Only 1 Remaining!</small>
-          </div>
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Gift Item 1">
+        <div class="card-body">
+          <h5 class="card-title">Gift Item 1</h5>
+          <p class="card-text">Fantastic Gift for Family</p>
         </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Gift Item 2">
-          <div class="card-body">
-            <h5 class="card-title">Gift Item 2</h5>
-            <p class="card-text">Fantastic Gift for Friends</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">20 % Off</small>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Gift Item 3">
-          <div class="card-body">
-            <h5 class="card-title">Gift Item 3</h5>
-            <p class="card-text">Excellent Present for Pets</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Buy One Get One Free</small>
-          </div>
+        <div class="card-footer">
+          <small class="text-muted">Only 1 Remaining!</small>
         </div>
       </div>
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Gift Item 2">
+        <div class="card-body">
+          <h5 class="card-title">Gift Item 2</h5>
+          <p class="card-text">Fantastic Gift for Friends</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">20 % Off</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Gift Item 3">
+        <div class="card-body">
+          <h5 class="card-title">Gift Item 3</h5>
+          <p class="card-text">Excellent Present for Pets</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Buy One Get One Free</small>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 
