@@ -10,6 +10,10 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.bg-green {
+    background: #0edb07 !important;
+}
+
 footer {
     background-color: #083d77;
     text-align: center;
