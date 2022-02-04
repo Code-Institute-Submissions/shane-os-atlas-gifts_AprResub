@@ -1,4 +1,12 @@
+html {
+    height: 100%;
+}
+
 body {
+    background-image: url('/media/home_page.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: 'Roboto', sans-serif;
 }
 
