@@ -28,6 +28,16 @@ footer {
     margin: 5px;
 }
 
+.overlay {
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
 #cartarea {
     color: black;
     font-size: 25pt;
