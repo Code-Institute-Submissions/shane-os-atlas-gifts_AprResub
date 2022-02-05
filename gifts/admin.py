@@ -5,12 +5,26 @@ from .models import Gift, Category
 
 class GiftsAdmin (admin.ModelAdmin):
     """ Gifts Model Administration """
-    pass
+    list_display = (
+        'sku',
+        'category',
+        'name',
+        'price',
+        'weight',
+        'image',
+    )
+
+    ordering = ('name',)
 
 
 class CategoryAdmin (admin.ModelAdmin):
     """ Gifts Category Administration """
-    pass
+    list_display = (
+        'name',
+        'show_name',
+    )
+
+    ordering = ('name',)
 
 
 admin.site.register(Gift, GiftsAdmin)
