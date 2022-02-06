@@ -92,8 +92,12 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p class="card-text">{{ gift.description }}</p>
-                                                            <p class="card-text"><i class="fas fa-circle"></i> Category: {{ gift.category|default_if_none:'' }}</p>
-                                                            <p class="card-text"><i class="fas fa-weight-hanging"></i>  Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                                            {% if gift.category %}
+                                                                <p class="card-text"><i class="fas fa-circle"></i> Category: {{ gift.category|default_if_none:'' }}</p>
+                                                            {% endif %}
+                                                            {% if gift.weight %}
+                                                                <p class="card-text"><i class="fas fa-weight-hanging"></i>  Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                                            {% endif %}
                                                             <p class="card-text"><i class="fas fa-coins"></i> Price: € {{ gift.price }}</p>
                                                         </div>
                                                         <div>
