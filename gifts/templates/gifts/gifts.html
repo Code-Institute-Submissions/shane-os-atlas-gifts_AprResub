@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col">
             <form class="form-inline" method="GET" action="{% url 'gifts' %}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" name="q" aria-label="Search">
                 <button class="btn btn-outline-dark" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
@@ -33,7 +33,7 @@
                     Sort By
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-istem" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
+                    <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=asc">Price (Low To High)</a>
                     <a class="dropdown-item" href="{% url 'gifts' %}?sort=price&direction=desc">Price (High To Low)</a>
                     <a class="dropdown-item" href="{% url 'gifts' %}?sort=name&direction=desc">Alphabetical (A To Z)</a>
                     <a class="dropdown-item" href="{% url 'gifts' %}?sort=name&direction=asc">Alphabetical (Z To A)</a>

@@ -1,35 +1,35 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Gift, Category
 
 
 def gifts_list_all(request):
     """ Show gifts on page """
-    gift = Gift.objects.all()
+    gifts = Gift.objects.all()
     searchquery = None
-    sort = None
+    sortchoice = None
     direction = None
     categorychoice = None
 
     if request.GET:
         if 'sort' in request.GET:
-            sortoption = request.GET['sort']
-            sort = sortoption
-
-            if sortoption == 'name':
-                sortoption = 'lower_name'
-                gift = gift.annotate(lower_name = Lower('name'))
+            sortchoice = request.GET['sort']
+            sort = sortchoice
+            if sortchoice == 'name':
+                sortchoice = 'lower_name'
+                gifts = gifts.annotate(lower_name=Lower('name'))
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
-                    sortoption = f'-{sortoption}'
-            gift = gift.order_by(sortoption)
+                    sortchoice = f'-{sort}'
+            gifts = gifts.order_by(sortchoice)
 
             if 'category' in request.GET:
                 categorychoice = request.GET['category']
-                gift = gift.filter(category__name__in=categorychoice)
+                gifts = gifts.filter(category__name__in=categorychoice)
                 categorychoice = Category.objects.filter(name__in=categorychoice)
 
             if 'q' in request.GET:
@@ -39,12 +39,12 @@ def gifts_list_all(request):
                     messages.error(request, "Incorrect search query! Please try again")
 
                 searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
-                gift = gift.filter(searchqueries)
+                gifts = gifts.filter(searchqueries)
 
-    sort_choice = f'{sort}_{direction}'
+    sort_choice = f'{sortchoice}_{direction}'
 
     context = {
-            "gifts": gift,
+            "gifts": gifts,
             "sort_choice": sort_choice,
             "searchresult": searchquery,
             "category_choice": categorychoice,
