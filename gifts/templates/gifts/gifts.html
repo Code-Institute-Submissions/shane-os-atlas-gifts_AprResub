@@ -45,69 +45,94 @@
 <!-- Gift Items displayed in Card Form //-->
 
 {% csrf_token %}
-<div class="container-fluid">
+<div class="container-fluid">   
     <div class="row">
-        {% for gift in gifts %}
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card">
-                {% if gift.image %}
-                <a href="{{ gift.image_url }}" target="_blank">
-                    <img class="card-img-top" src="{{ gift.image.url }}" alt="{{ gift.name }}">
-                </a>
-                {% else %}
-                    <img class="card-img-top" src="{{ gift.image_url }}" alt="{{ gift.name }}"> 
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ gift.name }}</h5>
-                    <p class="card-text">{{ gift.description }}</p>
-                    <p class="card-text">€ {{ gift.price }}</p>
-                </div>
-                <div class="card-footer">
-                    <div class = "row">
-                        <div class="col">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info</button>
-                        </div>
-                        <!-- Additional item information in model //-->
-                        <div class="modal" id="infomodal-{{ forloop.counter}}">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <p><strong>{{ gift.name}}</strong></p>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <strong>X</strong>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+        <div class="gifts-container col-10 offset-1">
+            <div class="row mt-1 mb-2">
+                <div class="row">
+                    {% for gift in gifts %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100">
+                                {% if gift.image %}
+                                <a href="{{ gift.image_url }}" target="_blank">
+                                    <img class="card-img-top" src="{{ gift.image.url }}" alt="{{ gift.name }}">
+                                </a>
+                                {% else %}
+                                    <img class="card-img-top" src="{{ gift.image_url }}" alt="{{ gift.name }}"> 
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ gift.name }}</h5>
                                     <p class="card-text">{{ gift.description }}</p>
-                                    <p class="card-text">Category: {{ gift.category|default_if_none:'' }}</p>
-                                    <p class="card-text">Weight: {{ gift.weight|default_if_none:'' }} KG</p>
-                                    <p class="card-text">Price: € {{ gift.price }}</p>
+                                    <p class="card-text">€ {{ gift.price }}</p>
                                 </div>
-                                <div>
-                                <form method="post" action="{% url 'cart_item_add' gift.id %}">
-                                    {% csrf_token %}
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col">        
-                                                <p>Quantity</p>
-                                            </div class="col">
-                                            <div>
-                                                <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
-                                                <button type="submit" class="btn btn-success">Add To Cart</button>
+                                <div class="card-footer">
+                                    <div class = "row">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info</button>
+                                        </div>
+                                        <!-- Additional item information in model //-->
+                                        <div class="modal" id="infomodal-{{ forloop.counter}}">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <p><strong>{{ gift.name}}</strong></p>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <strong>X</strong>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="card-text">{{ gift.description }}</p>
+                                                    <p class="card-text">Category: {{ gift.category|default_if_none:'' }}</p>
+                                                    <p class="card-text">Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                                    <p class="card-text">Price: € {{ gift.price }}</p>
+                                                </div>
+                                                <div>
+                                                    <form method="post" action="{% url 'cart_item_add' gift.id %}">
+                                                        {% csrf_token %}
+                                                        <div class="col-sm-3">
+                                                            <div class="row">
+                                                                <div class="col">        
+                                                                    <p>Quantity</p>
+                                                                </div class="col">
+                                                                <div>
+                                                                    <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
+                                                                    <button type="submit" class="btn btn-success">Add To Cart</button>
+                                                                </div>
+                                                                <input type="hidden" name="url_redirect" value="{{ request.path }}">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            <input type="hidden" name="url_redirect" value="{{ request.path }}">
                                         </div>
                                     </div>
-                                </form>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {% if forloop.counter|divisibleby:1 %}
+                            <div class="col-12 d-sm-none">
+                                <br>
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:2 %}
+                            <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                                <br> 
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:3 %}
+                            <div class="col-12 d-none d-lg-none d-xl-none mb-5">
+                                <br> 
+                            </div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="col-12 d-none d-xl-block mb-5">
+                                <br> 
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-    <br>
 </div>
-{% endfor %}
 {% endblock %}
  
