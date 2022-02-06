@@ -92,9 +92,9 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p class="card-text">{{ gift.description }}</p>
-                                                            <p class="card-text">Category: {{ gift.category|default_if_none:'' }}</p>
-                                                            <p class="card-text">Weight: {{ gift.weight|default_if_none:'' }} KG</p>
-                                                            <p class="card-text">Price: € {{ gift.price }}</p>
+                                                            <p class="card-text"><i class="fas fa-circle"></i> Category: {{ gift.category|default_if_none:'' }}</p>
+                                                            <p class="card-text"><i class="fas fa-weight-hanging"></i>  Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                                            <p class="card-text"><i class="fas fa-coins"></i> Price: € {{ gift.price }}</p>
                                                         </div>
                                                         <div>
                                                             <form method="post" action="{% url 'cart_item_add' gift.id %}">
@@ -102,7 +102,7 @@
                                                                 <div class="col-sm-3">
                                                                     <div class="row">
                                                                         <div class="col">        
-                                                                            <p>Quantity</p>
+                                                                            <p><i class="fas fa-shopping-cart"></i> Quantity</p>
                                                                         </div class="col">
                                                                         <div>
                                                                             <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
