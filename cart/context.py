@@ -33,7 +33,11 @@ def cart_items(request):
     context = {
         'select_gifts': select_gifts,
         'gift_count': gift_count,
+        'subtotal': subtotal,
         'total': total,
+        'discount_threshold': settings.DISCOUNT_THRESHOLD,
+        'discount_rate': settings.DISCOUNT_RATE,
+        'delivery': settings.DELIVERY_CHARGE,
     }
 
     return context
