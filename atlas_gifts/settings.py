@@ -176,6 +176,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+DISCOUNT_THRESHOLD = 100
+DISCOUNT_RATE = 10
+DELIVERY_CHARGE = 5
+
 if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'atlas-gifts'
     AWS_S3_REGION_NAME = 'eu-west-1'
