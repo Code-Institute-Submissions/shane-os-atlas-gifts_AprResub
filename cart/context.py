@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from decimal import Decimal
 from gifts.models import Gift
 
 
@@ -19,6 +20,15 @@ def cart_items(request):
             'quantity': quantity,
             'gift': gift,
         })
+
+    if total > settings.DISCOUNT_THRESHOLD:
+        discount_rate = Decimal(settings.DISCOUNT_RATE/100)
+        discount_amount = total * discount_rate
+        subtotal = total - discount_amount
+        subtotal = round(subtotal, 2)
+        total = subtotal + settings.DELIVERY_CHARGE
+    else:
+        total = total + settings.DELIVERY_CHARGE
 
     context = {
         'select_gifts': select_gifts,
