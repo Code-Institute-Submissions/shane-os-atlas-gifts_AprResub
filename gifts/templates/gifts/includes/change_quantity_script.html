@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    $('.decrease-qty').click(function(e){
+        e.preventDefault();
+        var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
+        var currentQuantity = parseInt($(nearestInput).val());
+        $(nearestInput).val(currentQuantity - 1);
+    });
+
+    $('.increase-qty').click(function(e){
+        e.preventDefault();
+        var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
+        var currentQuantity = parseInt($(nearestInput).val());
+        $(nearestInput).val(currentQuantity + 1);
+    });
+</script>
