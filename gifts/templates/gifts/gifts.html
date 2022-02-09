@@ -107,11 +107,17 @@
                                                                     <div class="row">
                                                                         <div class="col">        
                                                                             <p><i class="fas fa-shopping-cart"></i> Quantity</p>
-                                                                        </div class="col">
-                                                                        <div>
-                                                                            <input class="form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
-                                                                            <button type="submit" class="btn btn-success">Add To Cart</button>
                                                                         </div>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-prepend">
+                                                                                <button type="button" class="btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                                            </div>
+                                                                            <input class="text-center form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.id }}" id="id_quantity_{{ gift.id }}">
+                                                                            <div class="input-group-append">
+                                                                                <button type="button" class="btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-success">Add To Cart</button>
                                                                         <input type="hidden" name="url_redirect" value="{{ request.path }}">
                                                                     </div>
                                                                 </div>
