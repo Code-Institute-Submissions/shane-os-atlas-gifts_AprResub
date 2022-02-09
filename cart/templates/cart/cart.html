@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="overlay"></div>
-<h1>Your Shopping Cart</h1>
+<h1 class="text-center">Your Shopping Cart</h1>
 
 {% if select_gifts %}
       <div>
@@ -24,9 +24,9 @@
             {% for gift in select_gifts %}
             <tbody>
               <tr>
-                <th scope="row">{{ gift.gift.sku }}</th>
-                <td>{{ gift.gift.name }}</td>
-                <td>
+                <th class="p-3 w-20" scope="row">{{ gift.gift.sku }}</th>
+                <td class="p-3 w-30">{{ gift.gift.name }}</td>
+                <td class="p-3 w-20">
                   <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
                     {% csrf_token %}
                     <div class="input-group">
@@ -38,8 +38,8 @@
                   <a class=" update-quantity btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
                   <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                 </td>
-                <td>{{ gift.gift.price}}</td>
-                <td>{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
+                <td class="p-3 w-15">{{ gift.gift.price}}</td>
+                <td class="p-3 w-15">{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
               </tr>
             </tbody>
             {% endfor %}
