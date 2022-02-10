@@ -11,6 +11,18 @@
       <p class="card-text">{{ post.body }}</p>
       <p class="card-text"><small class="text-muted">{{ post.posted_date }}</small></p>
     </div>
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-info">Edit</button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    {% endif %}
+    {% endif %}
   </div>
 {% endfor %}
 {% endblock %}
