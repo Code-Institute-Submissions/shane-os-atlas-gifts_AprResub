@@ -29,6 +29,7 @@ def cart_items(request):
         grandtotal = total + settings.DELIVERY_CHARGE
     else:
         total = subtotal
+        discount_amount = 0
         grandtotal = total + settings.DELIVERY_CHARGE
 
     context = {
@@ -39,6 +40,7 @@ def cart_items(request):
         'grandtotal': grandtotal,
         'discount_threshold': settings.DISCOUNT_THRESHOLD,
         'discount_rate': settings.DISCOUNT_RATE,
+        'discount_amount': discount_amount,
         'delivery': settings.DELIVERY_CHARGE,
     }
 
