@@ -23,7 +23,7 @@ def cart_items(request):
 
     if subtotal > settings.DISCOUNT_THRESHOLD:
         discount_rate = Decimal(settings.DISCOUNT_RATE/100)
-        discount_amount = subtotal * discount_rate
+        discount_amount = round(subtotal * discount_rate,2)
         total = subtotal - discount_amount
         total = round(total, 2)
         grandtotal = total + settings.DELIVERY_CHARGE
