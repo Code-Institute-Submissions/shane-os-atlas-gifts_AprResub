@@ -48,7 +48,7 @@
             </tbody>
             {% endfor %}
           </table>
-          <div>
+          <div class="col-12 text-right">
             <h5>Your Total: € {{ total }}</h5>
           </div>
           <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
@@ -78,6 +78,17 @@
     var cartUpdate = $(this).prev('.form-edit');
     cartUpdate.submit();
   })
+
+  $('.remove-gift').click(function(e) {
+        var csrf = "{{ csrf_token }}";
+        var gift_id= $(this).attr('id').split('remove_')[1];
+        var url = '/cart/edit/${gift_id}/';
+
+        $.post(url, csrf)
+         .done(function() {
+             location.reload();
+         });
+    })
 </script>
 
 {% endblock %}
