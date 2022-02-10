@@ -67,3 +67,17 @@
       </div>
     {% endif %}
 {% endblock %}
+
+{% block post_load_js %}
+{{ block.super }}
+{% include 'gifts/includes/change_quantity_script.html' %}
+
+<script type="text/javascript">
+  // Update Quantity in Cart
+  $('.update-quantity').click(function(e) {
+    var cartUpdate = $(this).prev('.form-edit');
+    cartUpdate.submit();
+  })
+</script>
+
+{% endblock %}
