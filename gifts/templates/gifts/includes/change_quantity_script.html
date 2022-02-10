@@ -1,15 +1,28 @@
 <script type="text/javascript">
-    $('.decrease-qty').click(function(e){
+
+    function enforceLimits(giftid) {
+        var currentQuantity = parseInt($('#id_quantity_${giftid}').val());
+        var reduceQuantity = currentQuantity <= 1;
+        var increaseQuantity = currentQuantity >= 10;
+        $('#decrease-id_quantity_${giftid}').prop('disabled',reduceQuantity);
+        $('#increase-id_quantity_${giftid}').prop('disabled',increaseQuantity);
+    }
+
+    $('.decrease-id_quantity').click(function(e){
         e.preventDefault();
         var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
         var currentQuantity = parseInt($(nearestInput).val());
         $(nearestInput).val(currentQuantity - 1);
+        var giftid = $(this).data('giftid');
+        enforceLimits(giftid);
     });
 
-    $('.increase-qty').click(function(e){
+    $('.increase-id_quantity').click(function(e){
         e.preventDefault();
         var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
         var currentQuantity = parseInt($(nearestInput).val());
         $(nearestInput).val(currentQuantity + 1);
+        var giftid = $(this).data('giftid');
+        enforceLimits(giftid);
     });
 </script>
