@@ -1,5 +1,6 @@
 <script type="text/javascript">
 
+    // Enforce disabling of increase & decrease buttons at specified limits
     function enforceLimits(giftid) {
         var currentQuantity = parseInt($('#id_quantity_${giftid}').val());
         var reduceQuantity = currentQuantity <= 1;
@@ -8,6 +9,7 @@
         $('#increase-id_quantity_${giftid}').prop('disabled',increaseQuantity);
     }
 
+    //  Decrease quantity of gift quantity input box
     $('.decrease-id_quantity').click(function(e){
         e.preventDefault();
         var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
@@ -17,6 +19,7 @@
         enforceLimits(giftid);
     });
 
+    // Increase quantity of gift quantity input box
     $('.increase-id_quantity').click(function(e){
         e.preventDefault();
         var nearestInput = $(this).closest('.input-group').find('.qty-input')[0];
