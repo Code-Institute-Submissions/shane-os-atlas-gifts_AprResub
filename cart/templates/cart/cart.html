@@ -30,10 +30,14 @@
                   <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
                     {% csrf_token %}
                     <div class="input-group">
-                      <button type="button" class="btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                      <input class="form-control qty-input text-center" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="25" data-gift_id="{{ gift.gift_id }}" id="id_quantity_{{ gift.id }}">
-                      <button type="button" class="btn btn-success btn-number" data-type="add"><i class="fa fa-plus" aria-hidden="true" data-gift_id="{{ gift.gift_id }}" id="increase-id_quantity_{{ gift.gift_id }}"></i></button>
-                    </div>  
+                      <div class="input-group-prepend">
+                          <button type="button" class="decrease-id_quantity btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.giftid }}" id="decrease-id_quantity_{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                      </div>
+                      <input class="text-center form control qty-input" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" id="id_quantity_{{ gift.id }}">
+                      <div class="input-group-append">
+                          <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.giftid }}" id="increase-id_quantity_{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                      </div>
+                  </div>
                   </form>
                   <a class=" update-quantity btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
                   <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
@@ -63,10 +67,3 @@
       </div>
     {% endif %}
 {% endblock %}
-
-<script type="text/javascript">
-  $('.update-quantity').click(function(e) {
-    var form = $(this).prev('.form-edit');
-    form.submit();
-  })
-</script>
