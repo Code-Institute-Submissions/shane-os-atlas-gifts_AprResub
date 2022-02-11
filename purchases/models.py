@@ -23,7 +23,7 @@ class Purchase(models.Model):
     total = models.DecimalField(max_digits=7, decimal_places=2, null=False,
                                 default=0)
 
-    def create_order_number(self):
+    def _create_order_number(self):
         """ Create unique order number """
         return uuid.uuid4().hex.upper()
 
