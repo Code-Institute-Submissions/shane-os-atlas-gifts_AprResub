@@ -48,12 +48,64 @@
             </tbody>
             {% endfor %}
           </table>
-          <div class="col-12 text-right">
-            <h5>Your Total: € {{ total }}</h5>
-          </div>
-          <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-          <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
         </card>
+      </div>
+      <div class="order-summary">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="text-center">Order Summary</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5>Your Subtotal:</h5>
+              </div>
+              <div class="col">
+                <h5>€ {{ subtotal }}</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Discount: </h5>
+              </div>
+              <div class="col">
+                <h5>- € {{ discount_amount }}</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Total: </h5>
+              </div>
+              <div class="col">
+                <h5>€ {{ total }}</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Delivery Charge: </h5>
+              </div>
+              <div class="col">
+                <h5>+ € {{ delivery|floatformat:2  }}</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>Payable Amount: </h5>
+              </div>
+              <div class="col">
+                <h5>€ {{ grandtotal }}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+            </div>
+            <div class="col">
+                <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     {% else %}
       <div class="card bg-light">

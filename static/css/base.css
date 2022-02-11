@@ -76,3 +76,9 @@ footer {
     z-index: 100;
     top: 0px;
 }
+
+.order-summary {
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+}
