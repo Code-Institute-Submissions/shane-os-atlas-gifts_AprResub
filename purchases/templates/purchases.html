@@ -33,6 +33,9 @@
                 <div class="mb-3 text-danger" id="card-error" role="alert"></div>
                 <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
+            <div>
+                <p><strong>Amount to Pay: €{{ grandtotal }}</p></strong>
+            </div>
             <fieldset class="px-3">
                 <button type="submit" id="stripe-submit" class="btn btn-md btn-primary">Pay Now</button>
             </fieldset>

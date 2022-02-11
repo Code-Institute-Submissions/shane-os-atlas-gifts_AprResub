@@ -74,4 +74,5 @@ footer {
 
 .toast-container {
     z-index: 100;
+    top: 0px;
 }
