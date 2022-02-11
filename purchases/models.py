@@ -18,7 +18,7 @@ class Purchase(models.Model):
     town = models.CharField(max_length=100, null=False, blank=False)
     postcode = models.CharField(max_length=20, null=False, blank=False)
     country = models.CharField(max_length=20, null=False, blank=False)
-    order_number = models.CharField(max_length=16, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=7, decimal_places=2, null=False,
                                 default=0)
@@ -33,7 +33,7 @@ class Purchase(models.Model):
     def save(self, *args, **kwargs):
 
         if not self.order_number:
-            self.order_number = self.create_order_number()
+            self.order_number = self._create_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
