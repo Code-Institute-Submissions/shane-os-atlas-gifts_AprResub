@@ -103,22 +103,29 @@
                                                         <div>
                                                             <form method="post" action="{% url 'cart_item_add' gift.id %}">
                                                                 {% csrf_token %}
-                                                                <div class="col-sm-3">
+                                                                <div class="col-sm-4">
                                                                     <div class="row">
                                                                         <div class="col">        
                                                                             <p><i class="fas fa-shopping-cart"></i> Quantity</p>
                                                                         </div>
                                                                         <div class="input-group">
                                                                             <div class="input-group-prepend">
-                                                                                <button type="button" class="decrease-qty btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                                                <button type="button" class="decrease-id_quantity btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.gift_id }}" id="decrease-id_quantity_{{ gift.gift_id }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                                             </div>
                                                                             <input class="text-center form control qty-input" type="number" name="quantity" value="1" min="1" max="10" data-gift_id="{{ gift.gift_id }}" id="id_quantity_{{ gift.gift_id }}">
                                                                             <div class="input-group-append">
-                                                                                <button type="button" class="increase-qty btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.gift_id }}" id="increase-id_quantity_{{ gift.gift_id }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                                                <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.gift_id }}" id="increase-id_quantity_{{ gift.gift_id }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                                                             </div>
                                                                         </div>
-                                                                        <button type="submit" class="btn btn-success">Add To Cart</button>
-                                                                        <input type="hidden" name="url_redirect" value="{{ request.path }}">
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart fa-lg"></i> Add To Cart</button>
+                                                                            <input type="hidden" name="url_redirect" value="{{ request.path }}">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
