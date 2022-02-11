@@ -71,3 +71,7 @@ footer {
 .card-deck {
     margin: 5px;
 }
+
+.toast-container {
+    z-index: 100;
+}

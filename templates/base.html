@@ -44,8 +44,14 @@
           <p class="my-1">Special Offer: {{ discount_rate }}% Discount on all orders over €{{ discount_threshold }}!</p>
         </div>
       </div>
-      {% include 'includes/messages.html' %}
     </header>
+    {% if messages %}
+      <div class="toast-container">
+        {% for message in messages %}
+          {% include 'includes/toasts/toasts.html' %}
+        {% endfor %}
+      </div>
+    {% endif %}
 
     {% block page_header %}
     {% endblock %}
@@ -54,6 +60,9 @@
     {% endblock %}
 
     {% block post_load_js %}
+      <script type="text/javascript">
+        $('.toast').toast('show');
+      </script>
     {% endblock %}
     <!-- Site Footer -->
     {% include 'includes/footer.html' %}
