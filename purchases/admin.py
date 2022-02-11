@@ -13,6 +13,8 @@ class PurchaseAdmin(admin.ModelAdmin):
 
     list_display = ('order_number', 'date', 'name', 'email', 'total',)
 
+    ordering = ('-date',)
+
 
 class LineItemAdmin(admin.TabularInline):
     """ Line items administration """
