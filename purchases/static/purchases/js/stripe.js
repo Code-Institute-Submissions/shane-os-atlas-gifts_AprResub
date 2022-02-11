@@ -22,7 +22,7 @@ stripe_card.addEventListener('change', function (event) {
     var errorResponse = document.getElementById('card-error');
     if (event.error) {
         var html = `
-            <span>$(event.error.message)</span>
+            <span>${event.error.message}</span>
         `;
         $(errorResponse).html(html);
     } else {
@@ -40,13 +40,13 @@ stripe_form.addEventListener('submit', function(e){
     $('#stripe-submit').attr('disabled', true);
     stripe.confirmCardPayment(stripe_secret_key, {
         payment_method: {
-            card: card,
+            card: stripe_card,
         }
     }).then(function(result){
         var errorResponse = document.getElementById('card-error');
         if (result.error) {
             var html = `
-            <span>$(event.error.message)</span>
+            <span>${event.error.message}</span>
         `;
         $(errorResponse).html(html);
         card.update({ 'disabled': false});
