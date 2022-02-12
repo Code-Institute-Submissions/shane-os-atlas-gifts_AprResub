@@ -7,13 +7,17 @@ import stripe
 from cart.context import cart_items
 from .forms import PurchaseForm
 from gifts.models import Gift
-from .models import Purchase,LineItem
+from .models import Purchase, LineItem
 
 
 def order_payment(request):
     """ Display payments form page """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    total = 0
+    gift_count = 0
+    select_gifts = []
+
 
     if request.method == 'POST':
         cart = request.session.get('cart', {})
@@ -53,7 +57,7 @@ def order_payment(request):
         # return render(request, 'purchases.html')
 
         cart_now = cart_items(request)
-        total_now = cart_now['total']
+        total_now = cart_now['grandtotal']
         stripe_total_integer = round(total_now * 100)
         stripe.api_key = stripe_secret_key
 
@@ -64,7 +68,7 @@ def order_payment(request):
 
         if not stripe_public_key:
             messages.warning(request, 'The Stripe public key is not present!')
-        
+
         purchase_form = PurchaseForm()
 
     template = 'purchases.html'
@@ -76,6 +80,7 @@ def order_payment(request):
 
     return render(request, template, context)
 
+
 def purchases_success(request, order_number):
     info = request.session.get('info')
     customer_order = get_object_or_404(Purchase, order_number=order_number)
@@ -83,7 +88,7 @@ def purchases_success(request, order_number):
                     Order Number: {order_number}.')
     if 'cart' in request.session:
         del request.session['cart']
-    
+
     template = 'purchases_success.html'
     context = {
         'customer_order': customer_order,

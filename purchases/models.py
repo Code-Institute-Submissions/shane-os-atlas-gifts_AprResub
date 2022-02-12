@@ -20,15 +20,25 @@ class Purchase(models.Model):
     country = models.CharField(max_length=20, null=False, blank=False)
     order_number = models.CharField(max_length=32, null=False, editable=False)
     date = models.DateTimeField(auto_now_add=True)
-    total = models.DecimalField(max_digits=7, decimal_places=2, null=False,
-                                default=0)
+    pre_discount_total = models.DecimalField(max_digits=7, decimal_places=2,
+                                             null=False, default=0)
+    discount = models.DecimalField(max_digits=7, decimal_places=2,
+                                   null=False, default=0)
+    final_total = models.DecimalField(max_digits=7, decimal_places=2,
+                                      null=False, default=0)
 
     def _create_order_number(self):
         """ Create unique order number """
         return uuid.uuid4().hex.upper()
 
-    def final_total(self):
-        self.total = self.item_purchase.aggregate(Sum('sub_total'))
+    def total(self):
+        self.pre_discount_total = self.item_purchase.aggregate(Sum('sub_total'))['sub_total__sum']
+        if self.pre_discount_total > settings.DISCOUNT_THRESHOLD:
+            self.discount = self.pre_discount_total * settings.DISCOUNT_RATE / 100
+        else:
+            self.discount = 0
+        delivery_charge = settings.DELIVERY_CHARGE
+        self.final_total = self.pre_discount_total - self.discount + delivery_charge
 
     def save(self, *args, **kwargs):
 
@@ -54,3 +64,6 @@ class LineItem (models.Model):
 
         self.sub_total = self.gift.price * self.quantity
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Order Number: {self.purchase.order_number}'

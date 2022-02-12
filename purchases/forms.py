@@ -28,3 +28,13 @@ class PurchaseForm(forms.ModelForm):
             'postcode': 'Eircode(Postcode)',
                         'country': 'Country',
                     }
+
+        self.fields['name'].widget.attrs['autofocus'] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                title = f'{titles[field]} *'
+            else:
+                title = titles[field]
+            self.fields[field].widget.attrs['field'] = title
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].label = False
