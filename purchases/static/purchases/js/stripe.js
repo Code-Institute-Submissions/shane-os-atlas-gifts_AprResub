@@ -6,6 +6,7 @@ var elements = stripe.elements();
 var style  = {
     base: {
         color: '#000',
+        fontSize: '14px',
     },
     invalid: {
         color: '#cc0000',
