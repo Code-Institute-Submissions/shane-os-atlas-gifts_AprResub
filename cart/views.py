@@ -18,8 +18,10 @@ def cart_item_add(request, gift_id):
 
     if gift_id in list(cart.keys()):
         cart[gift_id] += quantity
+        messages.success(request, "You have increased the gift quantity!")
     else:
         cart[gift_id] = quantity
+        messages.success(request, "You have added an item to your cart!")
 
     request.session['cart'] = cart
     print(request.session['cart'])
@@ -29,14 +31,10 @@ def cart_item_add(request, gift_id):
 
 def cart_item_subtract(request, gift_id):
     """ Remove gift remove cart """
-    quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
-    if quantity > 0:
-        cart[gift_id] = quantity
-    else:
-        cart.pop[gift_id]
+    cart.pop(gift_id)
+    messages.success(request, "You have removed an item from your cart!")
 
     request.session['cart'] = cart
-    messages.success(request, "You have deleted an item from your cart!")
     return redirect(reverse("display_cart"))

@@ -39,7 +39,7 @@
                       </div>
                   </div>
                   </form>
-                  <a class=" update-quantity btn btn-secondary float-left qty-edit" id="update_{{ gift.gift_id }}">Update Quantity</a>
+                  <a class=" update-quantity btn btn-secondary float-left qty-edit">Update Quantity</a>
                   <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                 </td>
                 <td class="p-3 w-15">{{ gift.gift.price}}</td>
@@ -133,10 +133,11 @@
 
   $('.remove-gift').click(function(e) {
         var csrf = "{{ csrf_token }}";
-        var gift_id= $(this).attr('id').split('remove_')[1];
-        var url = '/cart/edit/${gift_id}/';
+        var giftRemove = $(this).attr('id').split('remove_')[1];
+        var url = `/cart/remove/${giftRemove}/`;
+        var data = {'csrfmiddlewaretoken': csrf}
 
-        $.post(url, csrf)
+        $.post(url, data)
          .done(function() {
              location.reload();
          });
