@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'purchases/  css/purchases.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="overlay"></div>
 <div id="delivery-card" class="d-flex card border-primary mb-3 text-center">
@@ -24,6 +28,17 @@
                 {{ purchase_form.town | as_crispy_field }}
                 {{ purchase_form.postcode | as_crispy_field }}
                 {{ purchase_form.country | as_crispy_field }}
+                <div class="form-check form-check-inline">
+                    {% if user.is_authenticated %}
+                        <label class="form-check-label" for="personal-info">Do you wish for your details to be saved to your profile?</label>
+                        <input class="form-check-input" type="checkbox" id="personal-info" checked>
+                    {% else %}
+                        <label class="form-check-label" for="personal-info">
+                            <a class="nav-link" href="{% url 'account_login' %}">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                            <a class="nav-link" href="{% url 'account_signup' %}">Register <i class="fas fa-user-plus"></i></a>
+                        </label>
+                    {% endif %}
+                </div>
             </fieldset>
         </div>
         <div>
@@ -34,7 +49,7 @@
                 <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
             <div>
-                <p><strong>Amount to Pay: €{{ grandtotal }}</p></strong>
+                <p><strong>Amount to Pay: €{{ grandtotal }}</strong> (incl. delivery charge)</p>
             </div>
             <fieldset class="px-3">
                 <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
