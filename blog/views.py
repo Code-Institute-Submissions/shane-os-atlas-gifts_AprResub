@@ -1,5 +1,5 @@
 """ Blog Posts Views"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import Post
 from blog.forms import BlogForm
 
@@ -38,4 +38,13 @@ def create_blog(request):
         "form": form
     }
 
+    return render(request, 'blog.html', context)
+
+
+def edit_blog(request, blog_id):
+    blogPost = get_object_or_404(Post, id=blog_id)
+    form = BlogForm(blogPost)
+    context = {
+        "form": form
+    }
     return render(request, 'blog.html', context)

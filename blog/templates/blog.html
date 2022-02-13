@@ -7,7 +7,7 @@
 {% if request.user.is_authenticated %}
 {% if request.user.is_superuser %}
   <h2>Create New Entry</h2>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blogModal"> Create Blog Post</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blogModal"> Create Blog Post <i class="fa-solid fa-square-plus"></i></button>
   <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -39,10 +39,32 @@
       <p class="card-text">{{ post.body }}</p>
       <p class="card-text"><small class="text-muted">{{ post.posted_date }}</small></p>
     </div>
-    
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_superuser %}
       <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-info">Edit</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#blogEditModal-{{ post.id }}">Edit</button>
+          <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col">
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete</button>
@@ -69,6 +91,8 @@
           </div>
         </div>
       </div>
+    {% endif %}
+    {% endif %}
 
   </div>
 {% endfor %}
