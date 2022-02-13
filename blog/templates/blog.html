@@ -3,16 +3,43 @@
 {% load static %}
 
 {% block content %}
-{% for post in posts %}
 <div class="overlay"></div>
+{% if request.user.is_authenticated %}
+{% if request.user.is_superuser %}
+  <h2>Create New Entry</h2>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blogModal"> Create Blog Post</button>
+  <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="blogModalLabel">New Blog Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="{% url 'blog' %}" method="post" id="blog-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" id="blog-form" >Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+{% endif %}
+{% endif %}
+{% for post in posts %}
+
   <div class="card mb-3" style="max-width: 40%;">
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">{{ post.body }}</p>
       <p class="card-text"><small class="text-muted">{{ post.posted_date }}</small></p>
     </div>
-    {% if request.user.is_authenticated %}
-    {% if request.user.is_superuser %}
+    
       <div class="row">
         <div class="col">
           <button type="button" class="btn btn-info">Edit</button>
@@ -42,8 +69,7 @@
           </div>
         </div>
       </div>
-    {% endif %}
-    {% endif %}
+
   </div>
 {% endfor %}
 {% endblock %}
