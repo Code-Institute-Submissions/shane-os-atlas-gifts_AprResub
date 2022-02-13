@@ -1,5 +1,6 @@
 # Atlas Gifts
 
+![Gifts Image](https://github.com/shane-os/atlas-gifts/blob/main/media/home_page.jpg)
 
 ## Contents
 [UX (User Experience)](#ux-user-experience)
