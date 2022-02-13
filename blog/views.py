@@ -4,33 +4,25 @@ from blog.models import Post
 from blog.forms import BlogForm
 
 
-def blog_id(request):
+def blog_show(request):
+    """ Sow All Blog Posts """
     posts = Post.objects.all().order_by('posted_date')
-    if request.method == "POST":
-        form = BlogForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-            return redirect('blog')
-    else:
-        form = BlogForm()
 
     context = {
         "posts": posts,
-        "form": form
     }
 
     return render(request, "blog.html", context)
 
 
-def create_blog(request):
+def create_post(request):
+    """ Create Blog Post """
     if request.method == "POST":
         form = BlogForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog_show')
     else:
         form = BlogForm()
 
@@ -38,13 +30,19 @@ def create_blog(request):
         "form": form
     }
 
-    return render(request, 'blog.html', context)
+    return render(request, 'blog_post_create.html', context)
 
 
 def edit_blog(request, blog_id):
-    blogPost = get_object_or_404(Post, id=blog_id)
-    form = BlogForm(blogPost)
+    """ Edit Blog Post """
+    blog_post = get_object_or_404(Post, id=blog_id)
+    if request.method == 'POST':
+        form = BlogForm(request.POST, instance=blog_post)
+        if form.is_valid():
+            form.save()
+            return redirect('get_todo_list')
+    form = BlogForm(instance=blog_post)
     context = {
-        "form": form
+        'form': form
     }
-    return render(request, 'blog.html', context)
+    return render(request, 'blog/edit_blog.html', context)

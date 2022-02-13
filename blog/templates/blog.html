@@ -6,29 +6,10 @@
 <div class="overlay"></div>
 {% if request.user.is_authenticated %}
 {% if request.user.is_superuser %}
-  <h2>Create New Entry</h2>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#blogModal"> Create Blog Post <i class="fa-solid fa-square-plus"></i></button>
-  <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="blogModalLabel">New Blog Post</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="{% url 'blog' %}" method="post" id="blog-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" id="blog-form" >Save</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-    
+<div>
+  <h2 class="text-center">Create New Entry</h2>
+  <a class="btn btn-success" href="{% url 'create_post' %}" role="button">Write a New Post!</a>
+</div>
 {% endif %}
 {% endif %}
 {% for post in posts %}
@@ -93,7 +74,17 @@
       </div>
     {% endif %}
     {% endif %}
-
+  </div>
+  {% empty %}
+  <div class="row">
+    <div class="card text-white bg-primary">
+      <div class="card-header">Atlas Gifts Blog</div>
+      <div class="card-body">
+        <h5 class="card-title">We're Sorry...</h5>
+        <p class="card-text text-center">We have deleted our older content and are in the process of writing new articles</p>
+        <p class="card-text text-center">We hope to have new content very soon!</p>
+      </div>
+    </div>
   </div>
 {% endfor %}
 {% endblock %}

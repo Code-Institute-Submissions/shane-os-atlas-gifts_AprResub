@@ -1,8 +1,9 @@
 """ Creates url pattern for blog posts"""
 from django.urls import path
-from . import views
+from blog.views import blog_show, create_post, edit_blog
 
 urlpatterns = [
-    path('', views.blog_id, name='blog'),
-    path('create/', views.create_blog, name='create_blog')
+    path('', blog_show, name='blog'),
+    path('create/', create_post, name='create_post'),
+    path('edit/<blog_id>/', edit_blog, name='edit_blog')
 ]
