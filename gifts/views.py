@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Gift, Category
+from .forms import GiftForm
 
 
 def gifts_list_all(request):
@@ -51,3 +52,14 @@ def gifts_list_all(request):
     }
 
     return render(request, 'gifts/gifts.html', context)
+
+
+def add_gift(request):
+    """ Add a new gift """
+    form = GiftForm()
+    template = 'gifts/add_gift.html'
+    context = {
+        'form': form
+    }
+
+    return render(request, template, context)
