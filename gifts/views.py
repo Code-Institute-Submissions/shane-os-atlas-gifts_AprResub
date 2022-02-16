@@ -56,6 +56,17 @@ def gifts_list_all(request):
 
 def add_gift(request):
     """ Add a new gift """
+    if request.method == 'POST':
+        form = GiftForm(request.POST, request.FILES)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.save()
+            messages.success(request, "A new gift has been added!")
+            return redirect(reverse('add_gift'))
+        else:
+            messages.error(request, "Error: Gift not added!")
+    else:
+        form = GiftForm()
     form = GiftForm()
     template = 'gifts/add_gift.html'
     context = {
