@@ -16,6 +16,7 @@
   * [Icons](#icons)
   * [Images](#images)
   * [Colour Scheme](#colour-scheme)
+  * [Favicon](#favicon)
 
 [Technologies](#technologies)
   * [Programming Languages](#programming-languages)
@@ -104,6 +105,10 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
  * #11844A - Sea Green - Item bundles & shopping cart
  * #FC4C02 - International Orange Aerospace - Item bundles
  * #FFFFFF - White - Background & footer text
+
+### Favicon
+
+To enhance the website's design further, I created a favicon using the generator provided by [Favicon.ico](https://favicon.io/favicon-generator/).
 
 ## Technologies
 
