@@ -81,6 +81,7 @@
                                         {% if request.user.is_superuser %}
                                         <div class="col">
                                             <a href="{% url 'edit_gift' gift.id %}" class="btn btn-success" role="button" aria-pressed="true">Edit Gift <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                            <a href="{% url 'delete_gift' gift.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
                                         </div>
                                         {% endif %}
                                         {% endif %}

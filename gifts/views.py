@@ -96,3 +96,11 @@ def edit_gift(request, gift_id):
     }
 
     return render(request, template, context)
+
+
+def delete_gift(request, gift_id):
+    """ Delete Gift from Website """
+    gift = get_object_or_404(Gift, pk=gift_id)
+    gift.delete()
+    messages.success(request, "Gift successfully deleted!")
+    return redirect(reverse('gifts'))
