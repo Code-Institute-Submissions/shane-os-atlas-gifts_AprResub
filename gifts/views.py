@@ -1,5 +1,7 @@
+""" Gift App Imported Modules """
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Gift, Category
@@ -54,6 +56,7 @@ def gifts_list_all(request):
     return render(request, 'gifts/gifts.html', context)
 
 
+@login_required
 def add_gift(request):
     """ Add a new gift """
     if request.method == 'POST':
@@ -76,6 +79,7 @@ def add_gift(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_gift(request, gift_id):
     """ Edit gift details """
     gift = get_object_or_404(Gift, pk=gift_id)
@@ -98,6 +102,7 @@ def edit_gift(request, gift_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_gift(request, gift_id):
     """ Delete Gift from Website """
     gift = get_object_or_404(Gift, pk=gift_id)
