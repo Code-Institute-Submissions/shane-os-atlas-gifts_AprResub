@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -71,6 +71,20 @@ def add_gift(request):
     template = 'gifts/add_gift.html'
     context = {
         'form': form
+    }
+
+    return render(request, template, context)
+
+
+def edit_gift(request, gift_id):
+    """ Edit gift details """
+    gift = get_object_or_404(Gift, pk=gift_id)
+    form = GiftForm(instance=gift)
+
+    template = 'gifts/edit_gift.html'
+    context = {
+        'form': form,
+        'gift': gift
     }
 
     return render(request, template, context)
