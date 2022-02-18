@@ -79,6 +79,14 @@ def add_gift(request):
 def edit_gift(request, gift_id):
     """ Edit gift details """
     gift = get_object_or_404(Gift, pk=gift_id)
+    if request.method == 'POST':
+        form = GiftForm(request.POST, request.FILES, instance=gift)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Gift information successfully updated!")
+            return redirect(reverse('gifts'))
+        else:
+            messages.error(request, "Form is not valid. Please check and try again.")
     form = GiftForm(instance=gift)
 
     template = 'gifts/edit_gift.html'
