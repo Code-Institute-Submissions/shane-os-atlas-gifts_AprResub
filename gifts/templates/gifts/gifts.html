@@ -77,6 +77,13 @@
                                         <div class="col">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info</button>
                                         </div>
+                                        {% if request.user.is_authenticated %}
+                                        {% if request.user.is_superuser %}
+                                        <div class="col">
+                                            <a href="{% url 'edit_gift' gift.id %}" class="btn btn-success" role="button" aria-pressed="true">Edit Gift <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
                                         <!-- Additional item information in model //-->
                                         <div class="modal" id="infomodal-{{ forloop.counter}}">
                                             <div class="modal-content">
