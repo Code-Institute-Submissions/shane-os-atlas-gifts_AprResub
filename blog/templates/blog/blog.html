@@ -68,7 +68,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
