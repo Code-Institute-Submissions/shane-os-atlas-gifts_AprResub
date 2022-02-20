@@ -25,6 +25,7 @@
       <div class="row">
         <div class="col">
           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#blogEditModal-{{ post.id }}">Edit</button>
+          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post!</a>
           <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
