@@ -1,6 +1,7 @@
 """ Blog Posts Views"""
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from blog.models import Post
 from blog.forms import BlogForm
 
@@ -16,6 +17,7 @@ def blog_show(request):
     return render(request, "blog/blog.html", context)
 
 
+@login_required
 def create_post(request):
     """ Create Blog Post """
     if request.method == "POST":
@@ -34,6 +36,7 @@ def create_post(request):
     return render(request, 'blog/blog_post_create.html', context)
 
 
+@login_required
 def edit_blog(request, blog_id):
     """ Edit Blog Post """
     post = get_object_or_404(Post, id=blog_id)
@@ -54,6 +57,8 @@ def edit_blog(request, blog_id):
     }
     return render(request, template, context)
 
+
+@login_required
 def delete_blog(request, blog_id):
     """ Delete Blog Post """
     post = get_object_or_404(Post, pk=blog_id)
