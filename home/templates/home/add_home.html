@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="overlay"></div>
+  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
+    <div>
+      <h2>New Home Page Content</h2>
+      <form method="POST" action="{% url 'add_home' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'home' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  {% endif %}
+  {% endif %}
+{% endblock %}
