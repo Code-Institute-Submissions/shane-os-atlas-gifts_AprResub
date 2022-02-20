@@ -12,6 +12,14 @@
           <p>Happy Shopping</p>
       </div>
     </div>
+    {% for welcome in welcomes %}
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-12 text-center">{{ welcome.title }}</h1>
+          <p class="text-center">{{ welcome.main_text }}</p>
+        </div>
+      </div>
+    {% endfor %}
     <div class="row">
       <div class="col center text-center">
           <button type="button" class="btn btn-secondary btn-lg" style="color:rgb(255, 255, 255);"><a href="{% url 'delivery' %}">Check Order Progress</a></button>
