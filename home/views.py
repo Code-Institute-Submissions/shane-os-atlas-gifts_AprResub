@@ -53,3 +53,11 @@ def edit_home(request, home_id):
         'welcome': welcome
     }
     return render(request, template, context)
+
+
+def delete_home(request, home_id):
+    """ Delete Home Content """
+    welcome = get_object_or_404(Home, pk=home_id)
+    welcome.delete()
+    messages.success(request, "Home content successfully deleted!")
+    return redirect(reverse('home'))

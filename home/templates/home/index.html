@@ -27,6 +27,9 @@
           <div>
             <a class="btn btn-info" href="{% url 'edit_home' home_id=welcome.id %}" role="button">Edit Content</a>
           </div>
+          <div class="col">
+            <a href="{% url 'delete_home' home_id=welcome.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Content<i class="fa fa-trash" aria-hidden="true"></i></a>
+          </div>
           {% endif %}
           {% endif %}
         </div>
