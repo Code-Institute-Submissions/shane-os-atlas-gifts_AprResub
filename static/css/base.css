@@ -14,6 +14,12 @@ body {
     background: #0edb07 !important;
 }
 
+.jumbotron {
+    border: 1px solid blue;
+    border-radius: 20px;
+    opacity: 0.75;
+}
+
 footer {
     background-color: #083d77;
     text-align: center;
