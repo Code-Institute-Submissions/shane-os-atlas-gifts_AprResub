@@ -32,3 +32,24 @@ def add_home(request):
     }
 
     return render(request, 'home/add_home.html', context)
+
+
+def edit_home(request, home_id):
+    """ Edit Gome Content """
+    welcome = get_object_or_404(Home, id=home_id)
+    if request.method == 'POST':
+        form = HomeForm(request.POST, instance=welcome)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Home page successfully updated!")
+            return redirect(reverse('home'))
+        else:
+            messages.error(request, "Error: Home page update was unsuccessful! Please check the form and try again.")
+    form = HomeForm(instance=welcome)
+
+    template = 'home/edit_home.html'
+    context = {
+        'form': form,
+        'welcome': welcome
+    }
+    return render(request, template, context)
