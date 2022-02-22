@@ -24,25 +24,26 @@ def gifts_list_all(request):
                 sortchoice = 'lower_name'
                 gifts = gifts.annotate(lower_name=Lower('name'))
 
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortchoice = f'-{sort}'
+        if 'direction' in request.GET:
+            direction = request.GET['direction']
+            if direction == 'desc':
+                sortchoice = f'-{sort}'
             gifts = gifts.order_by(sortchoice)
 
-            if 'category' in request.GET:
-                categorychoice = request.GET['category']
-                gifts = gifts.filter(category__name__in=categorychoice)
-                categorychoice = Category.objects.filter(name__in=categorychoice)
+        if 'category' in request.GET:
+            categorychoice = request.GET['category']
+            # gifts = gifts.filter(category__name__in=categorychoice)
+            # categorychoice = Category.objects.filter(name__in=categorychoice)
+            gifts = gifts.filter(category__name=categorychoice)
 
-            if 'q' in request.GET:
-                searchquery = request.GET['q']
-                if not searchquery:
-                    return redirect(reverse('gifts'))
-                    messages.error(request, "Incorrect search query! Please try again")
+        if 'q' in request.GET:
+            searchquery = request.GET['q']
+            if not searchquery:
+                return redirect(reverse('gifts'))
+                messages.error(request, "Incorrect search query! Please try again")
 
-                searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
-                gifts = gifts.filter(searchqueries)
+            searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
+            gifts = gifts.filter(searchqueries)
 
     sort_choice = f'{sortchoice}_{direction}'
 
