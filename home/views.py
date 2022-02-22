@@ -1,6 +1,7 @@
 """ Home app view """
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from home.models import Home
 from home.forms import HomeForm
 
@@ -16,6 +17,7 @@ def index(request):
     return render(request, 'home/index.html', context)
 
 
+@login_required
 def add_home(request):
     """ Add Home Page Content """
     if request.method == "POST":
@@ -34,6 +36,7 @@ def add_home(request):
     return render(request, 'home/add_home.html', context)
 
 
+@login_required
 def edit_home(request, home_id):
     """ Edit Gome Content """
     welcome = get_object_or_404(Home, id=home_id)
@@ -55,6 +58,7 @@ def edit_home(request, home_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_home(request, home_id):
     """ Delete Home Content """
     welcome = get_object_or_404(Home, pk=home_id)
