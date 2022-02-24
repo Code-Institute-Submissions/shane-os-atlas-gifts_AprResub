@@ -5,10 +5,12 @@ from django.db import models
 from django.db.models import Sum
 from gifts.models import Gift
 from django.conf import settings
+from profiles.models import UserAccount
 
 
 class Purchase(models.Model):
     """ Purchase Model - User Details Fields"""
+    account_profile = models.ForeignKey(UserAccount, on_delete=models.SET_NULL, null=True, blank=True, related_name='purchases')
     name = models.CharField(max_length=50, null=False, blank=False)
     phone = models.CharField(max_length=15, null=False, blank=False)
     email = models.EmailField(max_length=128, null=False, blank=False)
@@ -32,7 +34,7 @@ class Purchase(models.Model):
         return uuid.uuid4().hex.upper()
 
     def total(self):
-        self.pre_discount_total = self.item_purchase.aggregate(Sum('sub_total'))['sub_total__sum']
+        self.pre_discount_total = self.item_purchase.aggregate(Sum('sub_total'))['sub_total__sum'] or 0
         if self.pre_discount_total > settings.DISCOUNT_THRESHOLD:
             self.discount = self.pre_discount_total * settings.DISCOUNT_RATE / 100
         else:
