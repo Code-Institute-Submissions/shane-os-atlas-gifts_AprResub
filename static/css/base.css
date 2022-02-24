@@ -89,3 +89,7 @@ footer {
     width: 50%;
     padding: 5px;
 }
+
+.allauth-form {
+    margin: 10px;
+}
