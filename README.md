@@ -48,9 +48,10 @@
  * Arising from the creation of the site, gift recipients and gift senders will enjoy a greater, more personlised experience than currently available.
 
 ### User Goals
- * Research and examine potential gifts
- * Purchase a gift basket or individual items
- * Have delivery arranged to bring purchased items direct to gift recipients
+ * Research and examine potential gifts.
+ * Purchase gifts for family and friends.
+ * Have delivery arranged to bring purchased items direct to gift recipients.
+ * View past purchases made on the site.
 
 ### User Stories
  * As a user, I would like to research the various gifts available to purchase.
