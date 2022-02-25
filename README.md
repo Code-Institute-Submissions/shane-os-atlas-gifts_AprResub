@@ -70,8 +70,12 @@
 
 ### User Requirements
  * Users are able to register an account and log in as required.
- * Search and filter capabilities operate as expected.
- * Products can be easily selected and added to the basket for payment.
+ * Users may view past purchases they made on the site (if any).
+ * Gift search and filter capabilities operate as expected.
+ * Products can be easily added to the shopping cart for payment.
+ * Users can adjust the quantity of an item added to their cart.
+ * Users can remove the gift entirely from the cart if they no longer wish to purchase the gift.
+ * Customers are made aware of their shopping cart total as make their way through the site.
  * Purchase process is straightforward, secure and without error.
  * All internal site links redirect users to the appropriate section.
 
