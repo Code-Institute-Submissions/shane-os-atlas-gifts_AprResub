@@ -82,8 +82,10 @@
 ### User Expectations
  * Wide product selection on offer to purchase.
  * Product information and images are accurate, clear and well presented.
+ * Discounts are awarded for large purchases.
+ * Users are notified when they add, edit or remove an item in their shopping cart.
  * Users can directly contact the site administrator to dicuss any concerns or comments that they may have.
- * Delivery tracker portal is accurate and details the delivery process clearly to the consumer to avoid misunderstanding.
+ * Users are informed of upcoming special events on the site, general delivery issues, new products and other relevant matters.
 
 ## Site Layout & Design:
 
