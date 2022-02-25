@@ -328,6 +328,15 @@ To create the Atlas Gifts project I researched a variety of styles and formats t
 
  * [Blog Template](https://realpython.com/get-started-with-django-1/#share-your-knowledge-with-a-blog): The Real Python tutorial was helpful in creating the site's blog.
 
-In relation to the photos used on the site for the background and gifts, they can attributed to the following sources:
+In relation to the images used on the site for the background and gifts some were edited to improve their appearance on the site. The images can attributed to the following sources:
 
  * [Main Background Image](https://unsplash.com/photos/PxM8aeJbzvk)
+ * [Christmas Puzzle](https://www.amazon.co.uk/Coppenrath-Jigsaw-Puzzle-German-Christmas/dp/B073ZHVDVM)
+ * [Irish Favourites Basket](https://www.fiverr.com/irishsnack/send-you-your-favourite-irish-snacks)
+ * [Mindfulness Journal](https://www.jennibick.com/products/black-leather-executive-journal)
+ * [Sketching Kit](https://m.media-amazon.com/images/I/81i1gvARtvL._AC_SL1500_.jpg)
+ * [Chocolate Fountain](https://m.media-amazon.com/images/I/61gIYrRI-EL._AC_SL1000_.jpg)
+ * [World Scratch Map](https://m.media-amazon.com/images/I/91Pxr+oKNiL._AC_SS450_.jpg)
+ * [Quiz Book](https://m.media-amazon.com/images/I/51wWwym5yeL.jpg)
+ * [Advent Calendar](https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/53/2020/09/918tz14E0L._AC_SL1500_.jpg)
+ * 
