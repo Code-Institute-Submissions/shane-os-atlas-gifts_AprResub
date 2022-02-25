@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from django.contrib import messages
 from .models import Contact
 from .forms import contactform
 
@@ -17,10 +18,11 @@ def contact_page(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, 'info@atlasgifts.com', [email])
+                send_mail(subject, message, 'info@atlasgifts.com', [email],)
             except BadHeaderError:
                 return HttpResponse('Invalid Entry')
-            return redirect('contact_success')
+            messages.success(request, "Contact Form Submitted! Thank you fro your message. We will be in touch soon!")
+            return redirect(reverse('home'))
 
     context = {
         'form': form
