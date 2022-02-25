@@ -327,3 +327,7 @@ To create the Atlas Gifts project I researched a variety of styles and formats t
  * [Getbootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/): The starter template was utilised in creating the base.html file.
 
  * [Blog Template](https://realpython.com/get-started-with-django-1/#share-your-knowledge-with-a-blog): The Real Python tutorial was helpful in creating the site's blog.
+
+In relation to the photos used on the site for the background and gifts, they can attributed to the following sources:
+
+ * [Main Background Image](https://unsplash.com/photos/PxM8aeJbzvk)
