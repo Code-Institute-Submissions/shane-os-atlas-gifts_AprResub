@@ -88,7 +88,7 @@ Initially, I wrote down all of the ideas that I had for this site. Once I had fi
  * Tablet
 
 ### Icons
-The majority of icons used throughout the project were obtained from the font awesome collection.
+The majority of icons used throughout the project were obtained from the [font awesome](https://fontawesome.com/icons) collection. On the font awesome site an account was created to enable the creation of a new kit for the Atlas Gifts site. The icons utlised were specifically chosen to direct users to key parts of the site. By decorating navigation links and buttons with icons such as a shopping cart, bin, envelope or a profile, users are able to signup, login, select items and pay with less confusion. This will help to reduce the likelihood of a user dropping out of the key processes thst lead to purchases of gifts on the site.
 
 ### Images
 The main images used were for the gifts and the blog posts. These came from a number of sites including unsplash and pexels
