@@ -127,7 +127,7 @@ To enhance the website's design further, I created a favicon using the generator
  * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
  * [Python](https://www.python.org/about/)
 
-### Libraries & Tools
+### Libraries and Tools
  * [Git](https://git-scm.com/)
  * [Github](https://github.com/)
  * [Gitpod](https://www.gitpod.io/)
@@ -136,6 +136,8 @@ To enhance the website's design further, I created a favicon using the generator
  * [Font Awesome](https://fontawesome.com/)
  * [Stripe](https://stripe.com/)
  * [Django](https://www.djangoproject.com/)
+ * [Heroku](https://www.heroku.com/)
+ * [AWS](https://aws.amazon.com/)
 
 ## Database Architecture
 
