@@ -20,7 +20,7 @@
           <a class="nav-link" href="{% url 'blog' %}">Blog <i class="fa fa-newspaper-o" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Contact Us <i class="fa fa-envelope" aria-hidden="true"></i></a>
+          <a class="nav-link" href="{% url 'contact_page' %}">Contact Us <i class="fa fa-envelope" aria-hidden="true"></i></a>
         </li>
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}

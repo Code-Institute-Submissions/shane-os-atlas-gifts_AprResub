@@ -1,7 +1,9 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Contact
 
-class contactform(ModelForm):
+
+class contactform(forms.ModelForm):
+    """ Contact Form for Visitors """
     class Meta:
         model = Contact
-        fields = '__all__'
+        fields = ('name', 'subject', 'email', 'message',)
