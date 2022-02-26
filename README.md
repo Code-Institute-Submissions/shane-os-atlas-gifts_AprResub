@@ -184,6 +184,19 @@ Pre-Discount Total | pre_discount_total | models.DecimalField | max_digits=7, de
 Discount | discount | models.DecimalField | max_digits=7, decimal_places=2, null=False, default=0 |
 Final Total | final_total | models.DecimalField | max_digits=7, decimal_places=2, null=False, default=0 |
 
+<center><h2>User Account</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+Profile | profile | models.OneToOneField | User, on_delete=models.CASCADE |
+Official Phone | official_phone | models.CharField | max_length=15, null=True, blank=True |
+Official Address Line 1 | official_address_line1 | models.CharField | max_length=100, null=True, blank=True |
+Official Address Line 2 | official_address_line2 | models.CharField | max_length=100, null=True, blank=True |
+Official Address Line 3 | official_address_line3 | models.CharField | max_length=100, null=True, blank=True |
+Official Town | name | models.CharField | max_length=100, null=True, blank=True |
+Official Postcode | official_postcode | models.CharField | max_length=20, null=True, blank=True |
+Official Country | official_country | models.CharField | max_length=20, null=True, blank=True |
+
 <center><h2>Blog</h2></center>
 
 Name  | Database Key | Field Type | Validation |
