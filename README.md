@@ -87,7 +87,7 @@
  * Users can directly contact the site administrator to dicuss any concerns or comments that they may have.
  * Users are informed of upcoming special events on the site, general delivery issues, new products and other relevant matters.
 
-## Site Layout & Design:
+## Site Layout and Design:
 
 ### Wireframes
 Initially, I wrote down all of the ideas that I had for this site. Once I had firmly decided on the project, I drew rough sketches of my vision for the site on pen and paper. Following the refining of my designs through more wireframe drafts, I created electronic versions of these wireframes using the Balsamiq Wireframes software. The final versions of the wireframes are stored in PDF format, for the following viewing mediums:
@@ -246,7 +246,9 @@ Name  | Database Key | Field Type | Validation |
  * Delivery Tracker
  * Profile
 
-Code Validators:
+## Testing
+
+### Code Validators
  * The HTML code was passed through the W3C Validator. One error found was the incorrect use of a p element as a child of a button element.
  * The CSS code was passed through the Jigsaw Validator and the three errors found were that of missing semi-colons.
  * The JavaScript code was passed through the JSHint Validator and the minor syntax mistakes were corrected.
@@ -366,7 +368,7 @@ Once prompted you will need to enter a username, email address and a password. C
 
 10. To access the administrative panel in Heroku, click the deploy app button
 
-## Accreditation & Gratitude
+## Accreditation and Gratitude
  * Code Institute Tutor Support: I would like to express my gratitude for the tutors help in resolving issues I faced in building the website. In particular, their help was invaluable in resolving the problem of the cart app not displaying.
 
  * I would like to express my gratitude fo my mentor Simen Daehlin's guidance in creating the project idea to meet the Milestone Project 4 guidelines and working through issues that I faced in the project.
