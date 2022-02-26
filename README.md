@@ -177,9 +177,10 @@ Posted Date | posted_date | models.DateTimeField | auto_now_add=True |
 
 Name  | Database Key | Field Type | Validation |
 | -----  | ----- | ----- | ----- |
-| Name | name | models.TextField |  |
-| Email | email | models.EmailField |  |
-| Message | message | models.TextField |  |
+| Name | name | models.TextField | max_length=50, null=False, blank=False  |
+| Subject | subject | models.Charfield | max_length=50, blank=False |
+| Email | email | models.EmailField | max_length=50, blank=False |
+| Message | message | models.TextField | max_length=1000, null=False, blank=False |
 
 ## Features
 
