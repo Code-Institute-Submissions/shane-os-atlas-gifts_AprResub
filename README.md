@@ -163,6 +163,27 @@ Weight | weight | models.DecimalField | max_digits=4, decimal_places=3, null=Tru
 Image URL | image_url | models.URLField | max_length=1024, null=True, blank=True |
 Image | image | models.ImageField |  |
 
+<center><h2>Purchase</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+Name | name | models.CharField | max_length=200 |
+Profile | account_profile | models.ForeignKey | UserAccount, on_delete=models.SET_NULL, null=True, blank=True, related_name='purchases' |
+Name | name | models.Charfield | max_length=50, null=False, blank=False |
+Phone | phone | models.Charfield | max_length=15, null=False, blank=False |
+Email | email | models.EmailField | max_length=128, null=False, blank=False |
+Address Line 1 | address_line1 | models.Charfield | max_length=100, null=False, blank=False |
+Address Line 2 | address_line2 | models.Charfield | max_length=100, null=False, blank=False |
+Address Line 3 | address_line3 | models.Charfield | max_length=100, null=True, blank=False |
+Town | town | models.Charfield | max_length=100, null=False, blank=False |
+Postcode | postcode | models.Charfield | max_length=20, null=False, blank=False |
+Country | country | models.Charfield | max_length=20, null=False, blank=False |
+Order Number | order_number | models.Charfield | max_length=32, null=False, editable=False |
+Date | date | models.DateTimeField | auto_now_add=True |
+Pre-Discount Total | pre_discount_total | models.DecimalField | max_digits=7, decimal_places=2, null=False, default=0 |
+Discount | discount | models.DecimalField | max_digits=7, decimal_places=2, null=False, default=0 |
+Final Total | final_total | models.DecimalField | max_digits=7, decimal_places=2, null=False, default=0 |
+
 <center><h2>Blog</h2></center>
 
 Name  | Database Key | Field Type | Validation |
