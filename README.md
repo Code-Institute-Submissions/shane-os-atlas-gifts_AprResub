@@ -182,6 +182,14 @@ Name  | Database Key | Field Type | Validation |
 | Email | email | models.EmailField | max_length=50, blank=False |
 | Message | message | models.TextField | max_length=1000, null=False, blank=False |
 
+<center><h2>Home</h2></center>
+
+Name  | Database Key | Field Type | Validation |
+| ----- | ----- | ----- | ----- |
+| Title | title | models.Charfield | max_length=200  |
+| Main Test | main_text | models.Charfield | max_length=1000  |
+
+
 ## Features
 
 ### Developed
