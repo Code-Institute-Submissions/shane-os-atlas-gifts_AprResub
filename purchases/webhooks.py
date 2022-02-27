@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.http import HttpResponse
-from purchases.webhooks_handler import StripeWebhookHandler
+import stripe
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
+from purchases.webhooks_handler import StripeWebhookHandler
 
-import stripe
 
 @require_POST
 @csrf_exempt
@@ -26,7 +26,7 @@ def webhook(request):
         return HttpResponse(status=400)
     except Exception as e:
         return HttpResponse(response=e, status=400)
-    
+
     if event.type == 'payment_intent.succeeded':
         payment_intent = event.data.object
         print("Payment Intent was Successful!")
@@ -35,7 +35,8 @@ def webhook(request):
         print("Payment Method was attached to a Customer!")
     else:
         return HttpResponse(status=400)
-    
+
+    print("It worked!")
     return HttpResponse(status=200)
 
     stripe_handler = StripeWebhookHandler(request)

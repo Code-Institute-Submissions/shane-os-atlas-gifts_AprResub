@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'purchases/  css/purchases.css' %}">
+<!--<link rel="stylesheet" href="{% static 'purchases/  css/purchases.css' %}"-->
 {% endblock %}
 
 {% block content %}
 <div class="overlay"></div>
 <div id="delivery-card" class="d-flex card border-primary mb-3 text-center">
-    <form action="{% url 'purchases' %}" method="post" id="delivery-form">
+    <form action="{% url 'purchases' %}" method="POST" id="delivery-form">
         {% csrf_token %}
-        <div class="card-header">Delivery Details</div>
+        <div class="card-header">Delivery & Payment Form</div>
         <div class="card-body">
-            <h5 class="card-title  text-primary">Please enter your details below</h5>
+            <h5 class="card-title text-primary">Please enter your details below</h5>
             <fieldset class="rounded">
                 <legend class="fieldset-label small text-black w-auto">Contact Details</legend>
                 {{ purchase_form.name | as_crispy_field }}
@@ -33,8 +33,8 @@
                         <label class="form-check-label" for="personal-info">Do you wish for your details to be saved to your profile?</label>
                         <input class="form-check-input" type="checkbox" id="personal-info" checked>
                     {% else %}
-                        <label class="form-check-label" for="personal-info">
-                            <a class="nav-link" href="{% url 'account_login' %}">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        <label class="form-check-label" for="personal-info">If you wish to have your details saved for paying faster please either:
+                            <a class="nav-link" href="{% url 'account_login' %}">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a> Or
                             <a class="nav-link" href="{% url 'account_signup' %}">Register <i class="fas fa-user-plus"></i></a>
                         </label>
                     {% endif %}

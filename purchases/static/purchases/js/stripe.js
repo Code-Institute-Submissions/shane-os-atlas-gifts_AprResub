@@ -34,26 +34,27 @@ stripeCard.addEventListener('change', function (event) {
 // Stripe Form Submission
 
 const stripeForm = document.getElementById('delivery-form');
-
+console.log(stripeForm)
 stripeForm.addEventListener('submit', function(e){
     e.preventDefault();
-    stripeCard.update({ 'disabled': true});
+    console.log('sumbit event')
+    stripeCard.update({'disabled': true});
     $('#stripe-submit').attr('disabled', true);
     stripe.confirmCardPayment(stripeSecretKey, {
         payment_method: {
             card: stripeCard,
         }
     }).then(function(result){
-
         if (result.error) {
             var errorResponse = document.getElementById('card-error');
             var html = `
                 <span>${result.error.message}</span>`;
             $(errorResponse).html(html);
             card.update({ 'disabled': false});
-        $('#stripe-submit').attr('disabled', false);
+            $('#stripe-submit').attr('disabled', false);
         } else {
-            if (result.payment_intent === 'succeeded'){
+            console.log(result.paymentIntent)
+            if (result.paymentIntent.status === 'succeeded'){
                 stripeForm.submit();
             }
         }
