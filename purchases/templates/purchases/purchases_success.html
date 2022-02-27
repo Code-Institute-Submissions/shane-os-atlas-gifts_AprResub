@@ -4,19 +4,18 @@
 
 {% block content %}
 
+<div class="overlay"></div>
 <div class="d-flex card border-primary mb-3 text-center " style="max-width: 40%;">
   <div class="card-header">
-    <h5><strong>Order Confirmation</strong></h5>
+    <h3><strong>Order Confirmation</strong></h3>
   </div>
   <div class="card-body">
     <h5 class="card-title">Order Number: {{ customer_order.order_number }}</h5>
     <p>Thank you for shopping with us today!</p>
     <p class="card-text">Click on your cart below to see more of our amazing Gift Range!</p>
-    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true">Gifts <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
   </div>
 </div>
-
-
 <div class="order-summary">
   <div class="card">
     <div class="card-header">
@@ -34,12 +33,90 @@
     </div>
   </div>
 </div>
-<div class="contact-summary">
+<div class="order-summary">
   <div class="card">
     <div class="card-header">
       <h5 class="text-center">Contact Details</h5>
     </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5>Name: </h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.name }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Phone: </h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.phone }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Email: </h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.email }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="card-header">
+      <h5 class="text-center">Delivery Details</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          <h5>Address Line 1:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.address_line1 }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Address Line 2:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.address_line2 }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Address Line 3:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.address_line3 }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Town:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.town }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Postcode:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.postcode }}</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h5>Country:</h5>
+        </div>
+        <div class="col">
+          <h5>{{ customer_order.country }}</h5>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
-
