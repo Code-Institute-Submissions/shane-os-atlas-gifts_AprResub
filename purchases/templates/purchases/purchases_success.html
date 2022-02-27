@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="overlay"></div>
-<div class="d-flex card border-primary mb-3 text-center " style="max-width: 40%;">
+<div class="d-flex card border-primary mb-3 text-center order-summary">
   <div class="card-header">
     <h3><strong>Order Confirmation</strong></h3>
   </div>
@@ -22,14 +22,19 @@
       <h5 class="text-center">Order Summary</h5>
     </div>
     <div class="card-body">
+      {% for item in customer_order.item_purchase.all %}
       <div class="row">
         <div class="col">
-          <h5>Amount Charged:</h5>
+          <h5>{{ item.gift.name }}</h5>
         </div>
         <div class="col">
-          <h5>€ {{ grandtotal }}</h5>
+          <h5>€ {{ item.gift.price }} each</h5>
+        </div>
+        <div class="col">
+          <h5>{{ item.quantity }} units</h5>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </div>
