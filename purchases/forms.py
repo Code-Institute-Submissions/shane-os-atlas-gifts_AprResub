@@ -26,8 +26,8 @@ class PurchaseForm(forms.ModelForm):
             'address_line3': 'Address Line 3',
             'town': 'Town',
             'postcode': 'Eircode(Postcode)',
-                        'country': 'Country',
-                    }
+            'country': 'Country',
+        }
 
         self.fields['name'].widget.attrs['autofocus'] = True
         for field in self.fields:
@@ -35,6 +35,5 @@ class PurchaseForm(forms.ModelForm):
                 title = f'{titles[field]} *'
             else:
                 title = titles[field]
-            self.fields[field].widget.attrs['field'] = title
+            self.fields[field].widget.attrs['title'] = title
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False
