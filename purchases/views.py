@@ -1,13 +1,32 @@
 """ Purchases app views """
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
 import stripe
+import json
 from cart.context import cart_items
 from gifts.models import Gift
 from .forms import PurchaseForm
 from .models import Purchase, LineItem
+
+
+@require_POST
+def purchases_data_cache(request):
+    try:
+        payment_id = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(payment_id, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'personal_info': request.POST.get('personal-info'),
+            'username': request.user
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, "Error! Your payment was not processed! \
+            Please try again later.")
+        return HttpResponse(content=e, status=400)
 
 
 def purchases(request):
@@ -37,7 +56,11 @@ def purchases(request):
         purchase_form = PurchaseForm(data)
         if purchase_form.is_valid():
             print('8')
-            purchase = purchase_form.save()
+            purchase = purchase_form.save(commit=False)
+            payment_id = request.POST.get('client_secret').split('_secret')[0]
+            purchase.stripe_paymentid = payment_id
+            purchase.unique_cart = json.dumps(cart)
+            purchase.save()
             for gift_id, quantity in cart.items():
                 try:
                     gift = Gift.objects.get(id=gift_id)
@@ -56,7 +79,8 @@ def purchases(request):
                     })
                 except Gift.DoesNotExist:
                     messages.error(request,
-                                   "We are very sorry but that item no longer exists.")
+                                   "We are very sorry, \
+                                       but that item no longer exists.")
                     purchase.delete()
                     return redirect(reverse('view_cart'))
 

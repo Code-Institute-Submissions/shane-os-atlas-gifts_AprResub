@@ -42,34 +42,61 @@ stripeForm.addEventListener('submit', function(e){
     $('#stripe-submit').attr('disabled', true);
     $('#delivery-form').fadeToggle(100);
     $('#payment-processing-overlay').fadeToggle(100);
-    stripe.confirmCardPayment(stripeSecretKey, {
-        payment_method: {
-            card: stripeCard
-            /* payment_details: {
-                name: $.trim(stripeForm.name.value),
-                phone: $.trim(stripeForm.phone.value),
-                email: $.trim(stripeForm.email.value),
-                address_line1: $.trim(stripeForm.address_line1.value),
-                town: $.trim(stripeForm.town.value),
-                postcode: $.trim(stripeForm.postcode.value),
-                country: $.trim(stripeForm.country.value),
-            } */
-        }
-    }).then(function(result){
-        if (result.error) {
-            var errorResponse = document.getElementById('card-error');
-            var html = `
-                <span>${result.error.message}</span>`;
-            $(errorResponse).html(html);
-            $('#delivery-form').fadeToggle(100);
-            $('#payment-processing-overlay').fadeToggle(100);
-            card.update({ 'disabled': false});
-            $('#stripe-submit').attr('disabled', false);
-        } else {
-            console.log(result.paymentIntent)
-            if (result.paymentIntent.status === 'succeeded'){
-                stripeForm.submit();
+
+    var profileInfo = Boolean($('#id-personal-info').attr('checked'));
+    var csrfMark = $('input[name="csrfmiddlewaretoken"]').val();
+    var profileData = {
+        'csrfmiddlewaretoken': csrfMark,
+        'stripe_secret': stripeSecretKey,
+        'profile_info': profileInfo,
+    };
+
+    var url = '/purchases/purchases_data_cache/';
+
+    $.post(url, profileData).done(function() {
+        stripe.confirmCardPayment(stripeSecretKey, {
+            payment_method: {
+                card: stripeCard,
+                payment_details: {
+                    name: $.trim(stripeForm.name.value),
+                    phone: $.trim(stripeForm.phone.value),
+                    email: $.trim(stripeForm.email.value),
+                    payee_address: {
+                        address_line1: $.trim(stripeForm.address_line1.value),
+                        town: $.trim(stripeForm.town.value),
+                        postcode: $.trim(stripeForm.postcode.value),
+                        country: $.trim(stripeForm.country.value),
+                    }
+                }
+            },
+            delivery_details: {
+                    name: $.trim(stripeForm.name.value),
+                    phone: $.trim(stripeForm.phone.value),
+                    recipient_address: {
+                        address_line1: $.trim(stripeForm.address_line1.value),
+                        town: $.trim(stripeForm.town.value),
+                        postcode: $.trim(stripeForm.postcode.value),
+                        country: $.trim(stripeForm.country.value),
+                    }
             }
-        }
-    });
+        }).then(function(result){
+            if (result.error) {
+                var errorResponse = document.getElementById('card-error');
+                var html = `
+                    <span>${result.error.message}</span>`;
+                $(errorResponse).html(html);
+                $('#delivery-form').fadeToggle(100);
+                $('#payment-processing-overlay').fadeToggle(100);
+                card.update({ 'disabled': false});
+                $('#stripe-submit').attr('disabled', false);
+            } else {
+                console.log(result.paymentIntent)
+                if (result.paymentIntent.status === 'succeeded'){
+                    stripeForm.submit();
+                }
+            }
+        });
+    }).fail(function() {
+        location.reload();
+    })
 });
