@@ -21,7 +21,6 @@ def cart_item_add(request, gift_id):
         messages.success(request, "You have increased the gift quantity!")
     else:
         cart[gift_id] = quantity
-        messages.success(request, "You have added an item to your cart!")
 
     request.session['cart'] = cart
     print(request.session['cart'])
