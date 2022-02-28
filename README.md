@@ -21,6 +21,7 @@
 [Technologies](#technologies)
   * [Programming Languages](#programming-languages)
   * [Libraries and Tools](#libraries-and-tools)
+  * [Accounts](#accounts)
 
 [Database Architecture](#database-architecture)
 
@@ -131,13 +132,17 @@ To enhance the website's design further, I created a favicon using the generator
  * [Git](https://git-scm.com/)
  * [Github](https://github.com/)
  * [Gitpod](https://www.gitpod.io/)
- * [Balsamic Wireframes](https://balsamiq.com/)
+ * [Django](https://www.djangoproject.com/)
  * [Bootstrap](https://getbootstrap.com/)
  * [Font Awesome](https://fontawesome.com/)
+ * [Balsamic Wireframes](https://balsamiq.com/)
+
+### Accounts
+Accounts must be set up with the below organisations to ensure that the project can be replicated properly:
  * [Stripe](https://stripe.com/)
- * [Django](https://www.djangoproject.com/)
  * [Heroku](https://www.heroku.com/)
  * [AWS](https://aws.amazon.com/)
+ * [Gmail](https://www.google.com/gmail/)
 
 ## Database Architecture
 
