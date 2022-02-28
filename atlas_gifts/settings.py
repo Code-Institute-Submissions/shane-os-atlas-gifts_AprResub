@@ -106,10 +106,6 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 
 
-
-
-
-
 WSGI_APPLICATION = 'atlas_gifts.wsgi.application'
 
 # User Account Confirmation
