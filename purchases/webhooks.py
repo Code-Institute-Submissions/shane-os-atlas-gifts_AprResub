@@ -1,3 +1,4 @@
+""" Stripe Webhooks """
 from django.conf import settings
 from django.http import HttpResponse
 import stripe
@@ -46,7 +47,7 @@ def webhook(request):
         'payment_intent.payment_failed': stripe_handler.handle_payment_intent_payment_failed,
     }
 
-    type = event['type']
-    event_handler = event_map.get(type, stripe_handler.handle_event)
+    type_event = event['type']
+    event_handler = event_map.get(type_event, stripe_handler.handle_event)
     event_response = event_handler(event)
     return event_response

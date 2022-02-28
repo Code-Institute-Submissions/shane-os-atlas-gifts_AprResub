@@ -55,7 +55,8 @@ def purchases(request):
                         'gift': gift,
                     })
                 except Gift.DoesNotExist:
-                    messages.error(request, "We are very sorry but that item no longer exists.")
+                    messages.error(request,
+                                   "We are very sorry but that item no longer exists.")
                     purchase.delete()
                     return redirect(reverse('view_cart'))
 
@@ -70,7 +71,8 @@ def purchases(request):
         print('12')
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "Your cart is currently empty! Please see our gift collection to see our exciting range!")
+            messages.error(request,
+                           "Your cart is currently empty! Please see our gift collection to see our exciting range!")
             return redirect(reverse('gifts'))
         # return render(request, 'purchases.html')
 
@@ -89,7 +91,6 @@ def purchases(request):
 
     if not stripe_public_key:
         messages.warning(request, 'The Stripe public key is not present!')
-
 
     template = 'purchases/purchases.html'
     context = {
