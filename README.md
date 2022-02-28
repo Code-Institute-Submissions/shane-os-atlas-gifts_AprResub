@@ -111,8 +111,8 @@ For the Atlas Gifts project, I decided to use colours that convey a range of emo
 
  * #000000 - Black - Headings & main body text
  * #083d77 - Indigo Dye - Payment processing area
- * #C41C1F - Venetian Red - Item bundles & delivery section
- * #11844A - Sea Green - Item bundles & shopping cart
+ * #C41C1F - Venetian Red - Delivery/ Order Confirmation section
+ * #11844A - Sea Green - Discount offer
  * #FC4C02 - International Orange Aerospace - Item bundles
  * #FFFFFF - White - Background & footer text
 
