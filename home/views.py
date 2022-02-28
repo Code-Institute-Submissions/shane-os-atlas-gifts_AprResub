@@ -47,7 +47,8 @@ def edit_home(request, home_id):
             messages.success(request, "Home page successfully updated!")
             return redirect(reverse('home'))
         else:
-            messages.error(request, "Error: Home page update was unsuccessful! Please check the form and try again.")
+            messages.error(request,
+                           "Error: Home page update was unsuccessful! Please check the form and try again.")
     form = HomeForm(instance=welcome)
 
     template = 'home/edit_home.html'
