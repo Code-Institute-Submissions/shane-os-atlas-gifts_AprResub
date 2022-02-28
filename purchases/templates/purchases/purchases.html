@@ -58,6 +58,14 @@
         </div>
     </form>
 </div>
+<div id="payment-processing-overlay">
+    <h1 class="processing spinner text-light">
+        <span>
+            <i class="fas fa-spinner fa-pulse"></i>
+        </span>
+        Please do not refresh your page. Your payment is currently being processed.
+    </h1>
+</div>
     {% block postloadjs %}
         {{ block.super }}
         {{ stripe_public_key|json_script:"public_key_id" }}

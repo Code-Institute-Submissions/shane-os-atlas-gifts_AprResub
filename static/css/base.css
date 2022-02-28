@@ -93,3 +93,23 @@ footer {
 .allauth-form {
     margin: 10px;
 }
+
+#payment-processing-overlay {
+    display: none;
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #083d77;
+}
+
+.processing-spinner {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

@@ -40,9 +40,20 @@ stripeForm.addEventListener('submit', function(e){
     console.log('sumbit event')
     stripeCard.update({'disabled': true});
     $('#stripe-submit').attr('disabled', true);
+    $('#delivery-form').fadeToggle(100);
+    $('#payment-processing-overlay').fadeToggle(100);
     stripe.confirmCardPayment(stripeSecretKey, {
         payment_method: {
-            card: stripeCard,
+            card: stripeCard
+            /* payment_details: {
+                name: $.trim(stripeForm.name.value),
+                phone: $.trim(stripeForm.phone.value),
+                email: $.trim(stripeForm.email.value),
+                address_line1: $.trim(stripeForm.address_line1.value),
+                town: $.trim(stripeForm.town.value),
+                postcode: $.trim(stripeForm.postcode.value),
+                country: $.trim(stripeForm.country.value),
+            } */
         }
     }).then(function(result){
         if (result.error) {
@@ -50,6 +61,8 @@ stripeForm.addEventListener('submit', function(e){
             var html = `
                 <span>${result.error.message}</span>`;
             $(errorResponse).html(html);
+            $('#delivery-form').fadeToggle(100);
+            $('#payment-processing-overlay').fadeToggle(100);
             card.update({ 'disabled': false});
             $('#stripe-submit').attr('disabled', false);
         } else {
