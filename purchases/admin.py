@@ -14,11 +14,13 @@ class PurchaseAdmin(admin.ModelAdmin):
     inlines = (LineItemAdminInLine,)
     """ Purchases form administration """
     readonly_fields = ('order_number', 'date', 'pre_discount_total',
-                       'discount', 'final_total')
+                       'discount', 'final_total', 'unique_cart',
+                       'stripe_paymentid',)
 
     fields = ('name', 'phone', 'email', 'address_line1',
               'address_line2', 'address_line3', 'town', 'postcode',
-              'country', 'order_number', 'date', 'pre_discount_total',)
+              'country', 'order_number', 'date', 'pre_discount_total',
+              'unique_cart', 'stripe_paymentid',)
 
     list_display = ('order_number', 'date', 'name', 'email',
                     'pre_discount_total',)

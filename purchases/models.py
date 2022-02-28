@@ -30,6 +30,9 @@ class Purchase(models.Model):
                                    null=False, default=0)
     final_total = models.DecimalField(max_digits=7, decimal_places=2,
                                       null=False, default=0)
+    unique_cart = models.TextField(null=False, blank=False, default='')
+    stripe_paymentid = models.CharField(max_length=254, null=False,
+                                    blank=False, default='')
 
     def _create_order_number(self):
         """ Create unique order number """
