@@ -8,6 +8,7 @@ from .forms import contactform
 
 
 def contact_page(request):
+    """ Site Contact Form """
     if request.method == 'GET':
         form = contactform()
     else:
@@ -21,7 +22,9 @@ def contact_page(request):
                 send_mail(subject, message, 'info@atlasgifts.com', [email],)
             except BadHeaderError:
                 return HttpResponse('Invalid Entry')
-            messages.success(request, "Contact Form Submitted! Thank you fro your message. We will be in touch soon!")
+            messages.success(request,
+                             "Contact Form Submitted! \
+                             Thank you fro your message. We will be in touch soon!")
             return redirect(reverse('home'))
 
     context = {
