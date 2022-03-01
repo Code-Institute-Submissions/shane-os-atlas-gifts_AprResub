@@ -27,35 +27,34 @@ class StripeWebhookHandler:
         payment_id = payment_intent.id
         cart = payment_intent.metadata.cart
         profile_info = payment_intent.metadata.profile_info
-        payment_details = payment_intent.charges.data[0].payment_details
-        delivery_details = payment_intent.delivery_details
+        billing_details = payment_intent.charges.data[0].billing_details
+        shipping = payment_intent.shipping
         grand_total = round(payment_intent.charges.data[0].amount/100, 2)
 
-        for field, value in delivery_details.recipient_address.items():
+        for field, value in shipping.address.items():
             if value == "":
-                delivery_details.recipient_address[field] = None
+                shipping.address[field] = None
 
         purchase_exists = False
         chance = 1
         while chance < 6:
             try:
                 purchase = Purchase.objects.get(
-                    name__iexact=delivery_details.name,
-                    phone__iexact=delivery_details.phone,
-                    email__iexact=payment_details.phone,
-                    address_line1__iexact=delivery_details.address_line1,
-                    address_line2__iexact=payment_details.address_line2,
-                    address_line3__iexact=payment_details.address_line3,
-                    town__iexact=delivery_details.town,
-                    country__iexact=delivery_details.country,
-                    postcode__iexact=delivery_details.postcode,
+                    name__iexact=shipping.name,
+                    phone__iexact=shipping.phone,
+                    email__iexact=billing_details.email,
+                    address_line1__iexact=shipping.address.line1,
+                    address_line2__iexact=billing_details.address.line2,
+                    address_line3__iexact=billing_details.address.state,
+                    town__iexact=shipping.address.city,
+                    country__iexact=shipping.address.country,
+                    postcode__iexact=shipping.address.postal_code,
                     grand_total=grand_total,
                     unique_cart=cart,
                     stripe_paymentid=payment_id,
                 )
                 purchase_exists = True
                 break
-
             except Purchase.DoesNotExist:
                 chance += 1
                 time.sleep(1)
@@ -67,19 +66,19 @@ class StripeWebhookHandler:
             purchase = None
             try:
                 purchase = Purchase.objects.create(
-                    name=delivery_details.name,
-                    phone=delivery_details.phone,
-                    email=payment_details.phone,
-                    address_line1=delivery_details.address_line1,
-                    address_line2=payment_details.address_line2,
-                    address_line3=payment_details.address_line3,
-                    town=delivery_details.town,
-                    country=delivery_details.country,
-                    postcode=delivery_details.postcode,
+                    name=shipping.name,
+                    phone=shipping.phone,
+                    email=billing_details.email,
+                    address_line1=shipping.address.line1,
+                    address_line2=shipping.address.line2,
+                    address_line3=shipping.address.state,
+                    town=shipping.address.city,
+                    country=shipping.address.country,
+                    postcode=shipping.address.postal_code,
                     unique_cart=cart,
                     stripe_paymentid=payment_id,
                 )
-                for gift_id, quantity in json.loads(cart).items:
+                for gift_id, quantity in json.loads(cart).items():
                     gift = Gift.objects.get(id=gift_id)
                     purchase_line_item = LineItem(
                         purchase=purchase,
@@ -91,7 +90,7 @@ class StripeWebhookHandler:
                 if purchase:
                     purchase.delete()
                 return HttpResponse(
-                    response=f'Stripe Unhandled Webhook Received: {event["type"]} | Error {e}',
+                    response=f'Stripe Unhandled Webhook Received: {event["type"]} | Error: {e}',
                     status=500)
 
         return HttpResponse(

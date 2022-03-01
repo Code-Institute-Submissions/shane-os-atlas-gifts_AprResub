@@ -47,7 +47,7 @@ stripeForm.addEventListener('submit', function(e){
     var csrfMark = $('input[name="csrfmiddlewaretoken"]').val();
     var profileData = {
         'csrfmiddlewaretoken': csrfMark,
-        'stripe_secret': stripeSecretKey,
+        'secret_key_id': stripeSecretKey,
         'profile_info': profileInfo,
     };
 
@@ -57,26 +57,29 @@ stripeForm.addEventListener('submit', function(e){
         stripe.confirmCardPayment(stripeSecretKey, {
             payment_method: {
                 card: stripeCard,
-                payment_details: {
+                billing_details: {
                     name: $.trim(stripeForm.name.value),
                     phone: $.trim(stripeForm.phone.value),
                     email: $.trim(stripeForm.email.value),
-                    payee_address: {
-                        address_line1: $.trim(stripeForm.address_line1.value),
-                        town: $.trim(stripeForm.town.value),
-                        postcode: $.trim(stripeForm.postcode.value),
+                    address: {
+                        line1: $.trim(stripeForm.address_line1.value),
+                        line2: $.trim(stripeForm.address_line1.value),
+                        city: $.trim(stripeForm.town.value),
                         country: $.trim(stripeForm.country.value),
+                        state: $.trim(stripeForm.address_line3.value),
                     }
                 }
             },
-            delivery_details: {
+            shipping: {
                     name: $.trim(stripeForm.name.value),
                     phone: $.trim(stripeForm.phone.value),
-                    recipient_address: {
-                        address_line1: $.trim(stripeForm.address_line1.value),
-                        town: $.trim(stripeForm.town.value),
-                        postcode: $.trim(stripeForm.postcode.value),
+                    address: {
+                        line1: $.trim(stripeForm.address_line1.value),
+                        line2: $.trim(stripeForm.address_line2.value),
+                        city: $.trim(stripeForm.town.value),
                         country: $.trim(stripeForm.country.value),
+                        postal_code: $.trim(stripeForm.postcode.value),
+                        state: $.trim(stripeForm.address_line3.value),
                     }
             }
         }).then(function(result){
