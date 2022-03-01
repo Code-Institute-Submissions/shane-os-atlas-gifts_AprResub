@@ -1,7 +1,8 @@
 // Stripe Payments
 var stripePublicKey = $('#public_key_id').text().slice(1,-1);
-var stripeSecretKey = $('#secret_key_id').text().slice(1,-1);
+var stripeSecretKey = $('#client_secret').text().slice(1,-1);
 var stripe = Stripe(stripePublicKey);
+
 var elements = stripe.elements();
 var style  = {
     base: {
@@ -47,7 +48,7 @@ stripeForm.addEventListener('submit', function(e){
     var csrfMark = $('input[name="csrfmiddlewaretoken"]').val();
     var profileData = {
         'csrfmiddlewaretoken': csrfMark,
-        'secret_key_id': stripeSecretKey,
+        'client_secret': stripeSecretKey,
         'profile_info': profileInfo,
     };
 
@@ -90,7 +91,7 @@ stripeForm.addEventListener('submit', function(e){
                 $(errorResponse).html(html);
                 $('#delivery-form').fadeToggle(100);
                 $('#payment-processing-overlay').fadeToggle(100);
-                card.update({ 'disabled': false});
+                stripeCard.update({ 'disabled': false});
                 $('#stripe-submit').attr('disabled', false);
             } else {
                 console.log(result.paymentIntent)

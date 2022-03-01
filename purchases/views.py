@@ -15,7 +15,7 @@ from .models import Purchase, LineItem
 @require_POST
 def purchases_data_cache(request):
     try:
-        payment_id = request.POST.get('secret_key_id').split('_secret')[0]
+        payment_id = request.POST.get('client_secret').split('_secret')[0]
         print(payment_id)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         print(stripe.api_key)
@@ -24,9 +24,9 @@ def purchases_data_cache(request):
             'personal_info': request.POST.get('personal-info'),
             'username': request.user,
         })
-        print(stripe)
         return HttpResponse(status=200)
     except Exception as e:
+        print("EXCEPTION: ", e)
         messages.error(request, "Error! Your payment was not processed! \
             Please try again later.")
         return HttpResponse(content=e, status=400)
