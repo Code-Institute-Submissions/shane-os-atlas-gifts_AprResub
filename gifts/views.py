@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Gift, Category
+from .models import Gift
 from .forms import GiftForm
 
 
@@ -32,15 +32,14 @@ def gifts_list_all(request):
 
         if 'category' in request.GET:
             categorychoice = request.GET['category']
-            # gifts = gifts.filter(category__name__in=categorychoice)
-            # categorychoice = Category.objects.filter(name__in=categorychoice)
             gifts = gifts.filter(category__name=categorychoice)
 
         if 'q' in request.GET:
             searchquery = request.GET['q']
             if not searchquery:
                 return redirect(reverse('gifts'))
-                messages.error(request, "Incorrect search query! Please try again")
+                messages.error(request,
+                               "Incorrect search query! Please try again")
 
             searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
             gifts = gifts.filter(searchqueries)
@@ -91,7 +90,8 @@ def edit_gift(request, gift_id):
             messages.success(request, "Gift information successfully updated!")
             return redirect(reverse('gifts'))
         else:
-            messages.error(request, "Form is not valid. Please check and try again.")
+            messages.error(request,
+                           "Form is not valid. Please check and try again.")
     form = GiftForm(instance=gift)
 
     template = 'gifts/edit_gift.html'
