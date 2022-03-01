@@ -44,10 +44,13 @@ def edit_blog(request, blog_id):
         form = BlogForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            messages.success(request, "Blog successfully updated!")
+            messages.success(request, "Blog successfully \
+                 updated!")
             return redirect(reverse('blog'))
         else:
-            messages.error(request, "Error: Blog update was unsuccessful! Please check the form and try again.")
+            messages.error(request,
+                           "Error: Blog update was unsuccessful! \
+                            Please check the form and try again.")
     form = BlogForm(instance=post)
 
     template = 'blog/blog_post_edit.html'
