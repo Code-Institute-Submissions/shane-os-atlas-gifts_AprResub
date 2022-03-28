@@ -24,7 +24,7 @@ def contact_page(request):
                 return HttpResponse('Invalid Entry')
             messages.success(request,
                              "Contact Form Submitted! \
-                             Thank you fro your message. We will be in touch soon!")
+                             Thank you for your message. We will be in touch soon!")
             return redirect(reverse('home'))
 
     context = {
