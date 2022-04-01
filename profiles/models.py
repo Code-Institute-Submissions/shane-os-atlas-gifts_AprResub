@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from django_countries.fields import CountryField
 
 class UserAccount(models.Model):
     """ User Profile Saved Details """
@@ -17,7 +18,7 @@ class UserAccount(models.Model):
                                               null=True, blank=True)
     official_town = models.CharField(max_length=100, null=True, blank=True)
     official_postcode = models.CharField(max_length=20, null=True, blank=True)
-    official_country = models.CharField(max_length=20, null=True, blank=True)
+    official_country = CountryField(blank_label='* Country', null=False, blank=False)
 
     def __str__(self):
         return str(self.profile)
