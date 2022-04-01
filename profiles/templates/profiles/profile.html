@@ -8,11 +8,19 @@
     <H1>Profile</H1>
     <div class="d-flex card border-primary mb-3 text-center">
         <h3>Welcome to your personal space on Atlas Gifts!</h3>
-        <div class="row">
+        {% if request.user.is_authenticated %}
+          <div class="row">
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
                   <h3 class="card-title">Personal Information</h3>
+                  {{ profile }}
+                  <!--
+                  <form action="{% url 'profile' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                  </form>
+                  -->
                   <a href="#" class="btn btn-primary">Edit Details</a>
                 </div>
               </div>
@@ -25,6 +33,7 @@
               </div>
             </div>
           </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

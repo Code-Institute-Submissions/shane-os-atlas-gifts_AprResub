@@ -6,9 +6,10 @@ from django.dispatch import receiver
 
 from django_countries.fields import CountryField
 
+
 class UserAccount(models.Model):
     """ User Profile Saved Details """
-    profile = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     official_phone = models.CharField(max_length=15, null=True, blank=True)
     official_address_line1 = models.CharField(max_length=100,
                                               null=True, blank=True)
@@ -21,13 +22,12 @@ class UserAccount(models.Model):
     official_country = CountryField(blank_label='* Country', null=False, blank=False)
 
     def __str__(self):
-        return str(self.profile)
+        return self.user.username
 
 
-"""
 @receiver(post_save, sender=User)
 def new_update_profile_info(sender, instance, new, **kwargs):
     if new:
-        UserAccount.objects.create(profile=instance)
-    instance.UserAccount.save()
-"""
+        UserAccount.objects.create(user=instance)
+    instance.useraccount.save()
+
