@@ -26,8 +26,7 @@ class UserAccount(models.Model):
 
 
 @receiver(post_save, sender=User)
-def new_update_profile_info(sender, instance, new, **kwargs):
-    if new:
+def new_update_profile_info(sender, instance, created, **kwargs):
+    if created:
         UserAccount.objects.create(user=instance)
     instance.useraccount.save()
-
