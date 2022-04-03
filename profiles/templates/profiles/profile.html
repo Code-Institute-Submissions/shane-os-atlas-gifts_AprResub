@@ -26,7 +26,15 @@
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
-                  <h3 class="card-title">Order History</h3>
+                  <h3 class="card-title">Purchase History</h3>
+                  {% for purchase in past_purchases %}
+                    <ul>
+                      <li class="list-group-item">Order: {{ purchase.order_number }}</li>
+                      <li class="list-group-item">Date: {{ purchase.date }}</li>
+                      <li class="list-group-item">Amount: € {{ purchase.final_total }}</li>
+                    </ul>
+                    <br>
+                  {% endfor %}
                 </div>
               </div>
             </div>

@@ -1,13 +1,15 @@
 """ Purchases app views """
+import json
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-
 import stripe
-import json
+
 from cart.context import cart_items
 from gifts.models import Gift
+from profiles.forms import UserAccountForm
+from profiles.models import UserAccount
 from .forms import PurchaseForm
 from .models import Purchase, LineItem
 
@@ -132,11 +134,33 @@ def purchases(request):
 def purchases_success(request, order_number):
     """ Display payment confirmation page """
     personal_info = request.session.get('personal-info')
+    print(personal_info)
     customer_order = get_object_or_404(Purchase, order_number=order_number)
+    print(customer_order)
     messages.success(request, f'Your order was successful! \
                     Order Number: {order_number}.')
     if 'cart' in request.session:
         del request.session['cart']
+
+    if request.user.is_authenticated:
+        profile = UserAccount.objects.get(user=request.user)
+        print(profile)
+        customer_order.account_profile = profile
+        customer_order.save()
+
+        if personal_info:
+            delivery_info = {
+                'official_phone': customer_order.phone,
+                'official_address_line1': customer_order.address_line1,
+                'official_address_line2': customer_order.address_line2,
+                'official_address_line3': customer_order.address_line3,
+                'official_town': customer_order.town,
+                'official_postcode': customer_order.postcode,
+                'official_country': customer_order.country,
+            }
+            user_profile_info = UserAccountForm(delivery_info, instance=profile)
+            if user_profile_info.is_valid():
+                user_profile_info.save()
 
     template = 'purchases/purchases_success.html'
     context = {
