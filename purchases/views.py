@@ -116,7 +116,27 @@ def purchases(request):
         )
 
         print(payment_intent)
-        purchase_form = PurchaseForm()
+
+        if request.user.is_authenticated:
+            try:
+                info = UserAccount.objects.get(user=request.user)
+                print(1)
+                purchase_form = PurchaseForm(initial={
+                    'name': info.user.get_short_name(),
+                    'phone': info.official_phone,
+                    'email': info.user.email,
+                    'address_line1': info.official_address_line1,
+                    'address_line2': info.official_address_line2,
+                    'address_line3': info.official_address_line3,
+                    'town': info.official_town,
+                    'postcode': info.official_postcode,
+                    'country': info.official_country,
+                })
+            except UserAccount.DoesNotExist:
+                print(2)
+                purchase_form = PurchaseForm()
+        else:
+            purchase_form = PurchaseForm()
 
     if not stripe_public_key:
         messages.warning(request, 'The Stripe public key is not present!')
