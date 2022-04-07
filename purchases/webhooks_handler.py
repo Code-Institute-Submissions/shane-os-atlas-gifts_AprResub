@@ -4,6 +4,7 @@ import time
 from django.http import HttpResponse
 from gifts.models import Gift
 from .models import Purchase, LineItem
+from profiles.models import UserAccount
 
 
 class StripeWebhookHandler:
@@ -34,6 +35,20 @@ class StripeWebhookHandler:
         for field, value in shipping.address.items():
             if value == "":
                 shipping.address[field] = None
+
+        account = None
+        username = payment_intent.metadata.username
+        if username != 'Anonymous':
+            account = UserAccount.objects.get(user=username)
+            if profile_info:
+                account.official_phone = shipping.phone
+                account.official_address_line1 = shipping.address.line1
+                account.official_address_line2 = billing_details.address.line2
+                account.official_address_line3 = billing_details.address.state
+                account.official_town = shipping.address.city
+                account.official_country = shipping.address.country
+                account.official_postcode = shipping.address.postal_code
+                account.save()
 
         purchase_exists = False
         chance = 1
@@ -67,6 +82,7 @@ class StripeWebhookHandler:
             try:
                 purchase = Purchase.objects.create(
                     name=shipping.name,
+                    account_profile=account,
                     phone=shipping.phone,
                     email=billing_details.email,
                     address_line1=shipping.address.line1,
