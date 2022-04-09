@@ -2,15 +2,28 @@
 import json
 import time
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 from gifts.models import Gift
-from .models import Purchase, LineItem
 from profiles.models import UserAccount
+from .models import Purchase, LineItem
 
 
 class StripeWebhookHandler:
     """ Stripe Webhooks"""
     def __init__(self, request):
         self.request = request
+
+    def _send_order_email(self, purchase):
+        purchaser_email = purchase.email
+        subject = render_to_string(
+            'purchases/order_emails/order_email_subject.txt',
+            {'purchase': purchase})
+        body = render_to_string(
+            'purchases/order_emails/order_email_body.txt',
+            {'purchase': purchase})
+        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [purchaser_email])
 
     def handle_event(self, event):
         """ Unexpected event handling """
@@ -74,6 +87,7 @@ class StripeWebhookHandler:
                 chance += 1
                 time.sleep(1)
         if purchase_exists:
+            self._send_order_email(purchase)
             return HttpResponse(
                 response=f'Stripe Webhook Received: {event["type"]}| Order already exists in Database',
                 status=200)
@@ -109,6 +123,7 @@ class StripeWebhookHandler:
                     response=f'Stripe Unhandled Webhook Received: {event["type"]} | Error: {e}',
                     status=500)
 
+        self._send_order_email(purchase)
         return HttpResponse(
             response=f'Stripe Unhandled Webhook Received: {event["type"]} | Order Created',
             status=200

@@ -1,0 +1,26 @@
+Hi {{ purchase.name }},
+
+Thank you for your recent order at Atlas Gifts! As a small business we are grateful for any custom we receive.
+
+Your order details were as follows:
+
+Order Date: {{ purchase.date }}
+Order Number: {{ purchase.order_number }}
+Total: {{ purchase.final_total }}
+
+Delivery Address:
+
+{{ purchase.address_line1 }}
+{{ purchase.address_line2 }}
+{{ purchase.address_line3 }}
+{{ purchase.town }}
+{{ purchase.postcode }}
+{{ purchase.country }}
+
+
+Your order is currently being processed. We aim to deliver within 3-5 days of an order being placed.
+
+If you have any questions please contact us at: 
+
+Kind Regards,
+Atlas Gifts.
