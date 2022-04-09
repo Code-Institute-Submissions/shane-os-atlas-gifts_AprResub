@@ -96,6 +96,12 @@
                 <h5>€ {{ grandtotal }}</h5>
               </div>
             </div>
+            {% if total < 100 %}
+            <div class="row">
+              <p>Spend €{{ total_discount_difference }} more to receive a 10% discount on your order!</p>
+              <p><small>Note: Delivery charges do not count towards the discount threshold of €100.</small></p>
+            </div>
+            {% endif %}
           </div>
           <div class="row">
             <div class="col">
