@@ -7,8 +7,8 @@
 {% if request.user.is_authenticated %}
 {% if request.user.is_superuser %}
 <div>
-  <h2 class="text-center">Create New Entry</h2>
-  <a class="btn btn-success" href="{% url 'create_post' %}" role="button">Write a New Post!</a>
+  <h2 class="text-center">Create New Entry <a class="btn btn-success" href="{% url 'create_post' %}" role="button">Write a New Post! <i class="fa fa-pencil-square" aria-hidden="true"></i></a></h2>
+  
 </div>
 {% endif %}
 {% endif %}
@@ -23,8 +23,7 @@
     {% if request.user.is_superuser %}
       <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#blogEditModal-{{ post.id }}">Edit</button>
-          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post!</a>
+          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
           <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -48,7 +47,7 @@
           </div>
         </div>
         <div class="col">
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete</button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
         </div>
       </div>
       <div class="modal fade" id="deleteBlog" role="dialog">
