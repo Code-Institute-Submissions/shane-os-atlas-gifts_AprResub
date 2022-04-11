@@ -8,4 +8,4 @@ class BlogForm(forms.ModelForm):
     class Meta:
 
         model = Post
-        fields = ('title', 'body', 'created_by',)
+        fields = ('title', 'body', 'created_by', 'image_url', 'image')

@@ -14,10 +14,17 @@
 {% endif %}
 {% for post in posts %}
   <div class="d-flex card border-primary mb-3 text-center blog-post">
+    {% if post.image %}
+      <a href="{{ post.image_url }}" target="_blank">
+          <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+      </a>
+    {% else %}
+      <img class="card-img-top" src="{{ post.image_url }}" alt="{{ gift.title }}"> 
+    {% endif %}
     <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text"><small class="text-muted">Posted on {{ post.posted_date }} by {{ post.created_by }}</small></p>
       <p class="card-text">{{ post.body }}</p>
-      <p class="card-text"><small class="text-muted">{{ post.posted_date }}</small></p>
     </div>
     {% if request.user.is_authenticated %}
     {% if request.user.is_superuser %}
