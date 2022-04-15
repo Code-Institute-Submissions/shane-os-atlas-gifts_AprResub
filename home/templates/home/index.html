@@ -17,6 +17,20 @@
           <p>Happy Shopping</p>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <form method="GET" action="{% url 'gifts' %}">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     {% for welcome in welcomes %}
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
