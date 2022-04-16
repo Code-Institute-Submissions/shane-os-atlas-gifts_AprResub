@@ -4,11 +4,23 @@
 
 {% block content %}
 <div class="overlay"></div>
+
+<h2 class="text-center">Blog Posts</h2>
+<div class="dropdown">
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=asc">Newest To Oldest</a>
+    <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=desc">Oldest To Newest</a>
+    <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=asc">Alphabetical (A To Z)</a>
+    <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=desc">Alphabetical (Z To A)</a>
+  </div>
+</div>
 {% if request.user.is_authenticated %}
 {% if request.user.is_superuser %}
 <div>
   <h2 class="text-center">Create New Entry <a class="btn btn-success" href="{% url 'create_post' %}" role="button">Write a New Post! <i class="fa fa-pencil-square" aria-hidden="true"></i></a></h2>
-  
 </div>
 {% endif %}
 {% endif %}
@@ -30,7 +42,15 @@
     {% if request.user.is_superuser %}
       <div class="row">
         <div class="col">
-          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="Edit group">
+              <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </div>
+            <div class="btn-group mr-2" role="group" aria-label="Delete group">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
           <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -52,10 +72,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
-        </div>
+          
       </div>
       <div class="modal fade" id="deleteBlog" role="dialog">
         <div class="modal-dialog" role="document">

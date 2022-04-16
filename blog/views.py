@@ -4,14 +4,35 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from blog.models import Post
 from blog.forms import BlogForm
+from django.db.models import Q
+from django.db.models.functions import Lower
 
 
 def blog_show(request):
-    """ Sow All Blog Posts """
-    posts = Post.objects.all().order_by('posted_date')
+    """ Show All Blog Posts """
+    posts = Post.objects.all()
+    sortchoice = None
+    direction = None
+
+    if request.GET:
+        if 'sort' in request.GET:
+            sortchoice = request.GET['sort']
+            sort = sortchoice
+            if sortchoice == 'title':
+                sortchoice = 'lower_title'
+                posts = posts.annotate(lower_title=Lower('title'))
+
+        if 'direction' in request.GET:
+            direction = request.GET['direction']
+            if direction == 'desc':
+                sortchoice = f'-{sort}'
+            posts = posts.order_by(sortchoice)
+
+    sort_choice = f'{sortchoice}_{direction}'
 
     context = {
         "posts": posts,
+        "sort_choice": sort_choice,
     }
 
     return render(request, "blog/blog.html", context)
