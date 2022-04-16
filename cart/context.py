@@ -10,6 +10,7 @@ def cart_items(request):
     select_gifts = []
     gift_count = 0
     subtotal = 0
+    total_discount_difference = 0
     cart = request.session.get('cart', {})
 
     for gift_id, quantity in cart.items():
