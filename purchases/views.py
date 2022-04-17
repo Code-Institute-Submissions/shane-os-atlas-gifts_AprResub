@@ -60,7 +60,6 @@ def purchases(request):
         }
         purchase_form = PurchaseForm(data)
         if purchase_form.is_valid():
-            print('8')
             purchase = purchase_form.save(commit=False)
             payment_id = request.POST.get('client_secret').split('_secret')[0]
             purchase.stripe_paymentid = payment_id
@@ -94,7 +93,6 @@ def purchases(request):
             return redirect(reverse('purchases_success',
                                     args=[purchase.order_number]))
         else:
-            print('8')
             messages.error(request, "Error! Form filled in incorrectly!")
     else:
         print('12')
@@ -158,7 +156,7 @@ def purchases_success(request, order_number):
     customer_order = get_object_or_404(Purchase, order_number=order_number)
     print(customer_order)
     messages.success(request, f'Your order was successful! \
-                    Order Number: {order_number}.')
+                    Order Number: {order_number}. Your receipt will be sent to {customer_order.email}')
     if 'cart' in request.session:
         del request.session['cart']
 
