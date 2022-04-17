@@ -14,14 +14,13 @@
         <div class="card-header">Delivery & Payment Form</div>
         <div class="card-body">
             <h5 class="card-title text-primary">Please enter your details below</h5>
+            <p class="text-danger"><small>Fields marked with a * are required</small></p>
             <fieldset class="rounded">
-                <legend class="fieldset-label small text-black w-auto">Contact Details</legend>
                 {{ purchase_form.name | as_crispy_field }}
                 {{ purchase_form.phone | as_crispy_field }}
                 {{ purchase_form.email | as_crispy_field }}
             </fieldset>
             <fieldset class="rounded">
-                <legend class="fieldset-label small text-black w-auto">Address</legend>
                 {{ purchase_form.address_line1 | as_crispy_field }}
                 {{ purchase_form.address_line2 | as_crispy_field }}
                 {{ purchase_form.address_line3 | as_crispy_field }}
@@ -49,11 +48,11 @@
                 <input type="hidden" value="{{ client_secret }}" name="client_secret">
             </fieldset>
             <div>
-                <p><strong>Amount to Pay: €{{ grandtotal }}</strong> (incl. delivery charge)</p>
+                <p><strong>Amount to Pay: €{{ grandtotal }}</strong><small> (incl. delivery charge)</small></p>
             </div>
             <fieldset class="px-3">
-                <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                <button type="submit" id="stripe-submit" class="btn btn-md btn-primary">Pay Now</button>
+                <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                <button type="submit" id="stripe-submit" class="btn btn-md btn-primary">Pay Now <i class="fa fa-credit-card" aria-hidden="true"></i></button>
             </fieldset>
         </div>
     </form>
