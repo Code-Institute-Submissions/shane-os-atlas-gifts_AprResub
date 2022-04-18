@@ -7,16 +7,23 @@
   <div class="overlay"></div>
   {% if request.user.is_authenticated %}
   {% if request.user.is_superuser %}
-    <div>
-      <h2>Edit Post</h2>
-      <p>Notes: Try to be fun,interesting & creative</p>
+  <div class="card admin-form">
+    <div class="card-header bg-success text-white">
+      <h2 class="text-center">Edit Post</h2>
+    </div>
+    <div class="card-body">
       <form method="POST" action="{% url 'edit_blog' blog_id=post.id %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.title | as_crispy_field }}
+        {{ form.body | as_crispy_field }}
+        {{ form.created_by | as_crispy_field }}
+        {{ form.image_url | as_crispy_field }}
+        {{ form.image | as_crispy_field }}
         <a href="{% url 'blog' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
         <button type="submit" class="btn btn-primary">Update Post</button>
       </form>
     </div>
+  </div>
   {% endif %}
   {% endif %}
 {% endblock %}

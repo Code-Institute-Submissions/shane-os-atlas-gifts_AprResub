@@ -107,6 +107,12 @@ footer {
     border: 1px solid #C41C1F;
 }
 
+.admin-form {
+    top: 5px;
+    bottom: 5px;
+    margin: auto;
+    width: 70%;
+}
 .contact-form {
     top: 5px;
     bottom: 5px;
