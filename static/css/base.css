@@ -107,6 +107,13 @@ footer {
     border: 1px solid #C41C1F;
 }
 
+.contact-form {
+    top: 5px;
+    bottom: 5px;
+    margin: auto;
+    width: 60%;
+}
+
 .allauth-form {
     margin: 10px;
 }
