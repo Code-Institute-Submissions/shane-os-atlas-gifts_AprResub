@@ -21,6 +21,15 @@ body {
     opacity: 0.75;
 }
 
+.finalrow {
+    text-align:center;
+}
+.summarytable {
+    width: 50%;
+    margin: auto;
+    border: 2px black;
+}
+
 footer {
     background-color: #083d77;
     text-align: center;
@@ -58,7 +67,6 @@ footer {
 
 .btn {
     border-radius: 10px;
-    padding: 10px;
     color: white;
 }
 
@@ -87,7 +95,6 @@ footer {
 .order-summary {
     margin: auto;
     width: 50%;
-    padding: 5px;
     border: 1px solid #C41C1F;
 }
 
@@ -118,7 +125,6 @@ footer {
 .blog-post {
     margin: auto;
     width: 75%;
-    padding: 5px;
 }
 
 @media only screen and (max-width: 600px) {

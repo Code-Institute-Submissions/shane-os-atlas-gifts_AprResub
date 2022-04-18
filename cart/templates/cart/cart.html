@@ -9,110 +9,114 @@
 <h1 class="text-center">Your Shopping Cart</h1>
 
 {% if select_gifts %}
-      <div>
-        <card id="#shopping-cart">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Gift ID</th>
-                <th scope="col">Gift Item</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Unit Price €</th>
-                <th scope="col">Subtotal €</th>
-              </tr>
-            </thead>
-            {% for gift in select_gifts %}
-            <tbody>
-              <tr>
-                <th class="p-3 w-20" scope="row">{{ gift.gift.sku }}</th>
-                <td class="p-3 w-30">{{ gift.gift.name }}</td>
-                <td class="p-3 w-20">
-                  <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                          <button type="button" class="decrease-id_quantity btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.giftid }}" id="decrease-id_quantity_{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+      <div class="row">
+        <div class="col">
+          <card id="#shopping-cart">
+            <div class="table-responsive rounded">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Gift ID</th>
+                    <th scope="col"></th>
+                    <th scope="col">Gift Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price €</th>
+                    <th scope="col">Subtotal €</th>
+                  </tr>
+                </thead>
+                {% for gift in select_gifts %}
+                <tbody>
+                  <tr>
+                    <th class="p-3 w-15" scope="row">{{ gift.gift.sku }}</th>
+                    <td class="p-3 w-25">
+                      {% if gift.gift.image %}
+                        <img class="img-fluid rounded" src="{{ gift.gift.image.url }}" alt="{{ gift.gift.image_url }}">
+                      {% else %}
+                        <img class="img-fluid rounded" src="{{ gift.gift.image_url }}" alt="{{ gift.gift.image_url }}">
+                      {% endif %}
+                    </td>
+                    <td class="p-3 w-15">{{ gift.gift.name }}</td>
+                    <td class="p-3 w-20">
+                      <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.giftid }}" id="decrease-id_quantity_{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                          </div>
+                          <input class="text-center form control qty-input" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" id="id_quantity_{{ gift.id }}">
+                          <div class="input-group-append">
+                              <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.giftid }}" id="increase-id_quantity_{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                          </div>
                       </div>
-                      <input class="text-center form control qty-input" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" id="id_quantity_{{ gift.id }}">
-                      <div class="input-group-append">
-                          <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.giftid }}" id="increase-id_quantity_{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                      </div>
-                  </div>
-                  </form>
-                  <a class=" update-quantity btn btn-secondary float-left qty-edit">Update Quantity</a>
-                  <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
-                </td>
-                <td class="p-3 w-15">{{ gift.gift.price}}</td>
-                <td class="p-3 w-15">{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
-              </tr>
-            </tbody>
-            {% endfor %}
-          </table>
-        </card>
-      </div>
-      <div class="order-summary">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="text-center">Order Summary</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h5>Your Subtotal:</h5>
-              </div>
-              <div class="col">
-                <h5>€ {{ subtotal }}</h5>
-              </div>
+                      </form>
+                      <a class=" update-quantity btn btn-secondary float-left qty-edit">Update Quantity</a>
+                      <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
+                    </td>
+                    <td class="p-3 w-15">{{ gift.gift.price}}</td>
+                    <td class="p-3 w-15">{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
             </div>
-            <div class="row">
-              <div class="col">
-                <h5>Discount: </h5>
-              </div>
-              <div class="col">
-                <h5>- € {{ discount_amount }}</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h5>Total: </h5>
-              </div>
-              <div class="col">
-                <h5>€ {{ total }}</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h5>Delivery Charge: </h5>
-              </div>
-              <div class="col">
-                <h5>+ € {{ delivery|floatformat:2  }}</h5>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h5>Payable Amount: </h5>
-              </div>
-              <div class="col">
-                <h5>€ {{ grandtotal }}</h5>
-              </div>
-            </div>
-            {% if total < 100 %}
-            <div class="row">
-              <p>Spend €{{ total_discount_difference }} more to receive a 10% discount on your order!</p>
-              <p><small>Note: Delivery charges do not count towards the discount threshold of €100.</small></p>
-            </div>
-            {% endif %}
-          </div>
-          <div class="row">
-            <div class="col">
-              <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping<i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-            </div>
-            <div class="col">
-                <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-            </div>
-          </div>
+          </card>
         </div>
       </div>
+      <table class="table table-striped summarytable">
+        <caption>*Note: Delivery charges do not count towards the discount threshold of €100.</caption>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col w-70">Order Summary</th>
+            <th scope="col w-10"></th>
+            <th scope="col w-20">€</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Subtotal:</td>
+            <td></td>
+            <td>{{ subtotal }}</td>
+          </tr>
+          <tr>
+            <td>Less Discount:</td>
+            <td><strong>-</strong></td>
+            <td><u>{{ discount_amount|floatformat:2 }}</u></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td>{{ total }}</td>
+          </tr>
+          <tr>
+            <td>Delivery Charge*</td>
+            <td><strong>+</strong></td>
+            <td><u>{{ delivery|floatformat:2  }}</u></td>
+          </tr>
+          <tr>
+            <td><strong>Amount To Pay</strong></td>
+            <td></td>
+            <td><strong>{{ grandtotal }}</strong></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="finalrow">
+              {% if subtotal < 100 %}
+              <div class="row">
+                <p>Spend <strong>€{{ total_discount_difference }}</strong> more to receive a 10% discount on your order!</p>
+              {% endif %}
+              </div>
+              <div class="row justify-content-center">
+                <div class="p-3 col">
+                    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                    <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+    </div>
     {% else %}
       <div class="card bg-light">
         <div class="card-header">Hello!</div>
