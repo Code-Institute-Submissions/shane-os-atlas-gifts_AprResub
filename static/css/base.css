@@ -71,6 +71,7 @@ footer {
 }
 
 #delivery-card {
+    top: 5px;
     margin: auto;
     margin-left: 20%;
     margin-right: 20%;
