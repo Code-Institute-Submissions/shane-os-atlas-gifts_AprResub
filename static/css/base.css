@@ -92,6 +92,14 @@ footer {
     top: 0px;
 }
 
+.reasons {
+    background-color: #ffffff;
+}
+
+.home-icons {
+    padding: 30px;
+}
+
 .order-summary {
     margin: auto;
     width: 50%;
