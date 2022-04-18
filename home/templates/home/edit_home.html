@@ -7,15 +7,20 @@
   <div class="overlay"></div>
   {% if request.user.is_authenticated %}
   {% if request.user.is_superuser %}
-    <div>
-      <h2>Edit Home Page Content</h2>
+  <div class="card admin-form">
+    <div class="card-header bg-primary text-white">
+      <h2 class="text-center">Edit Home Page Content</h2>
+    </div>
+    <div class="card-body">
       <form method="POST" action="{% url 'edit_home' home_id=welcome.id %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.title | as_crispy_field }}
+        {{ form.main_text | as_crispy_field }}
         <a href="{% url 'home' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Update</button>
       </form>
     </div>
+  </div>
   {% endif %}
   {% endif %}
 {% endblock %}
