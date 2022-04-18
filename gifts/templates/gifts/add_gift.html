@@ -4,24 +4,27 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container-fluid text-center px-5">
-    <H1>Gifts</H1>
-    <h3>Add the next great gift to be sold below!</h3>
-    <div class="row">
-        <div class="col justify-content-center">
-            <div class="card w-50 border-dark mb-2">
-                <form method="POST" action="{% url 'add_gift' %}" enctype="multipart/form-data">
-                    <fieldset class="px-3">
-                        {% csrf_token %}
-                        {{ form | crispy }}
-                    </fieldset>
-                    <a href="{% url 'gifts' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Add Gift</button>
-                </form>
-            </div>
-        </div>
+<div class="card admin-form">
+    <div class="card-header bg-dark text-white">
+      <h2 class="text-center">Add New Product</h2>
     </div>
-</div>
+    <div class="card-body">
+        <p class="text-center">Add the next great gift to be sold below!</p>
+        <form method="POST" action="{% url 'add_gift' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.category | as_crispy_field }}
+        {{ form.sku | as_crispy_field }}
+        {{ form.name | as_crispy_field }}
+        {{ form.description | as_crispy_field }}
+        {{ form.price | as_crispy_field }}
+        {{ form.weight | as_crispy_field }}
+        {{ form.image_url | as_crispy_field }}
+        {{ form.image | as_crispy_field }}
+        <a href="{% url 'gifts' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
 <!-- Gift Items displayed in Card Form //-->
 
 {% endblock %}

@@ -26,4 +26,24 @@
         </div>
     </div>
 </div>
+<div class="card admin-form">
+    <div class="card-header bg-dark text-white">
+      <h2 class="text-center">Edit Product</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{% url 'edit_gift' gift.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.category | as_crispy_field }}
+        {{ form.sku | as_crispy_field }}
+        {{ form.name | as_crispy_field }}
+        {{ form.description | as_crispy_field }}
+        {{ form.price | as_crispy_field }}
+        {{ form.weight | as_crispy_field }}
+        {{ form.image_url | as_crispy_field }}
+        {{ form.image | as_crispy_field }}
+        <a href="{% url 'gifts' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}
