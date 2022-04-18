@@ -136,6 +136,10 @@ footer {
     width: 75%;
 }
 
+.blog-image {
+    height: 70vh;
+}
+
 @media only screen and (max-width: 600px) {
     .blog-post {
         margin: auto;
