@@ -47,7 +47,7 @@
                           <div class="input-group-append">
                               <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.giftid }}" id="increase-id_quantity_{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
                           </div>
-                      </div>
+                        </div>
                       </form>
                       <a class=" update-quantity btn btn-secondary float-left qty-edit">Update Quantity</a>
                       <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
@@ -114,19 +114,18 @@
           </tr>
         </tbody>
       </table>
-      
-      
     </div>
     {% else %}
-      <div class="card bg-light">
-        <div class="card-header">Hello!</div>
-          <div class="card-body">
-            <h5 class="card-title">Your Cart is Empty!</h5>
-            <p class="card-text">Click on your cart below to see our amazing Gift Range!</p>
-            <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-          </div>
+    <div class="row">
+      <div class="card admin-form">
+        <div class="card-header text-white bg-primary text-center">Atlas Gifts Blog</div>
+        <div class="card-body text-center">
+          <h5 class="card-title text-center">Your Cart is Empty!</h5>
+          <p class="card-text text-center">Click on your cart below to see our amazing Gift Range!</p>
+          <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true">Continue Shopping <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
         </div>
       </div>
+    </div>
     {% endif %}
 {% endblock %}
 
