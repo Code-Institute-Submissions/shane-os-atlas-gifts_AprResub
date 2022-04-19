@@ -6,18 +6,19 @@
 <div class="overlay"></div>
 <div class="row">
   <div class="col">
-    <h2 class="text-center">Atlas Gifts Blog Posts</h2>
-    <div class="dropdown">
-      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Sort By
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=asc">Newest To Oldest</a>
-        <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=desc">Oldest To Newest</a>
-        <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=asc">Alphabetical (A To Z)</a>
-        <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=desc">Alphabetical (Z To A)</a>
+    <h2 class="text-center">Atlas Gifts Blog Posts
+      <div class="dropdown">
+        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=desc">Newest To Oldest</a>
+          <a class="dropdown-item" href="{% url 'blog' %}?sort=posted_date&direction=asc">Oldest To Newest</a>
+          <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=asc">Alphabetical (A To Z)</a>
+          <a class="dropdown-item" href="{% url 'blog' %}?sort=title&direction=desc">Alphabetical (Z To A)</a>
+        </div>
       </div>
-    </div>
+    </h2>
   </div>
 </div>
 {% if request.user.is_authenticated %}
@@ -31,73 +32,73 @@
   <div class="d-flex card border-primary mb-3 text-center blog-post">
     <div class="card-header text-left">
       <h1 class="card-title">{{ post.title }}</h1>
-      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group" role="group" aria-label="Edit group">
-          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
+      {% if request.user.is_authenticated %}
+      {% if request.user.is_superuser %}
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group" role="group" aria-label="Edit group">
+            <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </div>
+          <div class="btn-group mr-2" role="group" aria-label="Delete group">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
         </div>
-        <div class="btn-group mr-2" role="group" aria-label="Delete group">
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+        <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="modal fade" id="deleteBlog" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title text-center" id="deleteBlog">Warning!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <p><strong>Are you sure that you wish to delete the following blog?</strong></p>
+                <p class="text-center">(Once deleted, it can not be reversed!)</p>
+                <h2>{{ post.title }}</h2>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endif %}
       <p class="card-text"><small class="text-muted">Posted on {{ post.posted_date }} by {{ post.created_by }}</small></p>
     </div>
-    {% if request.user.is_authenticated %}
-    {% if request.user.is_superuser %}
-      <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
-              </form>
-            </div>
-          </div>
-        </div>
+    {% if post.image %}
+      <a href="{{ post.image_url }}" target="_blank">
+          <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+      </a>
+    {% elif post.image_url %}
+      <img class="card-img-top blog-image" src="{{ post.image_url }}" alt="{{ gift.title }}">
+    {% else %}
+    {% endif %}
+      <div class="card-body">
+        <p class="card-text">{{ post.body }}</p>
       </div>
-      <div class="modal fade" id="deleteBlog" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title text-center" id="deleteBlog">Warning!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body text-center">
-              <p><strong>Are you sure that you wish to delete the following blog?</strong></p>
-              <p class="text-center">(Once deleted, it can not be reversed!)</p>
-              <h2>{{ post.title }}</h2>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-      {% endif %}
-        
-      {% if post.image %}
-        <a href="{{ post.image_url }}" target="_blank">
-            <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
-        </a>
-      {% else %}
-        <img class="card-img-top blog-image" src="{{ post.image_url }}" alt="{{ gift.title }}"> 
-      {% endif %}
-        <div class="card-body">
-          <p class="card-text">{{ post.body }}</p>
-        </div>
   </div>
   {% empty %}
     <div class="row">
