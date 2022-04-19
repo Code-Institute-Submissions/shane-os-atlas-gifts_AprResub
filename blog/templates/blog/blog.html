@@ -30,85 +30,85 @@
 {% for post in posts %}
   <div class="d-flex card border-primary mb-3 text-center blog-post">
     <div class="card-header text-left">
-      <h1 class="card-title">{{ post.title }}
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group" role="group" aria-label="Edit group">
-            <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
-          </div>
-          <div class="btn-group mr-2" role="group" aria-label="Delete group">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
-          </div>
+      <h1 class="card-title">{{ post.title }}</h1>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="Edit group">
+          <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
         </div>
-      </h1>
+        <div class="btn-group mr-2" role="group" aria-label="Delete group">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>
+      </div>
       <p class="card-text"><small class="text-muted">Posted on {{ post.posted_date }} by {{ post.created_by }}</small></p>
-    </div>
-    {% if post.image %}
-      <a href="{{ post.image_url }}" target="_blank">
-          <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
-      </a>
-    {% else %}
-      <img class="card-img-top blog-image" src="{{ post.image_url }}" alt="{{ gift.title }}"> 
-    {% endif %}
-    <div class="card-body">
-      <p class="card-text">{{ post.body }}</p>
     </div>
     {% if request.user.is_authenticated %}
     {% if request.user.is_superuser %}
-    <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="deleteBlog" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title text-center" id="deleteBlog">Warning!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <p><strong>Are you sure that you wish to delete the following blog?</strong></p>
-            <p class="text-center">(Once deleted, it can not be reversed!)</p>
-            <h2>{{ post.title }}</h2>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
+      <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    {% endif %}
-    {% endif %}
+      <div class="modal fade" id="deleteBlog" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title text-center" id="deleteBlog">Warning!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <p><strong>Are you sure that you wish to delete the following blog?</strong></p>
+              <p class="text-center">(Once deleted, it can not be reversed!)</p>
+              <h2>{{ post.title }}</h2>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endif %}
+        
+      {% if post.image %}
+        <a href="{{ post.image_url }}" target="_blank">
+            <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+        </a>
+      {% else %}
+        <img class="card-img-top blog-image" src="{{ post.image_url }}" alt="{{ gift.title }}"> 
+      {% endif %}
+        <div class="card-body">
+          <p class="card-text">{{ post.body }}</p>
+        </div>
   </div>
   {% empty %}
-  <div class="row">
-    <div class="card admin-form">
-      <div class="card-header text-white bg-primary text-center">Atlas Gifts Blog</div>
-      <div class="card-body">
-        <h5 class="card-title text-center">We're Sorry...</h5>
-        <p class="card-text text-center">We have deleted our older content and are in the process of writing new articles</p>
-        <p class="card-text text-center">We hope to have some new content very soon!</p>
+    <div class="row">
+      <div class="card admin-form">
+        <div class="card-header text-white bg-primary text-center">Atlas Gifts Blog</div>
+        <div class="card-body">
+          <h5 class="card-title text-center">We're Sorry...</h5>
+          <p class="card-text text-center">We have deleted our older content and are in the process of writing new articles</p>
+          <p class="card-text text-center">We hope to have some new content very soon!</p>
+        </div>
       </div>
     </div>
-  </div>
 {% endfor %}
 {% endblock %}
