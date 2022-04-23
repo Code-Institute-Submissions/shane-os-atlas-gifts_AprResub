@@ -39,49 +39,7 @@
             <a class="btn btn-success" href="{% url 'edit_blog' blog_id=post.id %}" role="button">Edit this Post! <i class="fa fa-pencil" aria-hidden="true"></i></a>
           </div>
           <div class="btn-group mr-2" role="group" aria-label="Delete group">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBlog">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
-          </div>
-        </div>
-        <div class="modal fade" id="blogEditModal-{{ post.id }}" tabindex="-1" role="dialog" aria-labelledby="blogEditModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="blogEditModalLabel-{{ post.id}}">Edit: {{ post.title }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form action="{% url 'blog' %}" id="blog-form_{{ post.id }}">
-                  {% csrf_token %}
-                  {{ form.as_p }}
-                  <input class="form control" type="text" value="{{ post.title }}" data-gift_id="blog-form_{{ post.id }}" id="blog-form_{{ post.id }}">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" id="blog-form_{{ post.id }}" >Save</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal fade" id="deleteBlog" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title text-center" id="deleteBlog">Warning!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body text-center">
-                <p><strong>Are you sure that you wish to delete the following blog?</strong></p>
-                <p class="text-center">(Once deleted, it can not be reversed!)</p>
-                <h2>{{ post.title }}</h2>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="{% url 'delete_blog' post.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
-              </div>
-            </div>
+            <a class="btn btn-danger" href="{% url 'delete_blog' blog_id=post.id %}" role="button">Delete <i class="fa fa-trash" aria-hidden="true"></i></a>
           </div>
         </div>
         {% endif %}

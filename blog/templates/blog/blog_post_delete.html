@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="overlay"></div>
+  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
+  <div class="card admin-form">
+    <div class="card-header bg-warning text-white">
+      <h2 class="text-center">Delete Post</h2>
+    </div>
+    <div class="card-body">
+        <p>Are you sure that you want to delete the following post?</p>
+        <p><small>(Once deleted it can not be restored!)</small></p>
+        <h2>{{ post.title }}</h2>
+        <form method="POST" action="{% url 'delete_blog' blog_id=post.id %}">
+            {% csrf_token %}
+            <a href="{% url 'blog' %}" class="btn btn-secondary" role="button" aria-pressed="true">Cancel</a>
+            <button type="submit" class="btn btn-warning">Delete Post</button>
+        </form>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+{% endblock %}
