@@ -3,23 +3,24 @@ from django.shortcuts import render, redirect, reverse
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib import messages
+from django.conf import settings
 from .models import Contact
-from .forms import contactform
+from .forms import contactForm
 
 
 def contact_page(request):
     """ Site Contact Form """
     if request.method == 'GET':
-        form = contactform()
+        form = contactForm()
     else:
-        form = contactform(request.POST)
+        form = contactForm(request.POST)
         if form.is_valid():
             subject = form.cleaned_data['subject']
             name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, 'info@atlasgifts.com', [email],)
+                send_mail(subject, message, settings.EMAIL_HOST_USER, [from_email, settings.EMAIL_HOST_USER])
             except BadHeaderError:
                 return HttpResponse('Invalid Entry')
             messages.success(request,
