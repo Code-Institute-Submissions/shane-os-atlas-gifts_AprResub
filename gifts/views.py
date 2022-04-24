@@ -37,12 +37,19 @@ def gifts_list_all(request):
         if 'q' in request.GET:
             searchquery = request.GET['q']
             if not searchquery:
-                return redirect(reverse('gifts'))
                 messages.error(request,
                                "Incorrect search query! Please try again")
+                return redirect(reverse('gifts'))
 
             searchqueries = Q(name__icontains=searchquery) | Q(description__icontains=searchquery)
             gifts = gifts.filter(searchqueries)
+            if gifts:
+                print("I'm Full")
+            else:
+                print("I'm Empty")
+                gifts = Gift.objects.all()
+                messages.error(request,
+                               "Incorrect search query! Please try again")
 
     sort_choice = f'{sortchoice}_{direction}'
 
