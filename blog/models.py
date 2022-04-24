@@ -1,4 +1,4 @@
-""" Blog Post Models"""
+""" Blog Post Model Imports """
 from django.db import models
 
 
@@ -12,6 +12,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    """ Blog Post Model """
     title = models.CharField(max_length=200)
     categories = models.ManyToManyField('Category', related_name='posts')
     created_by = models.CharField(max_length=25)

@@ -30,14 +30,11 @@ def webhook(request):
 
     if event.type == 'payment_intent.succeeded':
         payment_intent = event.data.object
-        print("Payment Intent was Successful!")
     elif event.type == 'payment_method.attached':
         payment_method = event.data.object
-        print("Payment Method was attached to a Customer!")
     else:
         return HttpResponse(status=400)
 
-    print("It worked!")
     return HttpResponse(status=200)
 
     stripe_handler = StripeWebhookHandler(request)

@@ -16,11 +16,10 @@ from .models import Purchase, LineItem
 
 @require_POST
 def purchases_data_cache(request):
+    """ Purchase App Cache """
     try:
         payment_id = request.POST.get('client_secret').split('_secret')[0]
-        print(payment_id)
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        print(stripe.api_key)
         stripe.PaymentIntent.modify(payment_id, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
             'personal_info': request.POST.get('personal-info'),
@@ -41,10 +40,8 @@ def purchases(request):
     total = 0
     gift_count = 0
     select_gifts = []
-    print('9')
 
     if request.method == 'POST':
-        print('10')
         cart = request.session.get('cart', {})
 
         data = {
@@ -89,19 +86,16 @@ def purchases(request):
                     return redirect(reverse('view_cart'))
 
             request.session['personal-info'] = 'personal-info' in request.POST
-            print("reaching-return")
             return redirect(reverse('purchases_success',
                                     args=[purchase.order_number]))
         else:
             messages.error(request, "Error! Form filled in incorrectly!")
     else:
-        print('12')
         cart = request.session.get('cart', {})
         if not cart:
             messages.error(request,
                            "Your cart is currently empty! Please see our gift collection to see our exciting range!")
             return redirect(reverse('gifts'))
-        # return render(request, 'purchases.html')
 
         cart_now = cart_items(request)
         total_now = cart_now['grandtotal']
@@ -118,7 +112,6 @@ def purchases(request):
         if request.user.is_authenticated:
             try:
                 info = UserAccount.objects.get(user=request.user)
-                print(1)
                 purchase_form = PurchaseForm(initial={
                     'name': info.user.get_short_name(),
                     'phone': info.official_phone,
@@ -131,7 +124,6 @@ def purchases(request):
                     'country': info.official_country,
                 })
             except UserAccount.DoesNotExist:
-                print(2)
                 purchase_form = PurchaseForm()
         else:
             purchase_form = PurchaseForm()
@@ -152,9 +144,7 @@ def purchases(request):
 def purchases_success(request, order_number):
     """ Display payment confirmation page """
     personal_info = request.session.get('personal-info')
-    print(personal_info)
     customer_order = get_object_or_404(Purchase, order_number=order_number)
-    print(customer_order)
     messages.success(request, f'Your order was successful! \
                     Order Number: {order_number}. Your receipt will be sent to {customer_order.email}')
     if 'cart' in request.session:
@@ -162,7 +152,6 @@ def purchases_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserAccount.objects.get(user=request.user)
-        print(profile)
         customer_order.account_profile = profile
         customer_order.save()
 
