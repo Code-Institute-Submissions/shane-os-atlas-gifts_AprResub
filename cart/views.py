@@ -28,8 +28,23 @@ def cart_item_add(request, gift_id):
     return redirect(url_redirect)
 
 
+def change_quantity(request, gift_id):
+    """ Change gift quantity in cart """
+    quantity = int(request.POST.get('quantity'))
+    cart = request.session.get('cart', {})
+    print(cart)
+    if quantity > 0:
+        cart[gift_id] = quantity
+        messages.info(request, "You have changed an item's quantity in the cart!")
+    else:
+        cart.pop(gift_id)
+        messages.success(request, "You have removed an item from your cart!")
+    request.session['cart'] = cart
+    return redirect(reverse('display_cart'))
+
+
 def cart_item_subtract(request, gift_id):
-    """ Remove gift remove cart """
+    """ Remove gift from cart """
     cart = request.session.get('cart', {})
 
     cart.pop(gift_id)

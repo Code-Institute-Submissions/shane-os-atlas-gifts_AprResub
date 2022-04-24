@@ -37,15 +37,15 @@
                     </td>
                     <td class="p-3 w-15">{{ gift.gift.name }}</td>
                     <td class="p-3 w-20">
-                      <form class="form form-edit" method="POST" action="{% url 'cart_item_subtract' gift.gift_id %}">
+                      <form class="form form-edit" method="POST" action="{% url 'change_quantity' gift.gift_id %}">
                         {% csrf_token %}
                         <div class="input-group">
                           <div class="input-group-prepend">
-                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number" data-type="minus" data-gift_id="{{ gift.giftid }}" id="decrease-id_quantity_{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
                           </div>
-                          <input class="text-center form control qty-input" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" id="id_quantity_{{ gift.id }}">
+                          <input class="text-center form-control qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}">
                           <div class="input-group-append">
-                              <button type="button" class="increase-id_quantity btn btn-success btn-number" data-type="add" data-gift_id="{{ gift.giftid }}" id="increase-id_quantity_{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                              <button type="button" class="increase-id_quantity btn btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
                           </div>
                         </div>
                       </form>
