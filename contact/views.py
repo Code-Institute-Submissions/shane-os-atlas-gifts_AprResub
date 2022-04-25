@@ -20,7 +20,7 @@ def contact_page(request):
             from_email = form.cleaned_data['from_email']
             message = form.cleaned_data['message']
             try:
-                send_mail(subject, message, settings.EMAIL_HOST_USER, [from_email, 'atlasgifts1@gmail.com'])
+                send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [from_email, 'atlasgifts1@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid Entry')
             messages.success(request,
