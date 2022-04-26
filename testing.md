@@ -29,8 +29,6 @@ Tests:
  * Test Carousel Display 
  * Homepage Responsiveness
 
-
-
 To test the carousel's create, read, update and delete functions, the following steps were taken:
 1. The site was accessed using a variety of browsers and devices without logging in. As expected the text displayed on the carousel changed every 3-4 seconds.
 2. The left and right arrows were clicked to check that the user could move between content.
@@ -47,6 +45,19 @@ To test the carousel's create, read, update and delete functions, the following 
 To test the homepage's responsiveness and performance, the page was accessed using a variety of devices and a Lighthouse report was run for both desktop and mobile formats. Initially the site's dekstop performance was 80 and its accessiblity was 87. After looking at the performance issues identified I utilised the [Tinypng](https://tinypng.com/) to reduce the storage size of the homepage background image. Without compromising on the image, the size of the file was reduced by approximately 65%. In addition I added labels to the buttons on the homepage. As a result of these changes the Lighthouse performance rating increased to 91 and the accessibility increased to 91.
 
 ![homepage_desktop](https://user-images.githubusercontent.com/72452781/165378805-8ea99e7a-62c1-4416-91d6-b1f9b55696fc.png)
+
+## Navigation Bar
+User Story: As a user, I want to be able to easily navigate the different sections of the site.
+
+Test:
+ * Navigation Bar Links
+
+Users will see 1 of 2 versions of the navigation bar depending on their profile authentication and whether they are are a super user:
+1. Anonymous/ Not Signed-In: The navigation bar will only show links for the homepage, blog, contact form, sign-in, registration and shopping cart
+2. Super User/ Ordinary User Signed-In: The navigation bar will be the same as the previous group but with the sign-in and registration links replaced with a link to their respective profile and a log-out option.
+
+Firstly, the navbar was tested by clicking on the links as a user that has not signed-in. Then each link was tested as an authenticated user and finally with a superuser profile. Each link was tested repeatedly and arrived at the expected page.
+
 
 ## Footer
 User Story: As a user, I want to able to follow the company on its various social media pages, so that I can find out about special offers, new products and discounts.
