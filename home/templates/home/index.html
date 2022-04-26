@@ -23,7 +23,7 @@
           <div class="input-group">
             <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary" type="submit"`aria-label="searchbutton">
                   <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
             </div>
@@ -44,8 +44,8 @@
                 {% if request.user.is_superuser %}
                 <div class="row text-center">
                   <div class="col">
-                    <a class="btn btn-info" href="{% url 'edit_home' home_id=welcome.id %}" role="button">Edit Content <i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="{% url 'delete_home' home_id=welcome.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Content <i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a class="btn btn-info" href="{% url 'edit_home' home_id=welcome.id %}" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Content</a>
+                    <a href="{% url 'delete_home' home_id=welcome.id %}" class="btn btn-danger" role="button" aria-pressed="true"><i class="fa fa-trash" aria-hidden="true"></i> Delete Content</a>
                   </div>
                 </div>
                 {% endif %}

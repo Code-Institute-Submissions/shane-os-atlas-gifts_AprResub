@@ -41,11 +41,11 @@
                         {% csrf_token %}
                         <div class="input-group">
                           <div class="input-group-prepend">
-                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true" aria-labelledby="minus-quantity"></i></button>
                           </div>
-                          <input class="text-center form-control qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}">
+                          <input class="text-center form-control qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" aria-labelledby="item-quantity-change">
                           <div class="input-group-append">
-                              <button type="button" class="increase-id_quantity btn btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                              <button type="button" class="increase-id_quantity btn btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true" aria-labelledby="plus-quantity"></i></button>
                           </div>
                         </div>
                       </form>
@@ -106,8 +106,8 @@
               </div>
               <div class="row justify-content-center">
                 <div class="p-3 col">
-                    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"> Continue Shopping <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-                    <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"> Proceed to Checkout <i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-label="Giftspage" aria-hidden="true"></i> Continue Shopping</a>
+                    <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"><i class="fa fa-credit-card-alt" aria-label="Checkout" aria-hidden="true"></i> Proceed to Checkout</a>
                 </div>
               </div>
             </td>
@@ -118,11 +118,11 @@
     {% else %}
     <div class="row">
       <div class="card admin-form">
-        <div class="card-header text-white bg-primary text-center">Atlas Gifts Blog</div>
+        <div class="card-header text-white bg-primary text-center">Atlas Gifts</div>
         <div class="card-body text-center">
           <h5 class="card-title text-center">Your Cart is Empty!</h5>
           <p class="card-text text-center">Click on your cart below to see our amazing Gift Range!</p>
-          <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true">Continue Shopping <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+          <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-label="Gifts" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continue Shopping</a>
         </div>
       </div>
     </div>

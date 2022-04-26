@@ -53,7 +53,7 @@
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
         <div class="col">
-            <a href="{% url 'add_gift' %}" class="btn btn-success" role="button" aria-pressed="true">Add Gift <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            <a href="{% url 'add_gift' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Gift</a>
         </div>
         {% endif %}
         {% endif %}
@@ -92,8 +92,8 @@
                                         {% if request.user.is_authenticated %}
                                         {% if request.user.is_superuser %}
                                         <div class="col text-center">
-                                            <a href="{% url 'edit_gift' gift.id %}" class="btn btn-success" role="button" aria-pressed="true">Edit Gift <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                                            <a href="{% url 'delete_gift' gift.id %}" class="btn btn-danger" role="button" aria-pressed="true">Delete Gift <i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="{% url 'edit_gift' gift.id %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-pencil-square" aria-hidden="true"></i> Edit Gift</a>
+                                            <a href="{% url 'delete_gift' gift.id %}" class="btn btn-danger" role="button" aria-pressed="true"><i class="fa fa-trash" aria-hidden="true"></i> Delete Gift</a>
                                         </div>
                                         {% endif %}
                                         {% endif %}
@@ -123,7 +123,7 @@
                                                                 <p class="card-text"><i class="fas fa-circle"></i> Category: {{ gift.category|default_if_none:'' }}</p>
                                                             {% endif %}
                                                             {% if gift.weight %}
-                                                                <p class="card-text"><i class="fas fa-weight-hanging"></i>  Weight: {{ gift.weight|default_if_none:'' }} KG</p>
+                                                                <p class="card-text"><i class="fas fa-weight-hanging"></i> Weight: {{ gift.weight|default_if_none:'' }} KG</p>
                                                             {% endif %}
                                                             <p class="card-text"><i class="fas fa-coins"></i> Price: € {{ gift.price }}</p>
                                                         </div>
