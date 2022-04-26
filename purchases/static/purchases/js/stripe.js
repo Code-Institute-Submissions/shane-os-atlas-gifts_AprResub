@@ -36,20 +36,21 @@ stripeCard.addEventListener('change', function (event) {
 
 const stripeForm = document.getElementById('delivery-form');
 console.log(stripeForm)
-stripeForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    console.log('sumbit event')
+stripeForm.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    console.log('submit event')
     stripeCard.update({'disabled': true});
     $('#stripe-submit').attr('disabled', true);
     $('#delivery-form').fadeToggle(100);
     $('#payment-processing-overlay').fadeToggle(100);
 
-    var profileInfo = Boolean($('#id-personal-info').attr('checked'));
-    var csrfMark = $('input[name="csrfmiddlewaretoken"]').val();
+    var personalInfo = Boolean($('#id_personal_info').attr('checked'));
+    console.log(personalInfo)
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var profileData = {
-        'csrfmiddlewaretoken': csrfMark,
+        'csrfmiddlewaretoken': csrfToken,
         'client_secret': stripeSecretKey,
-        'profile_info': profileInfo,
+        'personal_info': personalInfo,
     };
 
     var url = '/purchases/purchases_data_cache/';

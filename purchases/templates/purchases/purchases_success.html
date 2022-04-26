@@ -13,8 +13,10 @@
     <h5 class="card-title">Order Number: {{ customer_order.order_number }}</h5>
     <p>Thank you for shopping with us today!</p>
     <p class="card-text">Click on your cart below to see more of our amazing Gift Range!</p>
-    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true">Gifts <i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
-    <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true">Profile <i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Gifts</a>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'profile' %}" class="btn btn-primary" role="button" aria-pressed="true"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+      {% endif %}
   </div>
 </div>
 <div class="order-summary">

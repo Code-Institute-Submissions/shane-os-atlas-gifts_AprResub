@@ -29,10 +29,10 @@
                 {{ purchase_form.country | as_crispy_field }}
                 <div class="form-check form-check-inline">
                     {% if user.is_authenticated %}
-                        <label class="form-check-label" for="personal-info">Do you wish for your details to be saved to your profile?</label>
-                        <input class="form-check-input" type="checkbox" id="personal-info" name="personal-info" checked>
+                        <label class="form-check-label" for="id_personal_info">Do you wish for your details to be saved to your profile?</label>
+                        <input class="form-check-input" type="checkbox" id="id_personal_info" name="personal_info" checked>
                     {% else %}
-                        <label class="form-check-label" for="personal-info">If you wish to have your details saved for paying faster please either:
+                        <label class="form-check-label" for="id_personal_info">If you wish to have your details saved for paying faster please either:
                             <a class="nav-link" href="{% url 'account_login' %}">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a> Or
                             <a class="nav-link" href="{% url 'account_signup' %}">Register <i class="fas fa-user-plus"></i></a>
                         </label>

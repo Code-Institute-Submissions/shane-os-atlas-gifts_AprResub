@@ -20,7 +20,7 @@ Delivery Address:
 
 Your order is currently being processed. We aim to deliver within 3-5 days of an order being placed.
 
-If you have any questions please contact us at: 
+If you have any questions please contact us at: {{ purchaser_email }}
 
 Kind Regards,
-Atlas Gifts.
+Atlas Gifts Customer Support Team.

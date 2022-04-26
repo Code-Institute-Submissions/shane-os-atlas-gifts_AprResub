@@ -18,11 +18,11 @@ from .models import Purchase, LineItem
 def purchases_data_cache(request):
     """ Purchase App Cache """
     try:
-        payment_id = request.POST.get('client_secret').split('_secret')[0]
+        pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(payment_id, metadata={
+        stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
-            'personal_info': request.POST.get('personal-info'),
+            'personal_info': request.POST.get('personal_info'),
             'username': request.user,
         })
         return HttpResponse(status=200)
@@ -58,8 +58,8 @@ def purchases(request):
         purchase_form = PurchaseForm(data)
         if purchase_form.is_valid():
             purchase = purchase_form.save(commit=False)
-            payment_id = request.POST.get('client_secret').split('_secret')[0]
-            purchase.stripe_paymentid = payment_id
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            purchase.stripe_pid = pid
             purchase.unique_cart = json.dumps(cart)
             purchase.save()
             for gift_id, quantity in cart.items():
@@ -85,7 +85,7 @@ def purchases(request):
                     purchase.delete()
                     return redirect(reverse('view_cart'))
 
-            request.session['personal-info'] = 'personal-info' in request.POST
+            request.session['personal_info'] = 'personal_info' in request.POST
             return redirect(reverse('purchases_success',
                                     args=[purchase.order_number]))
         else:
@@ -102,12 +102,12 @@ def purchases(request):
         stripe_total_integer = round(total_now * 100)
         stripe.api_key = stripe_secret_key
 
-        payment_intent = stripe.PaymentIntent.create(
+        intent = stripe.PaymentIntent.create(
             amount=stripe_total_integer,
             currency=settings.STRIPE_CURRENCY,
         )
 
-        print(payment_intent)
+        print(intent)
 
         if request.user.is_authenticated:
             try:
@@ -135,7 +135,7 @@ def purchases(request):
     context = {
         'purchase_form': purchase_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': payment_intent.client_secret,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
@@ -143,12 +143,8 @@ def purchases(request):
 
 def purchases_success(request, order_number):
     """ Display payment confirmation page """
-    personal_info = request.session.get('personal-info')
+    personal_info = request.session.get('personal_info')
     customer_order = get_object_or_404(Purchase, order_number=order_number)
-    messages.success(request, f'Your order was successful! \
-                    Order Number: {order_number}. Your receipt will be sent to {customer_order.email}')
-    if 'cart' in request.session:
-        del request.session['cart']
 
     if request.user.is_authenticated:
         profile = UserAccount.objects.get(user=request.user)
@@ -165,9 +161,14 @@ def purchases_success(request, order_number):
                 'official_postcode': customer_order.postcode,
                 'official_country': customer_order.country,
             }
-            user_profile_info = UserAccountForm(delivery_info, instance=profile)
-            if user_profile_info.is_valid():
-                user_profile_info.save()
+            user_personal_info = UserAccountForm(delivery_info, instance=profile)
+            if user_personal_info.is_valid():
+                user_personal_info.save()
+
+    messages.success(request, f'Your order was successful! \
+                    Order Number: {order_number}. Your receipt will be sent to {customer_order.email}')
+    if 'cart' in request.session:
+        del request.session['cart']
 
     template = 'purchases/purchases_success.html'
     context = {

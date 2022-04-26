@@ -15,42 +15,51 @@ class StripeWebhookHandler:
     def __init__(self, request):
         self.request = request
 
-    def _send_order_email(self, purchase):
-        purchaser_email = purchase.email
+    def _send_confirmation_email(self, purchase):
+        cust_email = purchase.email
         subject = render_to_string(
             'purchases/order_emails/order_email_subject.txt',
             {'purchase': purchase})
         body = render_to_string(
             'purchases/order_emails/order_email_body.txt',
-            {'purchase': purchase})
-        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [purchaser_email])
+            {'purchase': purchase, 'purchaser_email': settings.DEFAULT_FROM_EMAIL})
+
+        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [cust_email, 'atlasgifts1@gmail.com'])
 
     def handle_event(self, event):
         """ Unexpected event handling """
         return HttpResponse(
-            response=f'Stripe Webhook Received: {event["type"]}',
+            content=f'Stripe Webhook Received: {event["type"]}',
             status=200
         )
 
     def handle_payment_intent_succeeded(self, event):
         """ Stripe payment_intent_succeeded webhook handling """
-        payment_intent = event.data.objects
-        payment_id = payment_intent.id
-        cart = payment_intent.metadata.cart
-        profile_info = payment_intent.metadata.profile_info
-        billing_details = payment_intent.charges.data[0].billing_details
-        shipping = payment_intent.shipping
-        grand_total = round(payment_intent.charges.data[0].amount/100, 2)
+        intent = event.data.object
+        print(intent)
+        print('Intent Check End')
+        pid = intent.id
+        cart = intent.metadata.cart
+        print(cart)
+        personal_info = intent.metadata.personal_info
+        print(personal_info)
+        print('check 2')
+        billing_details = intent.charges.data[0].billing_details
+        print(billing_details)
+        shipping = intent.shipping
+        grand_total = round(intent.charges.data[0].amount/100, 2)
 
         for field, value in shipping.address.items():
             if value == "":
                 shipping.address[field] = None
 
         account = None
-        username = payment_intent.metadata.username
-        if username != 'Anonymous':
-            account = UserAccount.objects.get(user=username)
-            if profile_info:
+        username = intent.metadata.username
+        print(username)
+        if username != 'AnonymousUser':
+            account = UserAccount.objects.get(user__username=username)
+            print('account = UserAccount.objects.get(user=username)')
+            if personal_info:
                 account.official_phone = shipping.phone
                 account.official_address_line1 = shipping.address.line1
                 account.official_address_line2 = billing_details.address.line2
@@ -62,6 +71,7 @@ class StripeWebhookHandler:
 
         purchase_exists = False
         chance = 1
+        print('chance = 1')
         while chance < 6:
             try:
                 purchase = Purchase.objects.get(
@@ -74,9 +84,9 @@ class StripeWebhookHandler:
                     town__iexact=shipping.address.city,
                     country__iexact=shipping.address.country,
                     postcode__iexact=shipping.address.postal_code,
-                    grand_total=grand_total,
+                    final_total=grand_total,
                     unique_cart=cart,
-                    stripe_paymentid=payment_id,
+                    stripe_paymentid=pid,
                 )
                 purchase_exists = True
                 break
@@ -84,11 +94,14 @@ class StripeWebhookHandler:
                 chance += 1
                 time.sleep(1)
         if purchase_exists:
-            self._send_order_email(purchase)
+            print('purchase_exists')
+            self._send_confirmation_email(purchase)
             return HttpResponse(
-                response=f'Stripe Webhook Received: {event["type"]}| Order already exists in Database',
+                content=(f'Stripe Webhook Received: {event["type"]}|'
+                         'Order already exists in Database'),
                 status=200)
         else:
+            print('purchase_exists else')
             purchase = None
             try:
                 purchase = Purchase.objects.create(
@@ -103,8 +116,9 @@ class StripeWebhookHandler:
                     country=shipping.address.country,
                     postcode=shipping.address.postal_code,
                     unique_cart=cart,
-                    stripe_paymentid=payment_id,
+                    stripe_paymentid=pid,
                 )
+                print('purchase_exists else after puurchase =')
                 for gift_id, quantity in json.loads(cart).items():
                     gift = Gift.objects.get(id=gift_id)
                     purchase_line_item = LineItem(
@@ -117,18 +131,18 @@ class StripeWebhookHandler:
                 if purchase:
                     purchase.delete()
                 return HttpResponse(
-                    response=f'Stripe Unhandled Webhook Received: {event["type"]} | Error: {e}',
+                    content=f'Stripe Unhandled Webhook Received: {event["type"]} | Error: {e}',
                     status=500)
 
-        self._send_order_email(purchase)
+        self._send_confirmation_email(purchase)
         return HttpResponse(
-            response=f'Stripe Unhandled Webhook Received: {event["type"]} | Order Created',
+            content=(f'Stripe Unhandled Webhook Received: {event["type"]} | Order Created'),
             status=200
         )
 
     def handle_payment_intent_payment_failed(self, event):
         """ Stripe payment_intent_payment_failed webhook handling  """
         return HttpResponse(
-            response=f'Stripe Webhook Received: {event["type"]}',
+            content=f'Stripe Webhook Received: {event["type"]}',
             status=200
         )
