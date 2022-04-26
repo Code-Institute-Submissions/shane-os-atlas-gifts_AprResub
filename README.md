@@ -46,22 +46,35 @@
 ## UX (User Experience):
 
 ### Project Goals
- * The objective of the project is to create a website that enables users to purchase creative gifts tailored to the recipient's interests.
+ * The objective of the project is to create a website that enables users to purchase a wide variety of gifts that will appeal to the recipients' interests.
  * Users will be able to research the various products on offer in terms of price, weight and description.
- * Potential buyers can create their own accounts to pay for the desired gifts and deliver them directly to the gift recipient if they so choose.
- * Arising from the creation of the site, gift recipients and gift senders will enjoy a greater, more personlised experience than currently available.
+ * Potential buyers can create their own accounts to speed up the purchasing process and to view past transactions.
+ * Arising from the creation of the site, gift recipients and gift senders will enjoy a greater, more personlised gift giving experience than currently available.
 
 ### User Goals
- * Research and examine potential gifts.
- * Purchase gifts for family and friends.
+ * The site and in particular the homepage must be visually pleasing to users
+ * The site's functions must operate efficiently and excellently across a wide variety of commonly used devices such as mobiles, desktop computers and tablets.
+ * The site will provide a wide range of gifts, providing choice for customers.
  * Have delivery arranged to bring purchased items direct to gift recipients.
  * View past purchases made on the site.
 
 ### User Stories
- * As a user, I would like to research the various gifts available to purchase.
- * As a user, I want to be able to purchase my desired items.
- * As a user, I wish to arrange delivery of purchased gifts direct to their recipient.
- * As a user, I would like to create a personal profile to allow me to view my past purchases on the site.
+ * As a user, I would like to be able to access the site across various devices, particularly by using a phone.
+ * As a user, I would appreciate a high-quality, aesthetically pleasing homepage to welcome me to the site.
+ * As a user, I would like to be able to read articles about updates to the site's product offerings, changes to the site and other important information.
+ * As a user, I want to able to follow the company on its various social media pages, so that I can find out about special offers, new products and discounts.
+ * As a user, I would like to be able to easily search the product offerings and sort the product display as appropriate.
+ * As a user, I want to see a high quality image of each product so that I picture the object in my mind.
+ * As a user, I wish to be able to find out more information about a particular product being offered.
+ * As a user, I would like to be able to easily add an item to my shopping cart.
+ * As a user, I would like to be able to view my shopping cart and adjust the quantities as I desire.
+ * As a user, I want to be able to view an up to date total of the items in my shopping cart
+ * As a user, I would like to be made aware of any applicable discount and/or additional charges, including delivery.
+ * As a user, I wish to register for a profile for myself.
+ * As a user, I would like to be able to to view my past purchases on the site, if I have a profile.
+ * As a user, I want to be able to purchase my items anonymously, if I so wish at that time.
+ * As a user, I wish to be able to purchase the items in my shopping cart in a timely manner.
+ * As a user, I want to receive an order confirmation email when I make a purchase.
  * As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
 
 ### Site Owner Goals
