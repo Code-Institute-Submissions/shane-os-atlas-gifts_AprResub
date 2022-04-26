@@ -47,3 +47,14 @@ To test the carousel's create, read, update and delete functions, the following 
 To test the homepage's responsiveness and performance, the page was accessed using a variety of devices and a Lighthouse report was run for both desktop and mobile formats. Initially the site's dekstop performance was 80 and its accessiblity was 87. After looking at the performance issues identified I utilised the [Tinypng](https://tinypng.com/) to reduce the storage size of the homepage background image. Without compromising on the image, the size of the file was reduced by approximately 65%. In addition I added labels to the buttons on the homepage. As a result of these changes the Lighthouse performance rating increased to 91 and the accessibility increased to 91.
 
 ![homepage_desktop](https://user-images.githubusercontent.com/72452781/165378805-8ea99e7a-62c1-4416-91d6-b1f9b55696fc.png)
+
+## Footer
+User Story: As a user, I want to able to follow the company on its various social media pages, so that I can find out about special offers, new products and discounts.
+
+Tests:
+ * External Links
+ * Positioning
+
+To enable users to follow the site on various social media, I placed 5 social media icons in the footer of the site: Facebook, Twitter, Instagram, Youtube and Tiktok. The intended target for each icon is the social media platform's homepage. I clicked on each icon and as expected a new tab is opened in the browser taking the user to the correct homepage. As lighthouse reports for each page noted that labels were lacking for the icons, labels were added to each footer icon corresponding to their correct platform.
+
+It is intended for the footer to remain at the bootom of the user's screen regardless of the page size. This is to allow for a cleaner site appearance for the user. To validate this, the site's pages were accessed on a variety of devices and on each applicable page, the viewer scrolled to the bottom of the screen and checked that the footer was positioned at the bottom of the screen and was not covering any other site content.
