@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from .models import UserAccount
 from .forms import UserAccountForm
+from purchases.models import Purchase
 
 
 def profile(request):
@@ -23,6 +24,24 @@ def profile(request):
         'profile': profile,
         'form': form,
         'past_purchases': past_purchases,
+    }
+
+    return render(request, template, context)
+
+
+def purchase_history(request, order_number):
+    purchase = get_object_or_404(Purchase, order_number=order_number)
+    print("This is the purchase data:")
+    print(purchase)
+
+    messages.info(request, (
+        f'Order: {order_number} has already taken place.'
+        'You are viewing the historical record.'
+    ))
+
+    template = 'purchases/purchases_success.html'
+    context = {
+        'customer_order': purchase,
     }
 
     return render(request, template, context)
