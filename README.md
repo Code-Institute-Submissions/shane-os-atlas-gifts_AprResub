@@ -255,6 +255,8 @@ Name  | Database Key | Field Type | Validation |
  * Stripe Payment Facility
  * Contact Form
  * Blog
+ * Favicon
+ * Profile
 
 ### Future Implementation
  * Newsletter
@@ -262,9 +264,7 @@ Name  | Database Key | Field Type | Validation |
  * Recurring Orders
  * Frequently Asked Questions
  * Cryptocurrency Payments
- * Favicon
  * Delivery Tracker
- * Profile
 
 ## Testing
 
