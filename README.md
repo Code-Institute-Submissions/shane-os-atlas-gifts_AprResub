@@ -268,13 +268,9 @@ Name  | Database Key | Field Type | Validation |
 
 ## Testing
 
-To ensure that the site was operating as expected, a series of print and console.log statements were introduced into the Python code fields to view the values of variables at key stages in each process. This was particularly useful when if/ else statements were used as it allowed me to determine which path the process took at each step. When an error occurred, this enabled a reduction in time spent resolving issues. For the site administrator and end users, django messages were included, informing them when key actions were initiated by the user. (E.g. Adding an item to a shopping cart, deleting an item, etc.)
+The thorough testing of the website is described in full in a separate document. Please find it located [here](https://github.com/shane-os/atlas-gifts/blob/main/testing.md)
 
-### Code Validators
- * The HTML code was passed through the W3C Validator. One error found was the incorrect use of a p element as a child of a button element.
- * The CSS code was passed through the Jigsaw Validator and the three errors found were that of missing semi-colons.
- * The JavaScript code was passed through the JSHint Validator and the minor syntax mistakes were corrected.
- * The Python code files adhere to the PEP8 styling guidelines.
+To ensure that the site was operating as expected, a series of print and console.log statements were introduced into the Python code fields to view the values of variables at key stages in each process. This was particularly useful when if/ else statements were used as it allowed me to determine which path the process took at each step. When an error occurred, this enabled a reduction in time spent resolving issues. For the site administrator and end users, django messages were included, informing them when key actions were initiated by the user. (E.g. Adding an item to a shopping cart, deleting an item, etc.)
 
 ### Admin
 
