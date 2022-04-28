@@ -14,7 +14,6 @@ def gifts_list_all(request):
     searchquery = None
     sortchoice = None
     direction = None
-    categorychoice = None
 
     if request.GET:
         if 'sort' in request.GET:
@@ -29,10 +28,6 @@ def gifts_list_all(request):
             if direction == 'desc':
                 sortchoice = f'-{sort}'
             gifts = gifts.order_by(sortchoice)
-
-        if 'category' in request.GET:
-            categorychoice = request.GET['category']
-            gifts = gifts.filter(category__name=categorychoice)
 
         if 'q' in request.GET:
             searchquery = request.GET['q']
@@ -57,7 +52,6 @@ def gifts_list_all(request):
             "gifts": gifts,
             "sort_choice": sort_choice,
             "searchresult": searchquery,
-            "category_choice": categorychoice,
     }
 
     return render(request, 'gifts/gifts.html', context)

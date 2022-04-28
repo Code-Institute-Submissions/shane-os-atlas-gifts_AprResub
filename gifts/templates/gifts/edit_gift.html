@@ -11,7 +11,6 @@
     <div class="card-body">
         <form method="POST" action="{% url 'edit_gift' gift.id %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.category | as_crispy_field }}
         {{ form.sku | as_crispy_field }}
         {{ form.name | as_crispy_field }}
         {{ form.description | as_crispy_field }}
