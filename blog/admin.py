@@ -1,15 +1,11 @@
 """ Blog App Administration """
 from django.contrib import admin
-from blog.models import Post, Category
+from blog.models import Post
 
 
 class BlogAdmin (admin.ModelAdmin):
-    pass
-
-
-class CategoryAdmin (admin.ModelAdmin):
+    """ Blog App Admin """
     pass
 
 
 admin.site.register(Post, BlogAdmin)
-admin.site.register(Category, CategoryAdmin)
