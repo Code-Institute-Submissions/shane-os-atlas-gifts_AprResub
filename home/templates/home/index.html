@@ -6,7 +6,7 @@
 <!-- Home page //-->
   <div class="container-fluid h-100">
     <div class="row">
-      <div class="col-12 text-center">
+      <div class="col-12 text-center welcome">
           <h3>Welcome to Atlas Gifts!</h3>
           {% if request.user.is_authenticated %}
           {% if request.user.is_superuser %}
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="row justify-content-center searcharea">
-      <div class="col-6">
+      <div class="col-8 col-md-6">
         <form method="GET" action="{% url 'gifts' %}">
           <div class="input-group">
             <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
@@ -34,7 +34,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div id="carouselControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner text-white">
               {% for welcome in welcomes %}
               <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
@@ -53,11 +53,11 @@
               </div>
               {% endfor %}
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>

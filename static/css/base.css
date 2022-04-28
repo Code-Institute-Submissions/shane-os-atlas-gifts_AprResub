@@ -17,20 +17,8 @@ body {
     background: #0edb07 !important;
 }
 
-.jumbotron {
-    border: 1px solid blue;
-    border-radius: 20px;
-    opacity: 0.75;
-}
-
-.finalrow {
-    text-align:center;
-}
-
-.summarytable {
-    width: 50%;
-    margin: auto;
-    border: 2px black;
+.welcome {
+    padding-top: 10px;
 }
 
 footer {
@@ -58,6 +46,24 @@ footer {
     left: 0;
     z-index: -1;
 }
+
+.jumbotron {
+    border: 1px solid blue;
+    border-radius: 20px;
+    opacity: 0.75;
+}
+
+.finalrow {
+    text-align:center;
+}
+
+.summarytable {
+    width: 50%;
+    margin: auto;
+    border: 2px black;
+}
+
+
 
 #cartarea {
     color: black;
@@ -88,10 +94,6 @@ footer {
     justify-content: center;
     margin-left: 10%;
     margin-right: 10%;
-}
-
-.card-deck {
-    margin: 5px;
 }
 
 .toast-container {
@@ -130,9 +132,10 @@ footer {
     border: 1px solid #C41C1F;
 }
 
-#carouselExampleControls {
+#carouselControls {
     text-align: center; 
     background-color: #283747;
+    width: auto;
     opacity: 0.8;
     min-height:20vh;
     padding-bottom: 50px;
@@ -144,6 +147,7 @@ footer {
     margin: auto;
     width: 70%;
 }
+
 .contact-form {
     top: 5px;
     bottom: 5px;
