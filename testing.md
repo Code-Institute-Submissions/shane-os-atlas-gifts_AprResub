@@ -18,7 +18,7 @@
 * The JavaScript code was passed through the JSHint Validator and the minor syntax mistakes were corrected.
 * The Python code files adhere to the PEP8 styling guidelines.
 
-Devices used to test Atlas Gifts Site: HP Laptop (15" Screen), HP Desktop (23" Screen), Samsung Galaxy Tablet (10" Screen), Samsung Phone (5" screen)
+Devices used to test Atlas Gifts Site: Laptop, Desktop, Tablet, Phone. The responsiveness of the site was checked using the Developer Tools in the Google Chrome Browser.
 
 ## Homepage
 User Story: As a user, I would appreciate a high-quality, aesthetically pleasing homepage to welcome me to the site.
@@ -26,7 +26,7 @@ User Story: As a user, I would appreciate a high-quality, aesthetically pleasing
 When a user accesses the site, I wish for them to be excited by the homepage. They should feel instantly welcome and have a desire to explore the rest of the site. To encourage this, warm, bright colours were primarily used for the site. 
 
 Tests:
- * Test Carousel Display 
+ * Test Carousel Display (CRUD Functionality)
  * Homepage Responsiveness
 
 To test the carousel's create, read, update and delete functions, the following steps were taken:
@@ -41,6 +41,8 @@ To test the carousel's create, read, update and delete functions, the following 
 6. Each of the three pieces of content were updated using the "Edit Content" form
 7. The content items were then deleted and later restored, demonstrating CRUD Functionality.
 8. After each content piece creation, update or deletion a toast message notification appears on screen.
+
+Lighthouse Report
 
 To test the homepage's responsiveness and performance, the page was accessed using a variety of devices and a Lighthouse report was run for both desktop and mobile formats. Initially the site's dekstop performance was 80 and its accessiblity was 87. After looking at the performance issues identified I utilised the [Tinypng](https://tinypng.com/) to reduce the storage size of the homepage background image. Without compromising on the image, the size of the file was reduced by approximately 65%. In addition I added labels to the buttons on the homepage. As a result of these changes the Lighthouse performance rating increased to 91 and the accessibility increased to 91.
 
@@ -69,3 +71,37 @@ Tests:
 To enable users to follow the site on various social media, I placed 5 social media icons in the footer of the site: Facebook, Twitter, Instagram, Youtube and Tiktok. The intended target for each icon is the social media platform's homepage. I clicked on each icon and as expected a new tab is opened in the browser taking the user to the correct homepage. As lighthouse reports for each page noted that labels were lacking for the icons, labels were added to each footer icon corresponding to their correct platform.
 
 It is intended for the footer to remain at the bootom of the user's screen regardless of the page size. This is to allow for a cleaner site appearance for the user. To validate this, the site's pages were accessed on a variety of devices and on each applicable page, the viewer scrolled to the bottom of the screen and checked that the footer was positioned at the bottom of the screen and was not covering any other site content.
+
+## Blog
+User Story: As a user, I would like to be able to read articles about updates to the site's product offerings, changes to the site and other important information.
+
+To inform site visitors about upcoming events, new product launches, sales announcements, etc. a blog has created. This should be both eyecatching and informative. The CRUD functionality allows the site administrator to delete, change and add blog posts as required. This encourages users to visit the site more frequently to find out the latest information.
+
+Tests:
+* Blog Display (CRUD Functionality)
+* Sort Function
+
+To test the blog's create, read, update and delete functions, the following steps were taken:
+1. The blog page was accessed using a variety of browsers and devices without logging in. As expected the the blog posts appeared on screen
+2. The left and right arrows were clicked to check that the user could move between content.
+3. To check the create, update and delete functions, a superuser profile was logged into. Next to each blog post was an update and delete button. The create button appears at the top of the blog posts.
+4. Each button brings the site admin to their respective form.
+5. 3 new test posts were created.
+6. Each post was edited and saved.
+7. After the changes were verified, the 3 posts were deleted.
+
+With regards to the sort function, the user can sort alphabetically and by the publishing date of the post. The various options were checked and each ordered the blog posts in the correct order.
+
+Lighthouse Report
+
+Desktop
+
+![blog_desktop](https://user-images.githubusercontent.com/72452781/165862718-75d27ce0-c94e-401b-92ca-d46cb28c2822.png)
+
+Mobile
+
+![blog_mobile](https://user-images.githubusercontent.com/72452781/165862792-01ee07ce-2c54-4d2b-8048-697a53595620.png)
+
+To improve the aethetics of the site on mobile devices, a maximum height was set for the blog post images. The card format was also widened slightly on smaller devices to allow for a more comfortable reading experience for the site visitor. 
+
+
