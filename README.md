@@ -259,12 +259,17 @@ The thorough testing of the website is described in full in a separate document.
 
 ## Resolution of Bugs
 
+Below are two of the main bugs that I encountered in my project. These were chosen as examples for the main readme.md The remainder are included in the testing page in the previous section.
+
 ### View Cart Items:
 To make a purchase users must be able to view the gift selection on offer, select various items at various quantities and have them recorded in their personal cart. Users must then be able to view a summary of the items in their cart and edit or remove the items as required.
 
 An issue arose when I tried to access the cart summary page after adding items to the cart. When the page is accessed either through clicking on the cart icon or typing the url in the browser. To determine the source of the error I examined the python files and cart html file for the cart app. After checking the model and view files and using the print function to help determine the error, I sought to make sure that the variable names were constant throughout the files. A small naming error was located between the files for the Gift Model. 
 
 A second issue arose after the naming error had been solved. Unlike the previous error, this problem was resolved relatively quickly qith the help of the Tutor Support. Due to cached data from before the naming issue was resolved, attempts to access the cart summary were redirect to an error page. Once the cached data was deleted the summary page operated as expected once again.
+
+### Delete Blog
+A problem arose when I tried to delete blog posts. When the delete button specific to a particular post is clicked it should ask the site admin to confirm that they wish to delete this particular post. The problem arose when the incorrect blog post was deleted. This would be the first blog post in the list. To resolve this I introduced a seperate blog page specific for deleting the blog post. With this process I was able to determine how the delete button was processing the command incorrectly and how to fix this issue
 
 ## Deployment
 
