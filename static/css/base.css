@@ -156,6 +156,7 @@ footer {
     top: 5px;
     bottom: 5px;
     width: 70%;
+    margin: auto;
 }
 
 .contact-form {
