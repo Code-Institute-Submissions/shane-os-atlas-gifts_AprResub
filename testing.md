@@ -22,7 +22,7 @@
 Devices used to test Atlas Gifts Site: Laptop, Desktop, Tablet, Phone. The responsiveness of the site was checked using the Developer Tools in the Google Chrome Browser.
 
 ## Homepage
-User Story: As a user, I would appreciate a high-quality, aesthetically pleasing homepage to welcome me to the site.
+* User Story: As a user, I would appreciate a high-quality, aesthetically pleasing homepage to welcome me to the site.
 
 When a user accesses the site, I wish for them to be excited by the homepage. They should feel instantly welcome and have a desire to explore the rest of the site. To encourage this, warm, bright colours were primarily used for the site. 
 
@@ -50,7 +50,7 @@ To test the homepage's responsiveness and performance, the page was accessed usi
 ![homepage_desktop](https://user-images.githubusercontent.com/72452781/165378805-8ea99e7a-62c1-4416-91d6-b1f9b55696fc.png)
 
 ## Navigation Bar
-User Story: As a user, I want to be able to easily navigate the different sections of the site.
+* User Story: As a user, I want to be able to easily navigate the different sections of the site.
 
 Test:
  * Navigation Bar Links
@@ -63,7 +63,7 @@ Firstly, the navbar was tested by clicking on the links as a user that has not s
 
 
 ## Footer
-User Story: As a user, I want to able to follow the company on its various social media pages, so that I can find out about special offers, new products and discounts.
+* User Story: As a user, I want to able to follow the company on its various social media pages, so that I can find out about special offers, new products and discounts.
 
 Tests:
  * External Links
@@ -74,7 +74,7 @@ To enable users to follow the site on various social media, I placed 5 social me
 It is intended for the footer to remain at the bootom of the user's screen regardless of the page size. This is to allow for a cleaner site appearance for the user. To validate this, the site's pages were accessed on a variety of devices and on each applicable page, the viewer scrolled to the bottom of the screen and checked that the footer was positioned at the bottom of the screen and was not covering any other site content.
 
 ## Blog
-User Story: As a user, I would like to be able to read articles about updates to the site's product offerings, changes to the site and other important information.
+* User Story: As a user, I would like to be able to read articles about updates to the site's product offerings, changes to the site and other important information.
 
 To inform site visitors about upcoming events, new product launches, sales announcements, etc. a blog has created. This should be both eyecatching and informative. The CRUD functionality allows the site administrator to delete, change and add blog posts as required. This encourages users to visit the site more frequently to find out the latest information.
 
@@ -106,10 +106,10 @@ Mobile
 To improve the aethetics of the site on mobile devices, a maximum height was set for the blog post images. The card format was also widened slightly on smaller devices to allow for a more comfortable reading experience for the site visitor. 
 
 ## Gifts
-User Story: As a user, I would like to be able to easily search the product offerings and sort the product display as appropriate.
-User Story: As a user, I want to see a high quality image of each product so that I picture the object in my mind.
-User Story: As a user, I wish to be able to find out more information about a particular product being offered.
-User Story: As a user, I would like to be able to easily add an item to my shopping cart.
+* User Story: As a user, I would like to be able to easily search the product offerings and sort the product display as appropriate.
+* User Story: As a user, I want to see a high quality image of each product so that I picture the object in my mind.
+* User Story: As a user, I wish to be able to find out more information about a particular product being offered.
+* User Story: As a user, I would like to be able to easily add an item to my shopping cart.
 
 Testing:
 * Searchbar
@@ -139,9 +139,9 @@ Mobile
 ![gifts_mobile](https://user-images.githubusercontent.com/72452781/165869661-f18af414-1b22-4154-b58f-ac1219c9c9dd.png)
 
 ## Shopping Cart
-User Story: As a user, I would like to be able to view my shopping cart and adjust the quantities as I desire.
-User Story: As a user, I want to be able to view an up to date total of the items in my shopping cart
-User Story: As a user, I would like to be made aware of any applicable discount and/or additional charges, including delivery.
+* User Story: As a user, I would like to be able to view my shopping cart and adjust the quantities as I desire.
+* User Story: As a user, I want to be able to view an up to date total of the items in my shopping cart
+* User Story: As a user, I would like to be made aware of any applicable discount and/or additional charges, including delivery.
 
 Between adding items to their shopping cart and checking out, customer may change their mind and wish to remove items from their cart or purchase a greater/ lesser quantity of a particular item in their cart. The shopping cart icon in the navigation bar displays a running total of the value of the items in the cart. 
 
@@ -153,6 +153,8 @@ Testing:
 When a user first logs on to the site an empty shopping cart is automatically created. As they add items to their cart, the total displayed next to the shopping cart icon is increased. There is a standard €5 delivery charge that is added to every cart but only after the first item is added to the cart. To entice customersto spend a little more, there is an automatic 10% discount when the user spends more than €100 excluding delivery. To test this, items were added to the cart while logged in and also in incognito mode. As expected the delivery charge was only added after the first item was put into the cart. To determine the success of the discount function, various items were added to the cart to reach a total of greater than €100. Once the cart's total was greater than €100 (excluding delivery) it automatically deducted 10% from the toal. To ensure complete transparency in the calculations I have created a summary table on the cart summary page. This table clearly explains the total discount(if any), the standard delivery charge and the final payable amount.
 
 To test the update and delete functions of the cart with regards to specific items, various items were added to the shopping cart and their quantities were updated in the shopping cart summary page. To confirm the update, the update text must be clicked. To remove an item, the remove text must be clicked. Various items were removed from the cart both by the "remove quantity" text and by reducing the line item quantity using the minus button. The tests were successful as these functions operated as expected.
+
+
 
 
 Lighthouse Report
@@ -169,9 +171,34 @@ Mobile
 
 To improve the accessibility of the page aria labels were added to the various buttons on the page. This had the effect of slightly improving the accessibility metrics for both Desktop and mobile formats.
 
+## Purchases
+* User Story: As a user, I want to be able to purchase my items anonymously, if I so wish at that time.
+* User Story: As a user, I wish to be able to purchase the items in my shopping cart in a timely manner.
+* User Story: As a user, I want to receive an order confirmation email when I make a purchase.
+
+To encourage repeat business, the payment process should be as quick and easy as possible. To allow for this, the form's layout is simple and straightforward.  Customers must have confidence in the payment process or else they will stop prior to completing the payment process.
+
+Testing:
+* Successful Purchase of Cart Items
+* Order Confirmation Email
+
+To test the payment function the following steps were take:
+1. Numerous shopping carts of varying values were created as a superuser, registered users and anonymous users.
+2. A few attempts were made when the form was incorrectly filled out. However, the form successfully picked up on this and instructed the user on the missing/ incorrect fields.
+3. Different stripe test cards were used to trigger certain events. For example the recurring 4242 test card is supposed to result in a successful payment.
+4. Successful payments were determined to have occurred when the successful payment Stripe webhook event returns a 200 'success value' in the Stripe dashboard and the payment is shown as complete in the test dashboard.
+5. To ensure users do not leave/ refresh the page a message appears after clicking on the "Pay Now" button, informing the custoemr that their payment is being process.
+6. Finally, the order confirmation email function was tested by setting up a number of email accounts and providing these addresses in the payment form. As expected the order confirmation emails were received at the designated email addresses.
+
+Lightouse Report
+
+![purchases](https://user-images.githubusercontent.com/72452781/165882642-e2b87588-361d-441c-bada-56209461599b.png)
+
+
+
 ## Contact Page
 
-User Story: As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
+* User Story: As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
 
 Testing:
 * Contact Form 
@@ -189,3 +216,5 @@ Desktop
 Mobile
 
 ![contact_mobile](https://user-images.githubusercontent.com/72452781/165865719-8b917e8f-2169-414e-8e37-faa71d82bb95.png)
+
+## Conclusion
