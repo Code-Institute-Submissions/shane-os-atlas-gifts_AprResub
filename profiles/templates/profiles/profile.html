@@ -33,7 +33,6 @@
                             {{ purchase.order_number|truncatechars:8 }}
                         </a></li>
                       <li class="list-group-item">Date: {{ purchase.date }}</li>
-                      <li class="list-group-item">Amount: € {{ purchase.final_total }}</li>
                     </ul>
                     <br>
                   {% endfor %}

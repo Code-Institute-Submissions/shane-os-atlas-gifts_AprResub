@@ -6,7 +6,6 @@ Your order details were as follows:
 
 Order Date: {{ purchase.date }}
 Order Number: {{ purchase.order_number }}
-Total: {{ purchase.final_total }}
 
 Delivery Address:
 
