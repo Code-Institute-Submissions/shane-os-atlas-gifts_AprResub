@@ -36,21 +36,21 @@
                       {% endif %}
                     </td>
                     <td class="p-3 w-15">{{ gift.gift.name }}</td>
-                    <td class="p-3 w-20">
+                    <td class="p-3 w-10">
                       <form class="form form-edit" method="POST" action="{% url 'change_quantity' gift.gift_id %}">
                         {% csrf_token %}
                         <div class="input-group">
                           <div class="input-group-prepend">
-                              <button type="button" class="decrease-id_quantity btn btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true" aria-labelledby="minus-quantity"></i></button>
+                              <button type="button" class="decrease-id_quantity btn btn-sm btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true" aria-labelledby="minus-quantity"></i></button>
                           </div>
-                          <input class="text-center form-control qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" aria-labelledby="item-quantity-change">
+                          <input class="text-center form-control form-control-sm qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" aria-labelledby="item-quantity-change">
                           <div class="input-group-append">
-                              <button type="button" class="increase-id_quantity btn btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true" aria-labelledby="plus-quantity"></i></button>
+                              <button type="button" class="increase-id_quantity btn btn-sm btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true" aria-labelledby="plus-quantity"></i></button>
                           </div>
                         </div>
                       </form>
-                      <a class=" update-quantity btn btn-secondary float-left qty-edit">Update Quantity</a>
-                      <a class=" remove-gift btn btn-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
+                      <a class="update-quantity text-secondary float-left qty-edit">Update Quantity</a>
+                      <a class="remove-gift text-danger float-right qty-remove" id="remove_{{ gift.gift_id }}">Remove Gift</a>
                     </td>
                     <td class="p-3 w-15">{{ gift.gift.price}}</td>
                     <td class="p-3 w-15">{{ gift.gift.price | gift_subtotal:gift.quantity }}</td>

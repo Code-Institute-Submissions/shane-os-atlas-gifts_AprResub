@@ -6,7 +6,7 @@
 <div class="overlay"></div>
 <div class="container-fluid text-center">
     <H1>Profile</H1>
-    <div class="d-flex card border-primary mb-3 text-center">
+    <div class="d-flex card mb-3 text-center">
         <h3>Welcome to your personal space on Atlas Gifts!</h3>
         {% if request.user.is_authenticated %}
           <div class="row">
@@ -25,7 +25,7 @@
             </div>
             <div class="col-sm-6">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body text-center">
                   <h3 class="card-title">Purchase History</h3>
                   {% for purchase in past_purchases %}
                     <ul>
@@ -33,7 +33,7 @@
                             {{ purchase.order_number|truncatechars:8 }}
                         </a></li>
                       <li class="list-group-item">Date: {{ purchase.date }}</li>
-                      <li class="list-group-item">Amount: € {{ purchase.pre_discount_total }}</li>
+                      <li class="list-group-item">Amount: € {{ purchase.final_total }}</li>
                     </ul>
                     <br>
                   {% endfor %}

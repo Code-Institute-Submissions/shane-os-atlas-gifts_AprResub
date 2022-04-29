@@ -24,8 +24,6 @@
               </div>
             </form>
         </div>
-    </div>
-    <div class="row">
         <div class="col">
             <div class="dropdown show">
                 <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,6 +37,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
         <div class="col">
@@ -74,7 +74,7 @@
                                 <div class="card-footer">
                                     <div class = "row">
                                         <div class="col text-center">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}">More Info <i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#infomodal-{{ forloop.counter}}"><i class="fa fa-info-circle" aria-hidden="true"></i> More Info</button>
                                         </div>
                                     </div>
                                     <div class="row">

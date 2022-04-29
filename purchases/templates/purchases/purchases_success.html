@@ -5,13 +5,13 @@
 {% block content %}
 
 <div class="overlay"></div>
-<div class="d-flex card border-primary mb-3 text-center order-summary">
-  <div class="card-header">
-    <h3><strong>Order Confirmation</strong></h3>
+<div class="d-flex card mb-3 text-center order-summary">
+  <div class="card-header bg-dark text-white">
+    <h3>Order Confirmation</h3>
   </div>
   <div class="card-body">
     <h5 class="card-title">Order Number: {{ customer_order.order_number }}</h5>
-    <p>{{ customer_order.date }}</p>
+    <p>Date & Time: {{ customer_order.date }}</p>
     <p>Thank you for shopping with us today!</p>
     <p class="card-text">Click on your cart below to see more of our amazing Gift Range!</p>
     <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Gifts</a>
@@ -22,20 +22,20 @@
 </div>
 <div class="order-summary">
   <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-success text-white">
       <h5 class="text-center">Item Summary</h5>
     </div>
     <div class="card-body">
       {% for item in customer_order.item_purchase.all %}
         <div class="row">
           <div class="col">
-            <h5>{{ item.gift.name }}</h5>
+            <p>{{ item.gift.name }}</p>
           </div>
           <div class="col">
-            <h5>€ {{ item.gift.price }} each</h5>
+            <p>€ {{ item.gift.price }} each</p>
           </div>
           <div class="col">
-            <h5>{{ item.quantity }} units</h5>
+            <p>{{ item.quantity }} units</p>
           </div>
         </div>
       {% endfor %}
@@ -44,89 +44,89 @@
 </div>
 <div class="order-summary">
   <div class="card">
-    <div class="card-header">
+    <div class="card-header bg-info text-white">
       <h5 class="text-center">Contact Details</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body text-left">
       <div class="row">
         <div class="col">
-          <h5>Name: </h5>
+          <p>Name: </p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.name }}</h5>
+          <p>{{ customer_order.name }}</p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h5>Phone: </h5>
+          <p>Phone: </p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.phone }}</h5>
+          <p>{{ customer_order.phone }}</p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h5>Email: </h5>
+          <p>Email: </p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.email }}</h5>
+          <p>{{ customer_order.email }}</p>
         </div>
       </div>
     </div>
-    <div class="card-header">
+    <div class="card-header bg-info text-white">
       <h5 class="text-center">Delivery Details</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body text-left">
       <div class="row">
         <div class="col">
-          <h5>Address Line 1:</h5>
+          <p>Address Line 1:</p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.address_line1 }}</h5>
+          <p>{{ customer_order.address_line1 }}</p>
         </div>
       </div>
       {% if customer_order.address_line2 %}
       <div class="row">
         <div class="col">
-          <h5>Address Line 2:</h5>
+          <p>Address Line 2:</p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.address_line2 }}</h5>
+          <p>{{ customer_order.address_line2 }}</p>
         </div>
       </div>
       {% endif %}
       {% if customer_order.address_line3 %}
       <div class="row">
         <div class="col">
-          <h5>Address Line 3:</h5>
+          <p>Address Line 3:</p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.address_line3 }}</h5>
+          <p>{{ customer_order.address_line3 }}</p>
         </div>
       </div>
       {% endif %}
       <div class="row">
         <div class="col">
-          <h5>Town:</h5>
+          <p>Town:</p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.town }}</h5>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h5>Postcode:</h5>
-        </div>
-        <div class="col">
-          <h5>{{ customer_order.postcode }}</h5>
+          <p>{{ customer_order.town }}</p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <h5>Country:</h5>
+          <p>Postcode:</p>
         </div>
         <div class="col">
-          <h5>{{ customer_order.country }}</h5>
+          <p>{{ customer_order.postcode }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Country:</p>
+        </div>
+        <div class="col">
+          <p>{{ customer_order.country }}</p>
         </div>
       </div>
     </div>

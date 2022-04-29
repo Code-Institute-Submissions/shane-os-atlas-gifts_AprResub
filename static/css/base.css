@@ -1,3 +1,5 @@
+/* HTML & Body */
+
 html {
     height: 100%;
 }
@@ -13,13 +15,13 @@ body {
     position: relative;
 }
 
+/* Discount Banner */
+
 .bg-green {
     background: #0edb07 !important;
 }
 
-.welcome {
-    padding-top: 10px;
-}
+/* Footer */
 
 footer {
     background-color: #083d77;
@@ -37,6 +39,8 @@ footer {
     margin: 5px;
 }
 
+/* Image Overlay Container */
+
 .overlay {
     background: white;
     min-height: 100vh;
@@ -47,11 +51,7 @@ footer {
     z-index: -1;
 }
 
-.jumbotron {
-    border: 1px solid blue;
-    border-radius: 20px;
-    opacity: 0.75;
-}
+/* Cart Summary */
 
 .finalrow {
     text-align:center;
@@ -96,9 +96,17 @@ footer {
     margin-right: 10%;
 }
 
+/* Toast Messages */
+
 .toast-container {
     z-index: 100;
     top: 0px;
+}
+
+/* Home Page */
+
+.welcome {
+    padding-top: 10px;
 }
 
 .reasons {
@@ -126,11 +134,6 @@ footer {
     color: #0edb07;
 }
 
-.order-summary {
-    margin: auto;
-    width: 50%;
-    border: 1px solid #C41C1F;
-}
 
 #carouselControls {
     text-align: center; 
@@ -141,11 +144,17 @@ footer {
     padding-bottom: 50px;
 }
 
+.order-summary {
+    padding-top: 5px;
+    margin: auto;
+    width: 50%;
+}
+
+/* Forms */
+
 .admin-form {
     top: 5px;
     bottom: 5px;
-    margin: auto;
-    width: 70%;
 }
 
 .contact-form {
@@ -164,6 +173,8 @@ footer {
 .allauth-form {
     margin: 10px;
 }
+
+/* Payment Processing */
 
 #payment-processing-overlay {
     display: none;
@@ -185,6 +196,8 @@ footer {
     height: 100%;
 }
 
+/* Blog Text & Images */
+
 .blog-post {
     margin: auto;
     width: 75%;
@@ -193,6 +206,8 @@ footer {
 .blog-image {
     height: 70vh;
 }
+
+/* Media Queries - Small Screens */
 
 @media only screen and (max-width: 600px) {
     .blog-post {
@@ -212,11 +227,15 @@ footer {
     }
 
     .order-summary {
-        width: 70%;
+        width: 80%;
+    }
+
+    p {
+        font-size: 12pt;
     }
 }
 
-
+/* Media Queries - Medium Screens */
 
 @media only screen and (min-width: 601px) and (max-width: 800px)  {
     .blog-post {
@@ -228,9 +247,11 @@ footer {
     }
 
     p {
-        font-size: 14pt;
+        font-size: 13pt;
     }
 }
+
+/* Media Queries - Large Screens */
 
 @media only screen and (min-width: 801px) {
     p {
