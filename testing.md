@@ -1,16 +1,17 @@
 # Atlas Gifts Testing Document
 
 ## Contents
-* Code Validators
-* Homepage
-* Navigation Bar
-* Footer
-* Blog
-* Gifts
-* Shopping Cart
-* Purchases
-* Profile
+* [Code Validators](#code-validators)
+* [Homepage](#homepage)
+* [Navigation Bar](#navigation-bar)
+* [Footer](#footer)
+* [Blog](#blog)
+* [Gifts](#gifts)
+* [Shopping Cart](#shopping-cart)
+* [Purchases](#purchases)
+* [Profile](#profile)
 * [Contact Page](#contact-page)
+* [Conclusion](#conclusion)
 
 ## Code Validators
 * The HTML code was passed through the W3C Validator. One error found was the incorrect use of a p element as a child of a button element.
@@ -103,6 +104,39 @@ Mobile
 ![blog_mobile](https://user-images.githubusercontent.com/72452781/165862792-01ee07ce-2c54-4d2b-8048-697a53595620.png)
 
 To improve the aethetics of the site on mobile devices, a maximum height was set for the blog post images. The card format was also widened slightly on smaller devices to allow for a more comfortable reading experience for the site visitor. 
+
+## Gifts
+User Story: As a user, I would like to be able to easily search the product offerings and sort the product display as appropriate.
+User Story: As a user, I want to see a high quality image of each product so that I picture the object in my mind.
+User Story: As a user, I wish to be able to find out more information about a particular product being offered.
+User Story: As a user, I would like to be able to easily add an item to my shopping cart.
+
+Testing:
+* Searchbar
+* Gift Images
+* Gift modal
+* Add items to the shopping cart
+* Gift Management CRUD Functionality
+
+As more products are added to the site, users are going to incur more difficulties in finding their desired product. To help the user find their desired product, a searchbar is present at both the top of the homepage and the gifts page. In the event that a user misspells their search term or enters a value that is not present in our gifts data, the user is redirected to the gifts page without any filtering taking place. They will receive a toast message informing them that their search attempt was invalid.
+
+As most users will require a visual reference point to aid them in determining if they want to purchase a particular gift, the administration form to add a gift requires the site administrator to upload a photo. Attempts were made to add products to the site using this form without uploading an image. Each time, the form submission was prevented until an image was uploaded.
+
+To ensure that the user receives as much information as possible to make an informed decision, more information as well as the option to purchase the item, can be accessed by clicking on the "More Info" button. The user is provided with a larger image of the product and a detailed description of the product, including the weight and price. The user is able to use the plus and minus buttons to increase/ decrease the item quantity before adding this their cart. To check that users are able to add products to their carts, various quantities of multiple items were added to the cart. As a user adding a quantity of 0 or less to their cart would not make sense, a check was built-in to prevent users from changing the input quantity to less than 1.
+
+The ability to add, update and delete gifts from the site is critical to the site being successful, as without the products there won;t anything to sell. To ensure that CRUD functionality was achieved I logged in as a superuser, created a series of test gifts with various prices, descriptions, etc. Then I proceeded to edit these items before logging out and return to the site as an anonymous user. After checking that I was unable to access the create, update or delete function as a non superuser I attempted to add each of these gifts to the shopping cart. After this successful check, I logged back in as a superuser before deleting each of the test items.
+
+Lighthouse Report
+
+Desktop
+
+
+![gifts_desktop](https://user-images.githubusercontent.com/72452781/165869639-c56acd31-7295-4bfa-b0e8-741bb57242af.png)
+
+
+Mobile
+
+![gifts_mobile](https://user-images.githubusercontent.com/72452781/165869661-f18af414-1b22-4154-b58f-ac1219c9c9dd.png)
 
 
 ## Contact Page
