@@ -41,11 +41,11 @@
                         {% csrf_token %}
                         <div class="input-group">
                           <div class="input-group-prepend">
-                              <button type="button" class="decrease-id_quantity btn btn-sm btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}"><i class="fa fa-minus" aria-hidden="true" aria-labelledby="minus-quantity"></i></button>
+                              <button type="button" class="decrease-id_quantity btn btn-sm btn-danger btn-number decrease-id_quantity_{{ gift.giftid }}" data-type="minus" data-gift_id="{{ gift.giftid }}" aria-labelledby="minus-quantity"><i class="fa fa-minus" aria-hidden="true"></i></button>
                           </div>
                           <input class="text-center form-control form-control-sm qty-input id_quantity_{{ gift.id }}" type="number" name="quantity" value="{{ gift.quantity }}" min="1" max="10" data-gift_id="{{ gift.gift_id}}" aria-labelledby="item-quantity-change">
                           <div class="input-group-append">
-                              <button type="button" class="increase-id_quantity btn btn-sm btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"><i class="fa fa-plus" aria-hidden="true" aria-labelledby="plus-quantity"></i></button>
+                              <button type="button" class="increase-id_quantity btn btn-sm btn-success btn-number increase-id_quantity_{{ gift.giftid }}" data-type="add" data-gift_id="{{ gift.giftid }}"  aria-labelledby="plus-quantity"><i class="fa fa-plus" aria-hidden="true"></i></button>
                           </div>
                         </div>
                       </form>
@@ -106,8 +106,8 @@
               </div>
               <div class="row justify-content-center">
                 <div class="p-3 col">
-                    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"><i class="fa fa-shopping-basket" aria-label="Giftspage" aria-hidden="true"></i> Continue Shopping</a>
-                    <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"><i class="fa fa-credit-card-alt" aria-label="Checkout" aria-hidden="true"></i> Proceed to Checkout</a>
+                    <a href="{% url 'gifts' %}" class="btn btn-success" role="button" aria-pressed="true"  aria-label="Giftspage"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Continue Shopping</a>
+                    <a href="{% url 'purchases' %}" class="btn btn-info" role="button btn-primary" aria-pressed="true"  aria-label="Checkout"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Proceed to Checkout</a>
                 </div>
               </div>
             </td>
