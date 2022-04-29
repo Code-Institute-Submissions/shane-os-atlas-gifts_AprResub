@@ -30,10 +30,6 @@
   * [Future Implementation](#future-implementation)
 
 [Testing](#testing)
- * [Code Validators](#code-validators)
- * [Admin](#admin)
- * [User](#user)
- * [Other Areas](#other-areas)
 
 [Resolution of Bugs](#resolution-of-bugs)
 
