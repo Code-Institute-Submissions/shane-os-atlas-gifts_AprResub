@@ -23,6 +23,7 @@ Devices used to test Atlas Gifts Site: Laptop, Desktop, Tablet, Phone. The respo
 
 ## Homepage
 * User Story: As a user, I would appreciate a high-quality, aesthetically pleasing homepage to welcome me to the site.
+* User Story: As a user, I would like to be able to access the site across various devices, particularly by using a phone.
 
 When a user accesses the site, I wish for them to be excited by the homepage. They should feel instantly welcome and have a desire to explore the rest of the site. To encourage this, warm, bright colours were primarily used for the site. 
 
@@ -155,8 +156,6 @@ When a user first logs on to the site an empty shopping cart is automatically cr
 To test the update and delete functions of the cart with regards to specific items, various items were added to the shopping cart and their quantities were updated in the shopping cart summary page. To confirm the update, the update text must be clicked. To remove an item, the remove text must be clicked. Various items were removed from the cart both by the "remove quantity" text and by reducing the line item quantity using the minus button. The tests were successful as these functions operated as expected.
 
 
-
-
 Lighthouse Report
 
 Desktop
@@ -195,6 +194,38 @@ Lightouse Report
 ![purchases](https://user-images.githubusercontent.com/72452781/165882642-e2b87588-361d-441c-bada-56209461599b.png)
 
 
+## Profile
+As a user, I wish to register for a profile for myself.
+As a user, I would like to be able to to view my past purchases on the site, if I have a profile.
+
+Testing:
+* Profile Registration
+* Profile Destils
+* Past Purchase History
+
+To build customer loyalty, users are encouraged to register for a profile on Atlas Gifts. Users are able to save their delivery details securely on their personal profile page to enable faster checkout. By setting up an account on the site, customers will be able to access the records of their past purchases from Atlas Gifts.
+
+To test the profile registration capability, a series of attempts to create profiles were made. Many of these attempts were designed to check for whether 2 profiles could be created using the same username or email address or without an email address at all. The form was successful in preventing users from creating duplicate profiles/ without key details. After each profile was successfully created the personal details form fields were edited and saved to authenticate the profile information uodate function. These tests were determined to be successful.
+
+With regards to accessing past purchase history the following steps were followed:
+1. A series of purchases were made using different profiles. 
+2. The order summary was copied after the payment had been processed.
+3. After a successful webhook event is triggered and an email confirmation order had been received, I logged out of the profile and logged back in. This was to ensure that the past purchase history was correctly allocated to the user who made the purchase.
+4. I checked the purchase history of the user against the saved order summaries.
+
+
+Lighthouse Report
+
+Desktop
+
+![profile_desktop](https://user-images.githubusercontent.com/72452781/165883587-a52a9e45-bdf1-4fc1-9719-c9a77fa68ed8.png)
+
+
+Mobile
+
+![profile_mobile](https://user-images.githubusercontent.com/72452781/165883570-c8e32e22-3a1b-49f9-9072-0897e57ef05c.png)
+
+To improve the responsiveness of the page, small adjustments were made to the width, padding and font size of the cards.
 
 ## Contact Page
 
