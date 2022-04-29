@@ -249,3 +249,9 @@ Mobile
 ![contact_mobile](https://user-images.githubusercontent.com/72452781/165865719-8b917e8f-2169-414e-8e37-faa71d82bb95.png)
 
 ## Conclusion
+From the testing conducted on the areas named in the above sections, it is clear to me that the responsiveness of pages can vary significantly between devices. I notice that the following areas had a significant impact on Performance/ Accessibility Metrics:
+
+ * Utilising tinyng and similar websites to reduce image file sizes. This had an immense impact on the homepage and also the gifts page as both of these areas rely on quality images to retain customers.
+ * Naming conventions: Using suitable label names for buttons, forms, links, etc. had a substantial impact of the Accessibility metric.
+
+In terms of areas of improvement, I have noticed opportunities in using more up to image file formats and removing potneital code duplications.
