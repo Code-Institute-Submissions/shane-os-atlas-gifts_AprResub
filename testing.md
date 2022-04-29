@@ -124,7 +124,7 @@ As most users will require a visual reference point to aid them in determining i
 
 To ensure that the user receives as much information as possible to make an informed decision, more information as well as the option to purchase the item, can be accessed by clicking on the "More Info" button. The user is provided with a larger image of the product and a detailed description of the product, including the weight and price. The user is able to use the plus and minus buttons to increase/ decrease the item quantity before adding this their cart. To check that users are able to add products to their carts, various quantities of multiple items were added to the cart. As a user adding a quantity of 0 or less to their cart would not make sense, a check was built-in to prevent users from changing the input quantity to less than 1.
 
-The ability to add, update and delete gifts from the site is critical to the site being successful, as without the products there won;t anything to sell. To ensure that CRUD functionality was achieved I logged in as a superuser, created a series of test gifts with various prices, descriptions, etc. Then I proceeded to edit these items before logging out and return to the site as an anonymous user. After checking that I was unable to access the create, update or delete function as a non superuser I attempted to add each of these gifts to the shopping cart. After this successful check, I logged back in as a superuser before deleting each of the test items.
+The ability to add, update and delete gifts from the site is critical to the site being successful, as without the products there won't anything to sell. To ensure that CRUD functionality was achieved I logged in as a superuser, created a series of test gifts with various prices, descriptions, etc. Then I proceeded to edit these items before logging out and return to the site as an anonymous user. After checking that I was unable to access the create, update or delete function as a non superuser I attempted to add each of these gifts to the shopping cart. After this successful check, I logged back in as a superuser before deleting each of the test items.
 
 Lighthouse Report
 
@@ -138,6 +138,36 @@ Mobile
 
 ![gifts_mobile](https://user-images.githubusercontent.com/72452781/165869661-f18af414-1b22-4154-b58f-ac1219c9c9dd.png)
 
+## Shopping Cart
+User Story: As a user, I would like to be able to view my shopping cart and adjust the quantities as I desire.
+User Story: As a user, I want to be able to view an up to date total of the items in my shopping cart
+User Story: As a user, I would like to be made aware of any applicable discount and/or additional charges, including delivery.
+
+Between adding items to their shopping cart and checking out, customer may change their mind and wish to remove items from their cart or purchase a greater/ lesser quantity of a particular item in their cart. The shopping cart icon in the navigation bar displays a running total of the value of the items in the cart. 
+
+Testing:
+* Shopping Cart create, read, update and delete functionality
+* Delivery Charge
+* Discount Amount
+
+When a user first logs on to the site an empty shopping cart is automatically created. As they add items to their cart, the total displayed next to the shopping cart icon is increased. There is a standard €5 delivery charge that is added to every cart but only after the first item is added to the cart. To entice customersto spend a little more, there is an automatic 10% discount when the user spends more than €100 excluding delivery. To test this, items were added to the cart while logged in and also in incognito mode. As expected the delivery charge was only added after the first item was put into the cart. To determine the success of the discount function, various items were added to the cart to reach a total of greater than €100. Once the cart's total was greater than €100 (excluding delivery) it automatically deducted 10% from the toal. To ensure complete transparency in the calculations I have created a summary table on the cart summary page. This table clearly explains the total discount(if any), the standard delivery charge and the final payable amount.
+
+To test the update and delete functions of the cart with regards to specific items, various items were added to the shopping cart and their quantities were updated in the shopping cart summary page. To confirm the update, the update text must be clicked. To remove an item, the remove text must be clicked. Various items were removed from the cart both by the "remove quantity" text and by reducing the line item quantity using the minus button. The tests were successful as these functions operated as expected.
+
+
+Lighthouse Report
+
+Desktop
+
+
+![shopping_cart_desktop](https://user-images.githubusercontent.com/72452781/165879707-accf543a-65cf-4c8c-968b-c8b04ce3e509.png)
+
+
+Mobile
+
+![shopping_cart_mobile](https://user-images.githubusercontent.com/72452781/165879799-887e6268-8acc-4657-99a0-f1fc14e3c9cb.png)
+
+To improve the accessibility of the page aria labels were added to the various buttons on the page. This had the effect of slightly improving the accessibility metrics for both Desktop and mobile formats.
 
 ## Contact Page
 
