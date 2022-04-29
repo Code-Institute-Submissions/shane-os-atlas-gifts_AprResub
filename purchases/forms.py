@@ -1,6 +1,6 @@
 """ Purchases form """
 from django import forms
-from .models import Purchase, LineItem
+from .models import Purchase
 
 
 class PurchaseForm(forms.ModelForm):

@@ -30,9 +30,8 @@ def profile(request):
 
 
 def purchase_history(request, order_number):
+    """ Show User Purchase History """
     purchase = get_object_or_404(Purchase, order_number=order_number)
-    print("This is the purchase data:")
-    print(purchase)
 
     messages.info(request, (
         f'Order: {order_number} has already taken place.'

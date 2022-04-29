@@ -13,7 +13,6 @@ def cart_item_add(request, gift_id):
     """ Add gift to cart """
     quantity = int(request.POST.get('quantity'))
     url_redirect = request.POST.get('url_redirect')
-    print(url_redirect)
     cart = request.session.get('cart', {})
 
     if gift_id in list(cart.keys()):
@@ -23,7 +22,6 @@ def cart_item_add(request, gift_id):
         cart[gift_id] = quantity
 
     request.session['cart'] = cart
-    print(request.session['cart'])
     messages.success(request, "You have added an item to your cart!")
     return redirect(url_redirect)
 
@@ -32,7 +30,6 @@ def change_quantity(request, gift_id):
     """ Change gift quantity in cart """
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
-    print(cart)
     if quantity > 0:
         cart[gift_id] = quantity
         messages.info(request, "You have changed an item's quantity in the cart!")

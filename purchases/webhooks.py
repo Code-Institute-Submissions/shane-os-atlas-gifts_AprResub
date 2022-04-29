@@ -16,17 +16,13 @@ def webhook(request):
     wh_secret = settings.STRIPE_WH_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
     payload = request.body
-    print(payload)
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    print(sig_header)
     event = None
 
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
-        print(event)
-        print('check')
     except ValueError as e:
         return HttpResponse(content=e, status=400)
     except stripe.error.SignatureVerificationError as e:
@@ -35,8 +31,6 @@ def webhook(request):
         return HttpResponse(content=e, status=400)
 
     stripe_handler = StripeWebhookHandler(request)
-    print('stripe handler check')
-    print(stripe_handler)
     event_map = {
         'payment_intent.succeeded': stripe_handler.handle_payment_intent_succeeded,
         'payment_intent.payment_failed': stripe_handler.handle_payment_intent_payment_failed,

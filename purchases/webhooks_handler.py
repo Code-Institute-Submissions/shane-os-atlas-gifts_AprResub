@@ -36,16 +36,10 @@ class StripeWebhookHandler:
     def handle_payment_intent_succeeded(self, event):
         """ Stripe payment_intent_succeeded webhook handling """
         intent = event.data.object
-        print(intent)
-        print('Intent Check End')
         pid = intent.id
         cart = intent.metadata.cart
-        print(cart)
         personal_info = intent.metadata.personal_info
-        print(personal_info)
-        print('check 2')
         billing_details = intent.charges.data[0].billing_details
-        print(billing_details)
         shipping = intent.shipping
         grand_total = round(intent.charges.data[0].amount/100, 2)
 
@@ -55,10 +49,8 @@ class StripeWebhookHandler:
 
         account = None
         username = intent.metadata.username
-        print(username)
         if username != 'AnonymousUser':
             account = UserAccount.objects.get(user__username=username)
-            print('account = UserAccount.objects.get(user=username)')
             if personal_info:
                 account.official_phone = shipping.phone
                 account.official_address_line1 = shipping.address.line1
@@ -71,7 +63,6 @@ class StripeWebhookHandler:
 
         purchase_exists = False
         chance = 1
-        print('chance = 1')
         while chance < 6:
             try:
                 purchase = Purchase.objects.get(
@@ -94,14 +85,12 @@ class StripeWebhookHandler:
                 chance += 1
                 time.sleep(1)
         if purchase_exists:
-            print('purchase_exists')
             self._send_confirmation_email(purchase)
             return HttpResponse(
                 content=(f'Stripe Webhook Received: {event["type"]}|'
                          'Order already exists in Database'),
                 status=200)
         else:
-            print('purchase_exists else')
             purchase = None
             try:
                 purchase = Purchase.objects.create(
@@ -118,7 +107,6 @@ class StripeWebhookHandler:
                     unique_cart=cart,
                     stripe_paymentid=pid,
                 )
-                print('purchase_exists else after puurchase =')
                 for gift_id, quantity in json.loads(cart).items():
                     gift = Gift.objects.get(id=gift_id)
                     purchase_line_item = LineItem(

@@ -27,7 +27,6 @@ def purchases_data_cache(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        print("EXCEPTION: ", e)
         messages.error(request, "Error! Your payment was not processed! \
             Please try again later.")
         return HttpResponse(content=e, status=400)
@@ -106,8 +105,6 @@ def purchases(request):
             amount=stripe_total_integer,
             currency=settings.STRIPE_CURRENCY,
         )
-
-        print(intent)
 
         if request.user.is_authenticated:
             try:
