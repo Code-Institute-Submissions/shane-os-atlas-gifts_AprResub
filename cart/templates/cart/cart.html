@@ -11,7 +11,7 @@
 {% if select_gifts %}
       <div class="row">
         <div class="col">
-          <card id="#shopping-cart">
+          <div id="#shopping-cart">
             <div class="table-responsive rounded">
               <table class="table table-hover">
                 <thead>
@@ -59,7 +59,7 @@
                 {% endfor %}
               </table>
             </div>
-          </card>
+          </div>
         </div>
       </div>
       <table class="table table-striped summarytable">
@@ -138,13 +138,13 @@
   $('.update-quantity').click(function(e) {
     var cartUpdate = $(this).prev('.form-edit');
     cartUpdate.submit();
-  })
+  });
 
   $('.remove-gift').click(function(e) {
         var csrf = "{{ csrf_token }}";
         var giftRemove = $(this).attr('id').split('remove_')[1];
         var url = `/cart/remove/${giftRemove}/`;
-        var data = {'csrfmiddlewaretoken': csrf}
+        var data = {'csrfmiddlewaretoken': csrf};
 
         $.post(url, data)
          .done(function() {

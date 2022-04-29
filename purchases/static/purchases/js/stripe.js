@@ -35,17 +35,14 @@ stripeCard.addEventListener('change', function (event) {
 // Stripe Form Submission
 
 const stripeForm = document.getElementById('delivery-form');
-console.log(stripeForm)
 stripeForm.addEventListener('submit', function(ev){
     ev.preventDefault();
-    console.log('submit event')
     stripeCard.update({'disabled': true});
     $('#stripe-submit').attr('disabled', true);
     $('#delivery-form').fadeToggle(100);
     $('#payment-processing-overlay').fadeToggle(100);
 
     var personalInfo = Boolean($('#id_personal_info').attr('checked'));
-    console.log(personalInfo)
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var profileData = {
         'csrfmiddlewaretoken': csrfToken,
@@ -95,7 +92,6 @@ stripeForm.addEventListener('submit', function(ev){
                 stripeCard.update({ 'disabled': false});
                 $('#stripe-submit').attr('disabled', false);
             } else {
-                console.log(result.paymentIntent)
                 if (result.paymentIntent.status === 'succeeded'){
                     stripeForm.submit();
                 }
@@ -103,5 +99,5 @@ stripeForm.addEventListener('submit', function(ev){
         });
     }).fail(function() {
         location.reload();
-    })
+    });
 });
