@@ -163,18 +163,10 @@ Accounts must be set up with the below organisations to ensure that the project 
 
 To enable data to be saved and recorded numerous data models were created as part of the django applications created:
 
-<center><h2>Gifts Categories</h2></center>
-
-Name  | Database Key | Field Type | Validation |
-| ----- | ----- | ----- | ----- |
-| Name | name | models.CharField | max_length=200 |
-| Firendly Name | show_name | models.CharField | max_length=200 |
-
 <center><h2>Gifts</h2></center>
 
 Name  | Database Key | Field Type | Validation |
 | ----- | ----- | ----- | ----- |
-Category | category | models.ForeignKey | 'Category', null=True, blank=True, on_delete=models.SET_NULL|
 Stock Keeping Unit | SKU | models.CharField | max_length=25 |
 Name | name | models.CharField | max_length=200 |
 Description | description | models.TextField |  |
@@ -222,7 +214,6 @@ Official Country | official_country | models.CharField | max_length=20, null=Tru
 Name  | Database Key | Field Type | Validation |
 | ----- | ----- | ----- | ----- |
 Title | title | models.Charfield | max_length=200 |
-Categories | categories | models.ManyToManyField | 'Category', related_name='posts' |
 Created By | created_by | models.TextField | 
 Body | body | models.TextField | max_length=200 |
 Posted Date | posted_date | models.DateTimeField | auto_now_add=True |
