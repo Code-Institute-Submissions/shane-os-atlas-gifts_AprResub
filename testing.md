@@ -14,10 +14,10 @@
 * [Conclusion](#conclusion)
 
 ## Code Validators
-* The HTML code was passed through the W3C Validator. One error found was the incorrect use of a p element as a child of a button element.
-* The CSS code was passed through the Jigsaw Validator and the three errors found were that of missing semi-colons.
-* The JavaScript code was passed through the JSHint Validator and the minor syntax mistakes were corrected.
-* The Python code files adhere to the PEP8 styling guidelines.
+* The HTML code was passed through the [W3C Validator](https://validator.w3.org/). One error found was the incorrect use of a p element as a child of a button element.
+* The CSS code was passed through the [Jigsaw Validator](https://jigsaw.w3.org/css-validator/) and the three errors found were that of missing semi-colons.
+* The JavaScript code was passed through the [JSHint Validator](https://jshint.com/) and the minor syntax mistakes were corrected.
+* The Python code files adhere to the [PEP8 styling](https://peps.python.org/pep-0008/) guidelines.
 
 Devices used to test Atlas Gifts Site: Laptop, Desktop, Tablet, Phone. The responsiveness of the site was checked using the Developer Tools in the Google Chrome Browser.
 
