@@ -10,7 +10,7 @@
 * Shopping Cart
 * Purchases
 * Profile
-* Contact Page
+* [Contact Page](#contact-page)
 
 ## Code Validators
 * The HTML code was passed through the W3C Validator. One error found was the incorrect use of a p element as a child of a button element.
@@ -105,3 +105,23 @@ Mobile
 To improve the aethetics of the site on mobile devices, a maximum height was set for the blog post images. The card format was also widened slightly on smaller devices to allow for a more comfortable reading experience for the site visitor. 
 
 
+## Contact Page
+
+User Story: As a user, I wish to contact the site administrator if an issue occurs or if I have a concern.
+
+Testing:
+* Contact Form 
+
+Should a customer require more information about a product, the expected delivery dates or they wish to make a complaint, the contact form provides a medium through which they are able to do so. The form was kept simple to presuade people to reduce the likelihood of a visitor leaving the form and site part of the way through sue to the process being too arduous. The form was created using the django crispy forms package.
+
+The testing process for the contact form was to ensure that the user could not leave any of the four fields (Name, Subject, Email Address and Message) could be left blank and that a record of their form submission is sent to the email address provided. This is give customers some confidence that their query will be dealt with in a timely manner. To determine the contact form's success/ failure I attempted to submit a number of forms while leaving a field blank. The site prevented me from doing so. To ensure that the contact form's email sending process was working I sent submitted a number of forms with different email addresses in the email field. Th e contact form was successful in sending a copy of the submission to each email address.
+
+Lighthouse Report
+
+Desktop
+
+![contact_desktop](https://user-images.githubusercontent.com/72452781/165865590-0c733f7b-054e-43d9-97a9-53938637cdec.png)
+
+Mobile
+
+![contact_mobile](https://user-images.githubusercontent.com/72452781/165865719-8b917e8f-2169-414e-8e37-faa71d82bb95.png)
