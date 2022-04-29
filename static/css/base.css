@@ -155,6 +155,7 @@ footer {
 .admin-form {
     top: 5px;
     bottom: 5px;
+    width: 70%;
 }
 
 .contact-form {
