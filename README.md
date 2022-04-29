@@ -261,35 +261,6 @@ Name  | Database Key | Field Type | Validation |
 
 The thorough testing of the website is described in full in a separate document. Please find it located [here](https://github.com/shane-os/atlas-gifts/blob/main/testing.md)
 
-To ensure that the site was operating as expected, a series of print and console.log statements were introduced into the Python code fields to view the values of variables at key stages in each process. This was particularly useful when if/ else statements were used as it allowed me to determine which path the process took at each step. When an error occurred, this enabled a reduction in time spent resolving issues. For the site administrator and end users, django messages were included, informing them when key actions were initiated by the user. (E.g. Adding an item to a shopping cart, deleting an item, etc.)
-
-### Admin
-
-The site administrator has control over key areas of the site such as adding, deleteing or updating gifts, viewing purchase order and handling customer queries through the contact form. Non-core areas such as the home page content and blog are also under the remit of the administrator. To test the site, a superuser account was set up and and the following tests were conducted:
-
-1. Home
-
-As the home page is the first aspect of the site that a potential customer sees, it is vital that this content can be edited quickly, to give users key information. (E.g. Discounts, Delivery Delays, Sales, etc.) For the home page content the CRUD (Create, Read, Update, Delete) functionality was checked.) This was checked by creating a series of test content pieces with a title (Test01, Test02, etc) and a sample text body piece (Test01, etc.). Each content piece was then edited and saved. Then the content piece was deleted. To ensure that the additions, edits and deletions were visible to the customer, I logged out of the site between performing each function. The site administrtator is able to access the edit and delete functions for each content piece through buttons only visable to them when logged in.
-
-2. Blog
-
-The blog was created to provide users with more information on the site, new products, upcoming events, discounts, etc. The key functions of the app are allowing users to read the blog posts and allowing administrator to create, delete and edit posts. To ensure that users can not access the urls to add, remove or edit a post, the login required decorator was imported from Django Authorisation Decorators. This was tested by going on to the site and attempting to access the add and edit pages, whilst not being logged in. To help prevent the accidental deletion of a blog post, a warning modal appears when an administrator clicks on the delete button for that post. Administrators are then required to confirm by clicking the delete button again in the modal.
-
-3. Gifts Management
-To test the CRUD functionality of the gifts management system, a number of new products were created, edited and deleted. These items were added successfully to the shopping cart and then were edited and deleted in the cart summary page to ensure that the Gifts app was successfully integrated with the Cart app. These new items were then purchased successfully through the purchases app.
-
-### User
-
-1. Shopping Cart
-For customers to be able to make a purchase, they must be able to add items in their desired quantities to their cart, update the quantities if required and delete the items if they no longer wish to buy them. To check this, I used a different device to access the site and added a number of items to my cart. Each time a message appeared informing me that an item had been added to my cart. I then clicked on the cart icon to access my cart, and changed the quantity of each line item by using the plus and minus buttons and clicking on the update button. To test the removal function, the remove button was clicked on some line items to take them from the cart completely. A further message was received informing me that an item had been removed from the cart.
-
-2. Payments
-To ensure that the user does not accidentally make a duplicate purchase by refreshing their page/ clicking on the Pay Now button twice/ etc. the button and the card used in the stripe form are disabled. In addition, once the pay now button is clicked a blue overlay appears with a message informing the user that their payment is now being submitted and to not refresh the page. The form was tested by making multiple incorrect forms entries (e.g. card number only having 12 digits instead of 16, expiry date set in the past, etc.) and attempting to proceed with the payment even after the form had already been submitted by clicking on the Pay Now button again/ enter button.
-
-### Other Areas
-1. Discount
-To encourage potential customers to buy more from the site, a 10% discount was offered on the total value (excluding delivery) of the items selected once the toal was over a certain value (€100). To test this, a series of purchases were made with some having a total value below €100 and the remainder with a value above €100. The expected inclusion/ exclusion of a 10% discount was verified in the shopping cart summary page and also in the Stripe Payments dashbaord.
-
 ## Resolution of Bugs
 
 ### View Cart Items:
